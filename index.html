@@ -1119,7 +1119,7 @@ Responde en este formato:
       <p style="margin:6px 0 0">Las posturas ya no cambian. Con el ajuste (S/ 15,000 a 60 meses) cumple la regla del 30 % usando el promedio (Política, p. 7), pero no en el escenario de estrés, y la política no cubre los ingresos variables. Opciones para el analista: aprobar S/ 15,000 a 60 meses (cumple con el promedio) o S/ 7,700 a 60 meses (cumple también en el peor mes).</p>
       <p style="margin:6px 0 0;font-size:14px;color:var(--ink2)"><b>Bitácora:</b> S-2087 · escalado · cumple con el promedio, falla en el estrés · 2 rondas.</p>
     </div>
-    <div class="lesson"><b>Qué mostrar a los alumnos.</b> Un voto por mayoría habría salido «2 contra 1, aprobar» sin ver el mes bajo. El debate hizo visible el riesgo y el juez no decidió solo en un caso gris: se lo dio al analista con los argumentos de ambos lados.</div>
+    <div class="lesson"><b>Recomendación:</b> Un voto por mayoría habría salido «2 contra 1, aprobar» sin ver el mes bajo. El debate hizo visible el riesgo y el juez no decidió solo en un caso gris: se lo dio al analista con los argumentos de ambos lados.</div>
     <p class="note">Cuotas calculadas con una TEA ilustrativa de 15 %. Caso, cifras y política ficticios, creados para el curso.</p>
   </section>
 </div>
@@ -2250,15 +2250,18 @@ y qué guardrail determinista hace falta. Propón la versión más simple que cu
     <div class="lesson-tabs" id="tabs3">
       <button class="lesson-tab tab-active" onclick="tabScroll(3,'l3-reflect',this)">💭 Reflexión</button>
       <button class="lesson-tab" onclick="tabScroll(3,'l3-objectives',this)">🎯 Objetivos</button>
+      <button class="lesson-tab" onclick="tabScroll(3,'examMap3',this)">🧭 Examen: qué cubre</button>
       <button class="lesson-tab" onclick="tabScroll(3,'c2-caso',this)">📍 El caso</button>
       <button class="lesson-tab" onclick="tabScroll(3,'c2-inconsistencia',this)">🎲 Inconsistencia</button>
       <button class="lesson-tab" onclick="tabScroll(3,'c2-componentes',this)">📐 La spec</button>
       <button class="lesson-tab" onclick="tabScroll(3,'c2-criterios',this)">✅ Criterios</button>
       <button class="lesson-tab" onclick="tabScroll(3,'c2-briefing',this)">📨 Briefing</button>
+      <button class="lesson-tab" onclick="tabScroll(3,'c2-comandos',this)">⌨ Comandos</button>
       <button class="lesson-tab" onclick="tabScroll(3,'c2-ejemplo',this)">🧪 Ejemplo resuelto</button>
       <button class="lesson-tab" onclick="tabScroll(3,'c2-claves',this)">✓ Puntos clave</button>
       <button class="lesson-tab" onclick="tabScroll(3,'l3-activity',this)">✍ Actividad</button>
       <button class="lesson-tab" onclick="tabScroll(3,'quizCard3',this)">✓ Quiz</button>
+      <button class="lesson-tab" onclick="tabScroll(3,'examCard3',this)">🎓 Examen</button>
       <span style="flex:1"></span>
       <span style="font-size:11px;color:var(--slate);white-space:nowrap;padding:0 12px" id="readLabel3">0% leído</span>
     </div>
@@ -2303,15 +2306,31 @@ y qué guardrail determinista hace falta. Propón la versión más simple que cu
         </div>
       </div>
 
+      <div class="card" id="examMap3">
+        <div class="card-header">
+          <div class="card-header-icon" style="background:#dbeafe">🧭</div>
+          <span class="card-header-title">Qué cubre del examen Claude Certified Architect – Foundations</span>
+          <span class="card-header-badge blue">examen</span>
+        </div>
+        <div class="card-body theory-content">
+<ul>
+<li><b>3.5 · Apply iterative refinement techniques</b>: ejemplos entrada/salida, tests primero y el patrón de entrevista.</li>
+<li><b>4.1 · Design prompts with explicit criteria</b>: criterios explícitos y verificables en vez de deseos vagos.</li>
+<li><b>4.2 · Apply few-shot prompting</b>: ejemplos concretos para lograr salidas consistentes.</li>
+<li><b>3.4 · Plan mode vs direct execution</b>: plan mode para implementar una spec de varios archivos.</li>
+</ul><p>Escenario del examen más parecido: <b>2 · Code Generation with Claude Code</b>.</p>
+        </div>
+      </div>
+
       <div class="card" id="c2-caso">
         <div class="card-header">
           <div class="card-header-icon" style="background:#ede9fe">📍</div>
-          <span class="card-header-title">Tutor · Sprint 1 — cuatro corridas, cuatro tutores distintos</span>
+          <span class="card-header-title">Agente de atención — cuatro corridas, cuatro agentes distintos</span>
           <span class="card-header-badge blue">caso</span>
         </div>
         <div class="card-body theory-content">
 
-<div class="callout case"><span class="callout-icon">🏢</span><div class="callout-text">El equipo decide empezar por lo más simple: «haz que el tutor cite la página». Un developer lo corre cuatro veces en cuatro sesiones limpias para ver qué sale. <b>Corrida 1:</b> agrega la página al final del mensaje. <b>Corrida 2:</b> la pone entre paréntesis después de cada frase. <b>Corrida 3:</b> inventa la página cuando el chunk no la trae. <b>Corrida 4:</b> llama al modelo aunque la búsqueda no encontró nada, y el modelo responde de memoria, con una página que no existe. Cada salida «funciona». Ninguna es la misma. Ninguna se puede aceptar ni rechazar con un criterio.</div></div>
+<div class="callout case"><span class="callout-icon">🏢</span><div class="callout-text">El equipo decide empezar por lo más simple: «haz que el agente de atención cite la página del Tarifario». Un developer lo corre cuatro veces en cuatro sesiones limpias para ver qué sale. <b>Corrida 1:</b> agrega la página al final del mensaje. <b>Corrida 2:</b> la pone entre paréntesis después de cada frase. <b>Corrida 3:</b> inventa la página cuando el chunk no la trae. <b>Corrida 4:</b> llama al modelo aunque la búsqueda no encontró nada, y el modelo responde de memoria, con una página que no existe. Cada salida «funciona». Ninguna es la misma. Ninguna se puede aceptar ni rechazar con un criterio.</div></div>
 <p>Este es el problema del vibe coding en producción: no que el agente construya lo incorrecto, sino que construye algo <em>diferente</em> cada vez, porque recibe un objetivo sin contrato. La guía de Anthropic lo dice sin rodeos: <em>«Claude puede inferir la intención, pero no puede leerte la mente. Referencia archivos concretos, menciona restricciones y señala patrones de ejemplo»</em>. La corrida 3 y la corrida 4 no son bugs del modelo: son decisiones que nadie tomó.</p>
 <p>La solución tiene nombre en la guía y en el curso: escribir la spec primero y dirigir al agente contra ella. Spec Driven Development.</p>
 
@@ -2331,7 +2350,7 @@ y qué guardrail determinista hace falta. Propón la versión más simple que cu
 <h3>Lo que el agente inventa cuando la instrucción no lo dice</h3>
 <div class="before-after">
   <div class="ba-card before"><div class="ba-card-label">La instrucción del caso</div><ul>
-    <li>«haz que el tutor cite la página»</li>
+    <li>«haz que el agente de atención cite la página del Tarifario»</li>
   </ul></div>
   <div class="ba-card after"><div class="ba-card-label" style="color:#1d4ed8">Lo que el agente tuvo que decidir solo</div><ul style="color:#1e3a8a">
     <li>¿Formato de la cita? ¿Al final, por frase, entre paréntesis?</li>
@@ -2345,6 +2364,13 @@ y qué guardrail determinista hace falta. Propón la versión más simple que cu
 <h3>Cuándo un prompt vago sí es apropiado</h3>
 <p>La misma guía lo aclara: <em>«Los prompts vagos pueden ser útiles cuando estás explorando y puedes permitirte corregir el rumbo. Un prompt como "¿qué mejorarías en este archivo?" puede sacar a la luz cosas que no se te habría ocurrido preguntar»</em>. Y sobre planificar: <em>«Si pudieras describir el diff en una frase, sáltate el plan»</em>. La spec es para lo que va a producción, toca varios archivos o lo mantienen otros. Para un typo, no.</p>
 
+<div class="diagram-wrap zoom-trigger" onclick="openZoom('bk03-sinspec','Sin spec: cuatro corridas, cuatro resultados')" title="Clic para ampliar"><svg id="bk03-sinspec" viewBox="0 0 920 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block;background:#fff;border-radius:10px;font-family:'Inter',system-ui,sans-serif"><defs><marker id="bk03-sinspec-a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#64748b"/></marker></defs><g font-size="14">
+<rect x="20" y="95" width="210" height="60" rx="12" fill="#f1f5f9" stroke="#64748b"/><text x="125" y="122" text-anchor="middle" font-weight="800">«cita la página»</text><text x="125" y="142" text-anchor="middle" fill="#475569">una línea, sin spec</text>
+<g stroke="#64748b" stroke-width="2"><path d="M230 125L318 40" marker-end="url(#bk03-sinspec-a)"/><path d="M230 125L318 100" marker-end="url(#bk03-sinspec-a)"/><path d="M230 125L318 160" marker-end="url(#bk03-sinspec-a)"/><path d="M230 125L318 216" marker-end="url(#bk03-sinspec-a)"/></g>
+<rect x="320" y="20" width="580" height="40" rx="8" fill="#fef3c7" stroke="#d97706"/><text x="336" y="45" fill="#0f172a">Corrida 1: «(p. 4)» al final de la respuesta</text>
+<rect x="320" y="80" width="580" height="40" rx="8" fill="#fef3c7" stroke="#d97706"/><text x="336" y="105" fill="#0f172a">Corrida 2: cita por frase, inventa la página si no la encuentra</text>
+<rect x="320" y="140" width="580" height="40" rx="8" fill="#fee2e2" stroke="#dc2626"/><text x="336" y="165" fill="#0f172a">Corrida 3: si no hay resultados, responde de memoria</text>
+<rect x="320" y="196" width="580" height="40" rx="8" fill="#fee2e2" stroke="#dc2626"/><text x="336" y="221" fill="#0f172a">Corrida 4: cambia el módulo de búsqueda que nadie pidió tocar</text></g></svg></div><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;margin:14px 0"><div style="border:1.5px solid #6ee7b7;background:#ecfdf5;border-radius:12px;padding:12px 16px"><strong style="color:#065f46">✓ Beneficios</strong><ul style="margin:6px 0 0"><li>Todas las corridas producen lo mismo.</li><li>Las decisiones quedan escritas y revisables.</li><li>Menos correcciones después.</li></ul></div><div style="border:1.5px solid #fca5a5;background:#fef2f2;border-radius:12px;padding:12px 16px"><strong style="color:#991b1b">⚠ Riesgos</strong><ul style="margin:6px 0 0"><li>Escribir una spec para un typo es perder tiempo.</li><li>Una spec vaga es igual de mala que no tenerla.</li><li>Si nadie la aprueba, sigue siendo una suposición.</li></ul></div></div><div style="border:1.5px dashed #2563eb;border-radius:12px;padding:14px 16px;background:#f8fafc;margin-top:14px"><strong>🛠 Pruébalo tú</strong><p style="margin:6px 0">Pide dos veces, en sesiones distintas, «haz que el agente cite la página del Tarifario» en un repositorio de prueba. Compara los dos diffs.</p><details><summary style="cursor:pointer;font-weight:600;color:#1d4ed8">Ver resultado esperado</summary><div style="margin-top:8px">Los dos diffs difieren en el formato de la cita y en qué pasa cuando no hay resultado: son las decisiones que la spec debía tomar.</div></details></div>
         </div>
       </div>
 
@@ -2372,47 +2398,47 @@ Sigue entrevistando hasta que hayamos cubierto todo, y entonces escribe una spec
 <marker id="arg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#059669"/></marker>
 </defs><text x="460.0" y="24" text-anchor="middle" font-size="14" font-weight="700" fill="#0f172a">La spec de 7 componentes: cada uno elimina una categoría de suposiciones que el agente inventaría</text><rect x="30" y="55" width="200" height="78" rx="10" fill="#fef3c7" stroke="#d97706" stroke-width="1.5"/><text x="130.0" y="91.41666666666667" text-anchor="middle" font-size="12.5" font-weight="800" fill="#0f172a">① Objetivo</text><text x="130.0" y="105.91666666666667" text-anchor="middle" font-size="10.5" fill="#64748b">para qué</text><rect x="248" y="55" width="200" height="78" rx="10" fill="#fef3c7" stroke="#d97706" stroke-width="1.5"/><text x="348.0" y="91.41666666666667" text-anchor="middle" font-size="12.5" font-weight="800" fill="#0f172a">② User story</text><text x="348.0" y="105.91666666666667" text-anchor="middle" font-size="10.5" fill="#64748b">quién y por qué</text><rect x="466" y="55" width="200" height="78" rx="10" fill="#dbeafe" stroke="#2563eb" stroke-width="1.5"/><text x="566.0" y="84.66666666666667" text-anchor="middle" font-size="12.5" font-weight="800" fill="#0f172a">③ Acceptance criteria</text><text x="566.0" y="99.16666666666667" text-anchor="middle" font-size="10.5" fill="#64748b">qué es «funciona»</text><text x="566.0" y="112.66666666666667" text-anchor="middle" font-size="10.5" fill="#64748b">binarios, con test</text><rect x="684" y="55" width="200" height="78" rx="10" fill="#dbeafe" stroke="#2563eb" stroke-width="1.5"/><text x="784.0" y="84.66666666666667" text-anchor="middle" font-size="12.5" font-weight="800" fill="#0f172a">④ Restricciones</text><text x="784.0" y="99.16666666666667" text-anchor="middle" font-size="10.5" fill="#64748b">stack, rutas,</text><text x="784.0" y="112.66666666666667" text-anchor="middle" font-size="10.5" fill="#64748b">qué reutilizar</text><rect x="30" y="150" width="200" height="78" rx="10" fill="#fee2e2" stroke="#dc2626" stroke-width="1.5"/><text x="130.0" y="179.66666666666666" text-anchor="middle" font-size="12.5" font-weight="800" fill="#0f172a">⑤ Guardrails</text><text x="130.0" y="194.16666666666666" text-anchor="middle" font-size="10.5" fill="#64748b">qué NO hacer</text><text x="130.0" y="207.66666666666666" text-anchor="middle" font-size="10.5" fill="#64748b">hook o test</text><rect x="248" y="150" width="200" height="78" rx="10" fill="#ede9fe" stroke="#7c3aed" stroke-width="1.5"/><text x="348.0" y="179.66666666666666" text-anchor="middle" font-size="12.5" font-weight="800" fill="#0f172a">⑥ Edge cases</text><text x="348.0" y="194.16666666666666" text-anchor="middle" font-size="10.5" fill="#64748b">qué pasa si falta</text><text x="348.0" y="207.66666666666666" text-anchor="middle" font-size="10.5" fill="#64748b">o falla</text><rect x="466" y="150" width="200" height="78" rx="10" fill="#d1fae5" stroke="#059669" stroke-width="1.5"/><text x="566.0" y="179.66666666666666" text-anchor="middle" font-size="12.5" font-weight="800" fill="#0f172a">⑦ DoD</text><text x="566.0" y="194.16666666666666" text-anchor="middle" font-size="10.5" fill="#64748b">cuándo se acepta</text><text x="566.0" y="207.66666666666666" text-anchor="middle" font-size="10.5" fill="#64748b">evidencia</text><rect x="684" y="150" width="206" height="78" rx="10" fill="#f1f5f9" stroke="#64748b" stroke-width="1.5"/><text x="787.0" y="179.66666666666666" text-anchor="middle" font-size="12.5" font-weight="800" fill="#0f172a">Prueba de la spec</text><text x="787.0" y="194.16666666666666" text-anchor="middle" font-size="10.5" fill="#64748b">dos agentes distintos</text><text x="787.0" y="207.66666666666666" text-anchor="middle" font-size="10.5" fill="#64748b">→ la misma implementación</text><rect x="30" y="250" width="860" height="70" rx="12" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1"/><text x="42" y="268" font-size="11" font-weight="800" fill="#64748b" letter-spacing="1">LO QUE ANTHROPIC PIDE DE UNA SPEC (BEST PRACTICES)</text><text x="50" y="280" text-anchor="start" font-size="11.5" font-weight="500" fill="#0f172a">autocontenida: nombra los archivos y las interfaces involucradas · dice qué queda fuera de alcance · termina con un paso de verificación de punta a punta</text><text x="50" y="302" text-anchor="start" font-size="11.5" font-weight="500" fill="#64748b">se escribe con Claude entrevistándote (AskUserQuestion) → SPEC.md · y se ejecuta en una sesión nueva, con contexto limpio</text></svg></div><p style="font-size:12.5px;color:var(--text2);margin-top:8px">La estructura del curso (7 componentes) es la forma de cumplir lo que Anthropic pide: archivos e interfaces, fuera de alcance, verificación de punta a punta.</p>
 <div style="overflow-x:auto;-webkit-overflow-scrolling:touch"><table><thead><tr><th>Componente</th><th>Qué suposición elimina</th><th>Cómo se verifica que está bien escrito</th></tr></thead><tbody><tr><td>① Objetivo</td><td>Para qué se construye</td><td>Una frase; el PO la reconoce como valor; se puede comprobar</td></tr><tr><td>② User story</td><td>Quién lo usa y por qué</td><td>Como / quiero / para</td></tr><tr><td>③ Acceptance criteria</td><td>Qué significa «funciona»</td><td>Numerados, binarios, cada uno con el nombre de su test</td></tr><tr><td>④ Archivos, interfaces y restricciones</td><td>Stack, qué reutilizar, qué no tocar</td><td>Rutas y firmas con nombre; lo que Anthropic llama «autocontenida»</td></tr><tr><td>⑤ Fuera de alcance</td><td>Hasta dónde llega</td><td>Lista explícita; evita los 14 archivos del viernes</td></tr><tr><td>⑥ Guardrails</td><td>Qué está prohibido</td><td>Cada uno con un hook o un test que lo bloquea (capítulo 7)</td></tr><tr><td>⑦ Edge cases</td><td>Qué pasa cuando algo falta o falla</td><td>Un test por caso</td></tr><tr><td>⑧ Verificación de punta a punta (DoD)</td><td>Cuándo se acepta</td><td>Checklist binario con la evidencia que se pega en el PR</td></tr></tbody></table></div>
-<h3>La spec del Tutor, completa</h3>
-<pre><code># SPEC — Tutor de proyectos · Respuesta con cita de página
+<h3>La spec del agente de atención, completa</h3>
+<pre><code># SPEC — Agente de atención · Respuesta con cita del Tarifario
 
 ## 1. Objetivo
-El alumno recibe una respuesta a su pregunta sobre el PMBOK 7 o la Guía Scrum 2020,
+El cliente recibe una respuesta a su pregunta sobre el Tarifario o la Reglamento de Productos,
 redactada solo con párrafos del documento y con la página citada, en menos de 10 s.
 
 ## 2. User story
-Como alumno del curso, quiero preguntar por WhatsApp «¿qué es el acta de constitución?»
+Como cliente del curso, quiero preguntar por la app «¿qué es el acta de constitución?»
 y recibir la explicación con la página exacta, para poder verificarla en el libro.
 
 ## 3. Acceptance criteria (numerados, binarios, cada uno con su test)
 AC1  Toda respuesta incluye al menos una cita con formato «&lt;Documento&gt;, p. &lt;n&gt;».
      test_ac1_formato_de_cita
 AC2  Cada afirmación de la respuesta aparece, con las mismas palabras clave, en alguno de los
-     párrafos recuperados. Se verifica por código (tutor/verificar.py), no por el modelo.
+     párrafos recuperados. Se verifica por código (atencion/verificar.py), no por el modelo.
      test_ac2_afirmaciones_con_soporte
 AC3  Si la búsqueda no devuelve párrafos con score &gt;= 0.35, la respuesta es exactamente
      «No encuentro eso en el documento» y NO se llama al modelo.
      test_ac3_sin_parrafos_no_llama_al_modelo
 AC4  Tiempo total (webhook → respuesta enviada) &lt;= 10 s en el p95 de 50 preguntas.
      test_ac4_latencia_p95
-AC5  La respuesta cabe en un mensaje de WhatsApp (&lt;= 1.500 caracteres).
+AC5  La respuesta cabe en un mensaje de la app (&lt;= 1.500 caracteres).
      test_ac5_longitud
 
 ## 4. Archivos e interfaces involucrados (restricciones técnicas)
-- tutor/buscar.py      buscar_hibrido(pregunta, k) -&gt; list[Parrafo]   (existe: NO reescribir)
-- tutor/redactar.py    redactar(pregunta, parrafos) -&gt; Respuesta       (cambia aquí)
-- tutor/verificar.py   verificar(respuesta, parrafos) -&gt; Veredicto     (contrato: NO tocar)
-- tutor/app.py         webhook POST /whatsapp                          (solo el armado del mensaje)
+- atencion/buscar.py      buscar_hibrido(pregunta, k) -&gt; list[Parrafo]   (existe: NO reescribir)
+- atencion/redactar.py    redactar(pregunta, parrafos) -&gt; Respuesta       (cambia aquí)
+- atencion/verificar.py   verificar(respuesta, parrafos) -&gt; Veredicto     (contrato: NO tocar)
+- atencion/app.py         webhook POST /chat                          (solo el armado del mensaje)
 Stack: Python 3.12, FastAPI, PostgreSQL 16 + pgvector, sentence-transformers all-MiniLM-L6-v2.
 Toda llamada al modelo pasa por governed_call(); sin dependencias nuevas.
 
 ## 5. Fuera de alcance
 - Subir documentos propios (es la siguiente spec).
 - Cambiar el troceo o los embeddings.
-- Cualquier cambio en tutor/verificar.py (va por RFC).
+- Cualquier cambio en atencion/verificar.py (va por RFC).
 
 ## 6. Guardrails (qué NO hacer)
 - NO responder con conocimiento del modelo: solo con párrafos recuperados.
-- NO escribir datos personales del alumno en logs ni en fixtures.
+- NO escribir datos personales del cliente en logs ni en fixtures.
 - NO llamar al modelo si el guard de prompt injection bloqueó la pregunta.
 
 ## 7. Edge cases (cada uno con su test)
@@ -2430,6 +2456,15 @@ Toda llamada al modelo pasa por governed_call(); sin dependencias nuevas.
 [ ] Un humano leyó el diff completo y aprobó el PR.</code></pre>
 <div class="callout info"><span class="callout-icon">💡</span><div class="callout-text"><strong>La prueba de una buena spec.</strong> Si se la das a dos agentes distintos y producen arquitecturas radicalmente diferentes, la spec no es lo bastante precisa. Una buena spec produce implementaciones convergentes. Es la misma prueba que un equipo humano aplicaría a un ticket.</div></div>
 
+<div class="diagram-wrap zoom-trigger" onclick="openZoom('bk03-componentes','Las partes de una spec ejecutable')" title="Clic para ampliar"><svg id="bk03-componentes" viewBox="0 0 920 230" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block;background:#fff;border-radius:10px;font-family:'Inter',system-ui,sans-serif"><defs><marker id="bk03-componentes-a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#64748b"/></marker></defs><g font-size="14">
+<rect x="20" y="20" width="880" height="190" rx="14" fill="#f8fafc" stroke="#94a3b8"/><text x="40" y="50" font-weight="900" fill="#0f172a" font-size="16">SPEC.md · Respuesta con cita del Tarifario</text>
+<rect x="40" y="66" width="200" height="54" rx="10" fill="#eff6ff" stroke="#2563eb"/><text x="140" y="98" text-anchor="middle" font-weight="800" fill="#1e3a8a">Objetivo y user story</text>
+<rect x="255" y="66" width="200" height="54" rx="10" fill="#d1fae5" stroke="#059669"/><text x="355" y="98" text-anchor="middle" font-weight="800" fill="#065f46">Criterios verificables</text>
+<rect x="470" y="66" width="200" height="54" rx="10" fill="#ecfeff" stroke="#0891b2"/><text x="570" y="98" text-anchor="middle" font-weight="800" fill="#155e75">Archivos e interfaces</text>
+<rect x="685" y="66" width="200" height="54" rx="10" fill="#f1f5f9" stroke="#64748b"/><text x="785" y="98" text-anchor="middle" font-weight="800" fill="#0f172a">Fuera de alcance</text>
+<rect x="148" y="136" width="200" height="54" rx="10" fill="#fee2e2" stroke="#dc2626"/><text x="248" y="168" text-anchor="middle" font-weight="800" fill="#991b1b">Guardrails (qué NO)</text>
+<rect x="362" y="136" width="200" height="54" rx="10" fill="#fef3c7" stroke="#d97706"/><text x="462" y="168" text-anchor="middle" font-weight="800" fill="#92400e">Casos borde</text>
+<rect x="576" y="136" width="200" height="54" rx="10" fill="#0f172a"/><text x="676" y="168" text-anchor="middle" font-weight="800" fill="#fff">Verificación final</text></g></svg></div><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;margin:14px 0"><div style="border:1.5px solid #6ee7b7;background:#ecfdf5;border-radius:12px;padding:12px 16px"><strong style="color:#065f46">✓ Beneficios</strong><ul style="margin:6px 0 0"><li>El agente no inventa lo que la spec ya decidió.</li><li>La entrevista saca a la luz casos borde que no pensaste.</li><li>Otra persona puede ejecutarla sin preguntarte.</li></ul></div><div style="border:1.5px solid #fca5a5;background:#fef2f2;border-radius:12px;padding:12px 16px"><strong style="color:#991b1b">⚠ Riesgos</strong><ul style="margin:6px 0 0"><li>Olvidar «fuera de alcance»: el agente toca módulos que no debía.</li><li>Sin guardrails, puede escribir datos personales en logs.</li><li>Una spec que nadie actualiza queda desalineada del código.</li></ul></div></div><div style="border:1.5px dashed #2563eb;border-radius:12px;padding:14px 16px;background:#f8fafc;margin-top:14px"><strong>🛠 Pruébalo tú</strong><p style="margin:6px 0">Usa el prompt de entrevista de Anthropic para una feature pequeña del agente de reclamos («reembolsar cargos duplicados menores a S/ 50»). Responde las preguntas y pide SPEC.md.</p><details><summary style="cursor:pointer;font-weight:600;color:#1d4ed8">Ver resultado esperado</summary><div style="margin-top:8px">Un SPEC.md con objetivo, criterios verificables, archivos que se pueden tocar y cuáles no, fuera de alcance, guardrails y un paso final de verificación.</div></details></div>
         </div>
       </div>
 
@@ -2443,7 +2478,7 @@ Toda llamada al modelo pasa por governed_call(); sin dependencias nuevas.
 
 <p>El apartado más importante de la guía empieza así: <em>«Dale a Claude un chequeo que pueda correr: tests, un build, una captura para comparar. Es la diferencia entre una sesión que miras y una de la que te puedes ir»</em>. Y explica por qué: <em>«Claude se detiene cuando el trabajo parece terminado. Sin un chequeo que pueda correr, "parece terminado" es la única señal disponible y tú te conviertes en el bucle de verificación: cada error espera a que lo notes. Dale algo que produzca un pasa o falla, y el bucle se cierra solo»</em>.</p>
 <h3>Qué es un criterio verificable</h3>
-<div style="overflow-x:auto;-webkit-overflow-scrolling:touch"><table><thead><tr><th>No verificable</th><th>Verificable (el agente puede correrlo y leer el resultado)</th></tr></thead><tbody><tr><td>«La cita debe verse bien»</td><td>AC1: la respuesta contiene el patrón «&lt;Documento&gt;, p. &lt;n&gt;» → test_ac1_formato_de_cita</td></tr><tr><td>«No debe inventar»</td><td>AC2: cada afirmación tiene soporte en un párrafo recuperado, según tutor/verificar.py → test_ac2</td></tr><tr><td>«Debe ser rápido»</td><td>AC4: p95 ≤ 10 s sobre 50 preguntas del fixture → test_ac4_latencia_p95</td></tr><tr><td>«Que quepa en WhatsApp»</td><td>AC5: len(respuesta) ≤ 1.500 → test_ac5_longitud</td></tr></tbody></table></div>
+<div style="overflow-x:auto;-webkit-overflow-scrolling:touch"><table><thead><tr><th>No verificable</th><th>Verificable (el agente puede correrlo y leer el resultado)</th></tr></thead><tbody><tr><td>«La cita debe verse bien»</td><td>AC1: la respuesta contiene el patrón «&lt;Documento&gt;, p. &lt;n&gt;» → test_ac1_formato_de_cita</td></tr><tr><td>«No debe inventar»</td><td>AC2: cada afirmación tiene soporte en un párrafo recuperado, según atencion/verificar.py → test_ac2</td></tr><tr><td>«Debe ser rápido»</td><td>AC4: p95 ≤ 10 s sobre 50 preguntas del fixture → test_ac4_latencia_p95</td></tr><tr><td>«Que quepa en el chat»</td><td>AC5: len(respuesta) ≤ 1.500 → test_ac5_longitud</td></tr></tbody></table></div>
 <p>La regla práctica: si no sabes qué comando o qué test lo comprobaría, todavía no es un criterio de aceptación. Es una intención.</p>
 <h3>Cuatro maneras de cerrar el bucle</h3>
 <p>Una vez que el chequeo existe, la guía distingue cuatro formas de usarlo como compuerta, de menos a más configuración:</p>
@@ -2454,10 +2489,19 @@ Toda llamada al modelo pasa por governed_call(); sin dependencias nuevas.
 <marker id="arg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#059669"/></marker>
 </defs><text x="460.0" y="24" text-anchor="middle" font-size="14" font-weight="700" fill="#0f172a">Cuatro maneras de que el agente no pare hasta que el criterio se cumpla (de menos a más configuración)</text><rect x="30" y="200" width="200" height="105" rx="10" fill="#fef3c7" stroke="#d97706" stroke-width="1.5"/><text x="130.0" y="237.16666666666666" text-anchor="middle" font-size="12.5" font-weight="800" fill="#0f172a">1 · En el prompt</text><text x="130.0" y="251.16666666666666" text-anchor="middle" font-size="10" fill="#64748b">«escribe la función, corre los tests</text><text x="130.0" y="264.16666666666663" text-anchor="middle" font-size="10" fill="#64748b">y corrige hasta que pasen»</text><text x="130.0" y="277.16666666666663" text-anchor="middle" font-size="10" fill="#64748b">funciona hoy, en cualquier tarea</text><path d="M230 252 L250 212" fill="none" stroke="#64748b" stroke-width="2" marker-end="url(#ar)"/><rect x="250" y="160" width="200" height="105" rx="10" fill="#dbeafe" stroke="#2563eb" stroke-width="1.5"/><text x="350.0" y="197.16666666666666" text-anchor="middle" font-size="12.5" font-weight="800" fill="#0f172a">2 · /goal</text><text x="350.0" y="211.16666666666666" text-anchor="middle" font-size="10" fill="#64748b">un evaluador aparte revisa el criterio</text><text x="350.0" y="224.16666666666666" text-anchor="middle" font-size="10" fill="#64748b">tras cada turno y Claude sigue</text><text x="350.0" y="237.16666666666666" text-anchor="middle" font-size="10" fill="#64748b">hasta que se cumple</text><path d="M450 212 L470 172" fill="none" stroke="#64748b" stroke-width="2" marker-end="url(#ar)"/><rect x="470" y="120" width="200" height="105" rx="10" fill="#ede9fe" stroke="#7c3aed" stroke-width="1.5"/><text x="570.0" y="157.16666666666666" text-anchor="middle" font-size="12.5" font-weight="800" fill="#0f172a">3 · Hook Stop</text><text x="570.0" y="171.16666666666666" text-anchor="middle" font-size="10" fill="#64748b">un script corre tu chequeo y bloquea</text><text x="570.0" y="184.16666666666666" text-anchor="middle" font-size="10" fill="#64748b">el fin del turno hasta que pase</text><text x="570.0" y="197.16666666666666" text-anchor="middle" font-size="10" fill="#64748b">(determinista; cede tras 8 bloqueos)</text><path d="M670 172 L690 132" fill="none" stroke="#64748b" stroke-width="2" marker-end="url(#ar)"/><rect x="690" y="80" width="200" height="105" rx="10" fill="#d1fae5" stroke="#059669" stroke-width="1.5"/><text x="790.0" y="117.16666666666667" text-anchor="middle" font-size="12.5" font-weight="800" fill="#0f172a">4 · Segunda opinión</text><text x="790.0" y="131.16666666666669" text-anchor="middle" font-size="10" fill="#64748b">un subagente con contexto limpio</text><text x="790.0" y="144.16666666666669" text-anchor="middle" font-size="10" fill="#64748b">intenta refutar el resultado:</text><text x="790.0" y="157.16666666666669" text-anchor="middle" font-size="10" fill="#64748b">quien hace no es quien califica</text><text x="30" y="326" text-anchor="start" font-size="11" font-weight="700" fill="#dc2626">Pide evidencia, no afirmaciones: la salida del test, el comando y lo que devolvió, la captura de pantalla.</text><text x="30" y="344" text-anchor="start" font-size="11" font-weight="700" fill="#dc2626">«Si no lo puedes verificar, no lo despliegues».</text></svg></div>
 <div style="overflow-x:auto;-webkit-overflow-scrolling:touch"><table><thead><tr><th>Forma</th><th>Cómo</th><th>Cuándo</th></tr></thead><tbody><tr><td><strong>En un prompt</strong></td><td>«…corre los tests después de implementar y corrige hasta que pasen»</td><td>Cualquier tarea, hoy, sin configurar nada</td></tr><tr><td><strong>Durante la sesión: <code>/goal</code></strong></td><td><code>/goal los 5 tests de tests/test_respuesta.py pasan y ruff no reporta errores</code>. Un modelo evaluador aparte revisa la condición tras cada turno; Claude sigue trabajando hasta que se cumple, y si se estanca, Claude Code detiene la corrida con el goal aún activo</td><td>Trabajo sustancial con un estado final verificable: migrar un módulo, implementar un diseño hasta que todos los AC se cumplan</td></tr><tr><td><strong>Compuerta determinista: hook <code>Stop</code></strong></td><td>Un script corre tu chequeo y bloquea el fin del turno hasta que pase. Claude Code cede tras 8 bloqueos seguidos</td><td>Corridas desatendidas (capítulo 7)</td></tr><tr><td><strong>Segunda opinión</strong></td><td>Un subagente de verificación con contexto limpio intenta refutar el resultado: el agente que hace el trabajo no es el que lo califica</td><td>Antes de dar algo por terminado</td></tr></tbody></table></div>
-<div class="callout warning"><span class="callout-icon">⚠</span><div class="callout-text"><strong>Evidencia, no afirmaciones.</strong> <em>«Haz que Claude muestre evidencia en vez de afirmar éxito: la salida del test, el comando que corrió y lo que devolvió, o una captura del resultado. Revisar evidencia es más rápido que repetir la verificación tú mismo, y funciona para sesiones que no estabas mirando»</em>. Por eso el DoD del Tutor dice «con la salida pegada en el PR» y no «los tests pasan».</div></div>
+<div class="callout warning"><span class="callout-icon">⚠</span><div class="callout-text"><strong>Evidencia, no afirmaciones.</strong> <em>«Haz que Claude muestre evidencia en vez de afirmar éxito: la salida del test, el comando que corrió y lo que devolvió, o una captura del resultado. Revisar evidencia es más rápido que repetir la verificación tú mismo, y funciona para sesiones que no estabas mirando»</em>. Por eso el DoD del agente de atención dice «con la salida pegada en el PR» y no «los tests pasan».</div></div>
 <h3>Escribir una condición de /goal que aguante</h3>
 <p>La documentación de <code>/goal</code> advierte que el evaluador juzga la condición contra lo que Claude muestra en la conversación: no corre comandos ni lee archivos por su cuenta. Por eso la condición tiene que ser algo que la salida de Claude pueda demostrar («los tests de test/auth pasan» funciona porque Claude corre los tests y el resultado queda en la transcripción) y tener <strong>un estado final medible</strong>: un resultado de tests, un código de salida del build, un conteo de archivos, una cola vacía.</p>
 
+<div class="diagram-wrap zoom-trigger" onclick="openZoom('bk03-criterios','De deseo vago a criterio verificable')" title="Clic para ampliar"><svg id="bk03-criterios" viewBox="0 0 920 220" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block;background:#fff;border-radius:10px;font-family:'Inter',system-ui,sans-serif"><defs><marker id="bk03-criterios-a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#64748b"/></marker></defs><g font-size="14">
+<text x="230" y="30" text-anchor="middle" font-weight="900" fill="#991b1b" font-size="15">Deseo vago</text><text x="690" y="30" text-anchor="middle" font-weight="900" fill="#065f46" font-size="15">Criterio verificable + test</text>
+<rect x="20" y="44" width="420" height="44" rx="8" fill="#fee2e2" stroke="#ef4444"/><text x="230" y="71" text-anchor="middle">«que cite bien»</text>
+<rect x="480" y="44" width="420" height="44" rx="8" fill="#d1fae5" stroke="#059669"/><text x="690" y="71" text-anchor="middle">cada cita existe en un párrafo recuperado · test_ac1</text>
+<rect x="20" y="102" width="420" height="44" rx="8" fill="#fee2e2" stroke="#ef4444"/><text x="230" y="129" text-anchor="middle">«que sea rápido»</text>
+<rect x="480" y="102" width="420" height="44" rx="8" fill="#d1fae5" stroke="#059669"/><text x="690" y="129" text-anchor="middle">p95 ≤ 10 s sobre 50 preguntas · test_ac4</text>
+<rect x="20" y="160" width="420" height="44" rx="8" fill="#fee2e2" stroke="#ef4444"/><text x="230" y="187" text-anchor="middle">«que no invente tasas»</text>
+<rect x="480" y="160" width="420" height="44" rx="8" fill="#d1fae5" stroke="#059669"/><text x="690" y="187" text-anchor="middle">sin párrafo → responde NO_ENCONTRADO · test_ac3</text>
+<g stroke="#64748b" stroke-width="2"><path d="M440 66h38" marker-end="url(#bk03-criterios-a)"/><path d="M440 124h38" marker-end="url(#bk03-criterios-a)"/><path d="M440 182h38" marker-end="url(#bk03-criterios-a)"/></g></g></svg></div><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;margin:14px 0"><div style="border:1.5px solid #6ee7b7;background:#ecfdf5;border-radius:12px;padding:12px 16px"><strong style="color:#065f46">✓ Beneficios</strong><ul style="margin:6px 0 0"><li>El agente puede comprobar solo si terminó.</li><li>El revisor ve evidencia, no promesas.</li><li>Los criterios se vuelven tests que quedan para siempre.</li></ul></div><div style="border:1.5px solid #fca5a5;background:#fef2f2;border-radius:12px;padding:12px 16px"><strong style="color:#991b1b">⚠ Riesgos</strong><ul style="margin:6px 0 0"><li>Un criterio que no se puede medir («que sea claro») no sirve.</li><li>Tests escritos por el mismo agente que implementa pueden ser tautológicos.</li><li>Demasiados criterios diluyen lo importante.</li></ul></div></div><div style="border:1.5px dashed #2563eb;border-radius:12px;padding:14px 16px;background:#f8fafc;margin-top:14px"><strong>🛠 Pruébalo tú</strong><p style="margin:6px 0">Convierte «que el agente de reclamos no reembolse de más» en un criterio verificable con su nombre de test.</p><details><summary style="cursor:pointer;font-weight:600;color:#1d4ed8">Ver resultado esperado</summary><div style="margin-top:8px">AC: «no se reembolsa ningún cargo mayor o igual a S/ 50 ni un cargo no duplicado» → test_ac_no_reembolsa_sobre_50 y test_ac_solo_duplicados.</div></details></div>
         </div>
       </div>
 
@@ -2488,19 +2532,48 @@ Toda llamada al modelo pasa por governed_call(); sin dependencias nuevas.
 <textarea readonly onclick="this.select()" style="width:100%;min-height:130px;font-family:ui-monospace,Consolas,monospace;font-size:12px;line-height:1.55;color:#0f172a;background:#f8fafc;border:1px solid #cbd5e1;border-radius:10px;padding:14px;resize:vertical">Implementa @specs/SPEC-respuesta-con-cita.md.
 
 Orden de trabajo: primero los tests de tests/test_respuesta.py (uno por AC, con el nombre que
-indica la spec), luego la implementación en tutor/redactar.py y tutor/app.py.
+indica la spec), luego la implementación en atencion/redactar.py y atencion/app.py.
 Corre pytest -q antes de reportar y pega la salida completa.
-No toques tutor/verificar.py ni tutor/buscar.py (sección 4 de la spec).
+No toques atencion/verificar.py ni atencion/buscar.py (sección 4 de la spec).
 Si algo falta en la spec, no lo inventes: termina con una lista de «supuestos» para que los decida yo.</textarea>
 <p>Fíjate en la última línea. Es la instrucción que convierte los vacíos de la spec en una lista visible en vez de en decisiones silenciosas. Cada «supuesto» que aparezca es una corrección pendiente de la spec, no del código.</p>
 <h3>La revisión adversarial antes del commit</h3>
-<p>La guía cierra el ciclo con un paso que el equipo del Tutor no tenía: <em>«Antes de dar una tarea por terminada, haz que un subagente revise el diff en un contexto limpio y reporte brechas»</em>. El revisor ve solo el diff y los criterios que le das, no el razonamiento que produjo el cambio, así que evalúa el resultado por sí mismo. El prompt de Anthropic, adaptado al caso:</p>
+<p>La guía cierra el ciclo con un paso que el equipo del banco no tenía: <em>«Antes de dar una tarea por terminada, haz que un subagente revise el diff en un contexto limpio y reporte brechas»</em>. El revisor ve solo el diff y los criterios que le das, no el razonamiento que produjo el cambio, así que evalúa el resultado por sí mismo. El prompt de Anthropic, adaptado al caso:</p>
 <textarea readonly onclick="this.select()" style="width:100%;min-height:80px;font-family:ui-monospace,Consolas,monospace;font-size:12px;line-height:1.55;color:#0f172a;background:#ecfdf5;border:1px solid #a7f3d0;border-radius:10px;padding:14px;resize:vertical">Usa un subagente para revisar el diff contra specs/SPEC-respuesta-con-cita.md. Verifica que cada AC está
 implementado, que los edge cases listados tienen test y que nada fuera del alcance de la sección 5 cambió.
 Reporta brechas, no preferencias de estilo.</textarea>
 <p>Como el revisor corre como subagente, la sesión que implementó recibe las brechas directamente, las corrige y vuelve a revisar sin que copies hallazgos entre ventanas. El propio Claude Code trae un skill para la revisión de correctitud, <code>/code-review</code>; para revisar contra tu plan o tu spec, escribes el prompt tú.</p>
 <div class="callout case"><span class="callout-icon">🔁</span><div class="callout-text"><strong>El ciclo SDD, de punta a punta.</strong> 1) Objetivo (PO, una frase). 2) Spec: Claude te entrevista y escribe SPEC.md; el equipo la revisa 15 minutos buscando vacíos. 3) Sesión nueva, plan mode: plan, edición con Ctrl+G, aprobación. 4) Implementación contra la spec, tests primero, evidencia pegada. 5) Inspección binaria: cada AC, guardrail, edge case y punto del DoD pasa o falla. 6) Revisión adversarial con contexto limpio. 7) Aceptar, o devolver al agente con el criterio exacto que falló: «AC3 falla: llamaste al modelo con score 0.21». Una iteración, no una conversación.</div></div>
 
+<div class="diagram-wrap zoom-trigger" onclick="openZoom('bk03-sesiones','De la spec al briefing: tres sesiones')" title="Clic para ampliar"><svg id="bk03-sesiones" viewBox="0 0 920 200" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block;background:#fff;border-radius:10px;font-family:'Inter',system-ui,sans-serif"><defs><marker id="bk03-sesiones-a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#64748b"/></marker></defs><g font-size="14">
+<rect x="20" y="40" width="270" height="110" rx="14" fill="#fef3c7" stroke="#d97706" stroke-width="2"/><text x="155" y="72" text-anchor="middle" font-weight="900" fill="#92400e">Sesión 1 · Entrevista</text><text x="155" y="96" text-anchor="middle" fill="#334155">Claude te pregunta</text><text x="155" y="118" text-anchor="middle" fill="#334155">y escribe SPEC.md</text>
+<rect x="325" y="40" width="270" height="110" rx="14" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/><text x="460" y="72" text-anchor="middle" font-weight="900" fill="#1e3a8a">Sesión 2 · Plan + código</text><text x="460" y="96" text-anchor="middle" fill="#334155">contexto limpio, plan mode,</text><text x="460" y="118" text-anchor="middle" fill="#334155">tests primero</text>
+<rect x="630" y="40" width="270" height="110" rx="14" fill="#d1fae5" stroke="#059669" stroke-width="2"/><text x="765" y="72" text-anchor="middle" font-weight="900" fill="#065f46">Sesión 3 · Revisión</text><text x="765" y="96" text-anchor="middle" fill="#334155">un revisor sin el contexto</text><text x="765" y="118" text-anchor="middle" fill="#334155">del autor busca fallas</text>
+<g stroke="#64748b" stroke-width="2.5"><path d="M290 95h33" marker-end="url(#bk03-sesiones-a)"/><path d="M595 95h33" marker-end="url(#bk03-sesiones-a)"/></g>
+<text x="460" y="185" text-anchor="middle" font-weight="800" fill="#0f172a">Cada sesión empieza limpia y lee la spec escrita: nada depende de la memoria de la conversación.</text></g></svg></div><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;margin:14px 0"><div style="border:1.5px solid #6ee7b7;background:#ecfdf5;border-radius:12px;padding:12px 16px"><strong style="color:#065f46">✓ Beneficios</strong><ul style="margin:6px 0 0"><li>El contexto de implementación está limpio y enfocado.</li><li>El plan se revisa antes de tocar código.</li><li>La revisión independiente encuentra lo que el autor no ve.</li></ul></div><div style="border:1.5px solid #fca5a5;background:#fef2f2;border-radius:12px;padding:12px 16px"><strong style="color:#991b1b">⚠ Riesgos</strong><ul style="margin:6px 0 0"><li>Implementar en la misma sesión de la entrevista arrastra ruido.</li><li>Saltarse el plan en un cambio de varios archivos.</li><li>Pedirle al mismo agente que revise su propio trabajo.</li></ul></div></div><div style="border:1.5px dashed #2563eb;border-radius:12px;padding:14px 16px;background:#f8fafc;margin-top:14px"><strong>🛠 Pruébalo tú</strong><p style="margin:6px 0">Abre una sesión nueva en plan mode y pide «Lee @specs/SPEC.md y crea un plan. No edites nada». Revisa el plan antes de aprobarlo.</p><details><summary style="cursor:pointer;font-weight:600;color:#1d4ed8">Ver resultado esperado</summary><div style="margin-top:8px">Un plan con la lista de archivos a cambiar, los tests que escribirá primero y los pasos, sin ningún archivo modificado.</div></details></div>
+        </div>
+      </div>
+
+      <div class="card" id="c2-comandos">
+        <div class="card-header">
+          <div class="card-header-icon" style="background:#eef2ff">⌨</div>
+          <span class="card-header-title">Comandos nuevos de este capítulo, uno a uno</span>
+          <span class="card-header-badge blue">comandos</span>
+        </div>
+        <div class="card-body theory-content">
+<p>Para trabajar con specs necesitas separar <b>planificar</b> de <b>ejecutar</b>. Estos son los comandos que lo hacen.</p>
+<div style="border:1px solid #e2e8f0;border-radius:12px;padding:14px 18px;margin:12px 0;background:#fff"><p style="margin:0 0 6px"><span style="font:700 15px ui-monospace,Consolas,monospace;background:#eef2ff;color:#1e3a8a;padding:3px 10px;border-radius:6px">⌨ Shift+Tab</span></p><p style="margin:6px 0"><strong>Para qué sirve.</strong> Cambia el modo de permisos en la sesión: normal → aceptar ediciones automáticamente → plan mode (y vuelta). En Windows también Alt+M.</p><p style="margin:6px 0"><strong>Cuándo usarlo en el banco.</strong> Pasa a plan mode antes de un cambio de varios archivos, como la respuesta con cita del Tarifario.</p><p style="margin:8px 0 4px"><strong>Qué escribes</strong></p><pre><code>(presionas Shift+Tab dos veces)</code></pre><p style="margin:8px 0 4px"><strong>Qué ves</strong></p><pre><code>⏸ plan mode on (shift+tab to cycle)</code></pre><p style="margin:6px 0 0;font-size:15px"><strong>🛠 Práctica de 1 minuto.</strong> Presiona Shift+Tab varias veces y mira cómo cambia el indicador de modo al pie.</p></div>
+<div style="border:1px solid #e2e8f0;border-radius:12px;padding:14px 18px;margin:12px 0;background:#fff"><p style="margin:0 0 6px"><span style="font:700 15px ui-monospace,Consolas,monospace;background:#eef2ff;color:#1e3a8a;padding:3px 10px;border-radius:6px">⌨ /plan</span></p><p style="margin:6px 0"><strong>Para qué sirve.</strong> Entra a plan mode con un comando: Claude lee y planifica, pero no edita archivos hasta que apruebes.</p><p style="margin:6px 0"><strong>Cuándo usarlo en el banco.</strong> Antes de implementar una spec aprobada.</p><p style="margin:8px 0 4px"><strong>Qué escribes</strong></p><pre><code>/plan
+Lee @specs/SPEC-respuesta-con-cita.md y crea un plan de implementación.</code></pre><p style="margin:8px 0 4px"><strong>Qué ves</strong></p><pre><code>● Read specs/SPEC-respuesta-con-cita.md
+● Read atencion/redactar.py
+Plan:
+  1. tests/test_respuesta.py (5 tests, uno por criterio)
+  2. atencion/redactar.py: citar «Tarifario, p. N»
+  3. atencion/app.py: armar el mensaje del chat
+¿Apruebas?</code></pre><p style="margin:6px 0 0;font-size:15px"><strong>🛠 Práctica de 1 minuto.</strong> Pide un plan con /plan y comprueba con git status que ningún archivo cambió.</p></div>
+<div style="border:1px solid #e2e8f0;border-radius:12px;padding:14px 18px;margin:12px 0;background:#fff"><p style="margin:0 0 6px"><span style="font:700 15px ui-monospace,Consolas,monospace;background:#eef2ff;color:#1e3a8a;padding:3px 10px;border-radius:6px">⌨ claude --permission-mode plan</span></p><p style="margin:6px 0"><strong>Para qué sirve.</strong> Abre Claude Code directamente en plan mode.</p><p style="margin:6px 0"><strong>Cuándo usarlo en el banco.</strong> Para la sesión de exploración: nada se puede modificar por accidente.</p><p style="margin:8px 0 4px"><strong>Qué escribes</strong></p><pre><code>claude --permission-mode plan</code></pre><p style="margin:8px 0 4px"><strong>Qué ves</strong></p><pre><code>⏸ plan mode on
+&gt; </code></pre><p style="margin:6px 0 0;font-size:15px"><strong>🛠 Práctica de 1 minuto.</strong> Arranca así y pide un cambio: Claude solo propondrá el plan.</p></div>
+<div style="border:1px solid #e2e8f0;border-radius:12px;padding:14px 18px;margin:12px 0;background:#fff"><p style="margin:0 0 6px"><span style="font:700 15px ui-monospace,Consolas,monospace;background:#eef2ff;color:#1e3a8a;padding:3px 10px;border-radius:6px">⌨ Ctrl+G</span></p><p style="margin:6px 0"><strong>Para qué sirve.</strong> Abre tu editor de texto para escribir un mensaje largo (por ejemplo, una spec o un briefing) y lo envía al cerrarlo. También Ctrl+X Ctrl+E.</p><p style="margin:6px 0"><strong>Cuándo usarlo en el banco.</strong> Para pegar o redactar la spec completa sin pelear con la línea de comandos.</p><p style="margin:8px 0 4px"><strong>Qué escribes</strong></p><pre><code>(Ctrl+G) → se abre tu editor → escribes el briefing → guardas y cierras</code></pre><p style="margin:8px 0 4px"><strong>Qué ves</strong></p><pre><code>&gt; Implementa @specs/SPEC-respuesta-con-cita.md. Tests primero…</code></pre><p style="margin:6px 0 0;font-size:15px"><strong>🛠 Práctica de 1 minuto.</strong> Escribe con Ctrl+G un mensaje de 10 líneas y envíalo.</p></div>
         </div>
       </div>
 
@@ -2519,7 +2592,7 @@ Reporta brechas, no preferencias de estilo.</textarea>
 <div style="border:1.5px solid #a7f3d0;border-radius:12px;padding:14px;background:#ecfdf5"><div style="display:flex;gap:9px;align-items:center;margin-bottom:8px"><span style="display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:#059669;color:white;font-weight:900">4</span><strong>Revisión adversarial y PR</strong></div><p style="font-size:12px;margin:0">El subagente encuentra una brecha real (AC3 sin test del umbral). Se corrige. Commit y PR con la salida de pytest.</p></div>
 </div>
 <p style="font-weight:800;color:var(--text);margin:16px 0 8px">Sesión 1 · La entrevista (fragmento)</p>
-<textarea readonly onclick="this.select()" style="width:100%;min-height:330px;font-family:ui-monospace,Consolas,monospace;font-size:12px;line-height:1.55;color:#e2e8f0;background:#0f172a;border:1px solid #334155;border-radius:10px;padding:14px;resize:vertical">&gt; Quiero que el tutor cite la página del documento en cada respuesta. Entrevístame en detalle
+<textarea readonly onclick="this.select()" style="width:100%;min-height:330px;font-family:ui-monospace,Consolas,monospace;font-size:12px;line-height:1.55;color:#e2e8f0;background:#0f172a;border:1px solid #334155;border-radius:10px;padding:14px;resize:vertical">&gt; Quiero que el agente de atención cite la página del Tarifario en cada respuesta. Entrevístame en detalle
 &gt; usando la tool AskUserQuestion. No hagas preguntas obvias. Cuando cubramos todo, escribe
 &gt; specs/SPEC-respuesta-con-cita.md.
 
@@ -2527,8 +2600,8 @@ Claude (AskUserQuestion):
   1. ¿Qué formato exacto de cita quieres, y va por frase o por respuesta?          → «Documento, p. n», al final de cada afirmación
   2. Si el chunk recuperado no trae página, ¿inventamos, omitimos o marcamos?       → se cita la sección y «página no disponible»
   3. Si la búsqueda no encuentra nada relevante, ¿llamamos igual al modelo?         → NO. Respuesta fija y sin llamada
-  4. ¿Cómo comprobamos que una cita es real y no recordada del entrenamiento?       → tutor/verificar.py compara con los párrafos; por código
-  5. ¿Hay un límite de longitud por el canal?                                        → 1.500 caracteres (WhatsApp)
+  4. ¿Cómo comprobamos que una cita es real y no recordada del entrenamiento?       → atencion/verificar.py compara con los párrafos; por código
+  5. ¿Hay un límite de longitud por el canal?                                        → 1.500 caracteres (chat de la app)
   6. ¿Qué archivos NO se pueden tocar?                                               → verificar.py y buscar.py
   7. ¿Preguntas en otro idioma?                                                      → se responde en español, citando en el idioma del documento
   8. ¿Cómo sabremos que está terminado de punta a punta?                             → 50 preguntas del fixture: 0 citas inventadas, p95 ≤ 10 s
@@ -2538,14 +2611,14 @@ sus tests, archivos e interfaces, fuera de alcance, guardrails, 4 edge cases, ve
 <p>Las preguntas 2, 3 y 4 son exactamente las decisiones que las corridas 3 y 4 del caso tomaron solas. Ahora están escritas antes de que exista una línea de código.</p>
 <p style="font-weight:800;color:var(--text);margin:16px 0 8px">Sesión 2 · Plan, goal y ejecución</p>
 <textarea readonly onclick="this.select()" style="width:100%;min-height:260px;font-family:ui-monospace,Consolas,monospace;font-size:12px;line-height:1.55;color:#e2e8f0;background:#0f172a;border:1px solid #334155;border-radius:10px;padding:14px;resize:vertical">$ claude --permission-mode plan
-&gt; Lee @specs/SPEC-respuesta-con-cita.md, CLAUDE.md, tutor/redactar.py y tutor/app.py.
+&gt; Lee @specs/SPEC-respuesta-con-cita.md, CLAUDE.md, atencion/redactar.py y atencion/app.py.
 &gt; Crea un plan para implementarla. Lista las decisiones que la spec no toma.
 
 [plan: 5 pasos, 2 archivos a tocar + tests. Decisión no tomada por la spec: ¿la cita
  va en negrita? → Ctrl+G, se agrega a la spec: texto plano, sin formato]
 
 &gt; (aprobar plan)
-&gt; /goal los 5 tests de tests/test_respuesta.py pasan y ruff check tutor/ no reporta errores
+&gt; /goal los 5 tests de tests/test_respuesta.py pasan y ruff check atencion/ no reporta errores
 &gt; Implementa el plan. Tests primero. Pega la salida de pytest.
 
 [turno 1: escribe tests → 5 fallan (RED)]  [turno 2: implementa → 4 pasan]
@@ -2580,19 +2653,19 @@ verificar que no se llamó.
       <div class="card" id="l3-activity">
         <div class="card-header">
           <div class="card-header-icon" style="background:#fef3c7">✍</div>
-          <span class="card-header-title">Actividad — Escribe la spec de la segunda feature del Tutor y entrégala sin conversación adicional</span>
+          <span class="card-header-title">Actividad — Escribe la spec de la segunda feature del agente de atención y entrégala sin conversación adicional</span>
           <span class="card-header-badge" style="background:#fef3c7;color:#92400e">Actividad</span>
         </div>
         <div class="card-body theory-content">
-<p>La segunda feature es la del viernes del capítulo 1: «el alumno puede subir el PDF de un proyecto pasado y preguntarle al bot sobre ese documento».</p>
+<p>La segunda feature es la del viernes del capítulo 1: «el cliente puede subir el PDF de un proyecto pasado y preguntarle al agente sobre ese documento».</p>
 <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:0 0 16px">
 <div style="border:1.5px solid #bfdbfe;border-radius:12px;padding:14px;background:#eff6ff"><div style="display:flex;gap:9px;align-items:center;margin-bottom:8px"><span style="display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:#2563eb;color:white;font-weight:900">1</span><strong>Deja que Claude te entreviste</strong></div><p style="font-size:12px;margin:0">Usa el prompt de Anthropic con esa descripción. Responde cada pregunta; si no sabes la respuesta, ese es un vacío que va a la spec como decisión pendiente, no como suposición.</p></div>
 <div style="border:1.5px solid #c4b5fd;border-radius:12px;padding:14px;background:#f5f3ff"><div style="display:flex;gap:9px;align-items:center;margin-bottom:8px"><span style="display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:#7c3aed;color:white;font-weight:900">2</span><strong>Revisa la spec con un compañero</strong></div><p style="font-size:12px;margin:0">Si al leerla tiene que preguntarte algo, esa pregunta es un vacío. Corrígela. Comprueba que cada AC nombra su test y que la sección de verificación E2E existe.</p></div>
 <div style="border:1.5px solid #a7f3d0;border-radius:12px;padding:14px;background:#ecfdf5"><div style="display:flex;gap:9px;align-items:center;margin-bottom:8px"><span style="display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:#059669;color:white;font-weight:900">3</span><strong>Entrégala en una sesión nueva</strong></div><p style="font-size:12px;margin:0">Plan mode, plan editado, /goal con los tests, implementación, subagente revisor. Cuenta cuántos «supuestos» reportó el agente: cada uno es una corrección de la spec.</p></div>
 </div>
-<textarea readonly onclick="this.select()" style="width:100%;min-height:110px;font-family:ui-monospace,Consolas,monospace;font-size:12px;line-height:1.55;color:#0f172a;background:#f8fafc;border:1px solid #cbd5e1;border-radius:10px;padding:14px;resize:vertical">Quiero que el alumno pueda subir el PDF de un proyecto pasado y preguntarle al bot sobre ese documento.
+<textarea readonly onclick="this.select()" style="width:100%;min-height:110px;font-family:ui-monospace,Consolas,monospace;font-size:12px;line-height:1.55;color:#0f172a;background:#f8fafc;border:1px solid #cbd5e1;border-radius:10px;padding:14px;resize:vertical">Quiero que el cliente pueda subir el PDF de un proyecto pasado y preguntarle al agente sobre ese documento.
 Entrevístame en detalle usando la tool AskUserQuestion. Pregunta sobre implementación técnica,
-casos borde, riesgos y compromisos (tamaño del archivo, aislamiento entre alumnos, dónde se guarda,
+casos borde, riesgos y compromisos (tamaño del archivo, aislamiento entre clientes, dónde se guarda,
 qué pasa mientras se procesa). No hagas preguntas obvias.
 Sigue hasta que cubramos todo y escribe specs/SPEC-documento-propio.md.</textarea>
 <div class="callout warning"><span class="callout-icon">⚠</span><div class="callout-text">Criterio de éxito de la actividad: dos compañeros ejecutan la misma spec en sesiones separadas y los diffs son sustancialmente iguales. Si no lo son, la spec tiene un vacío y se corrige la spec, no el código.</div></div>
@@ -2609,7 +2682,7 @@ Sigue hasta que cubramos todo y escribe specs/SPEC-documento-propio.md.</textare
           <p style="font-size:13px;color:var(--text2);margin-bottom:22px;line-height:1.6">Responde las 3 preguntas para completar el capítulo. Necesitas al menos 2 respuestas correctas. </p>
           <div class="quiz-question">
             <div class="quiz-q-num">Pregunta 1 de 3</div>
-            <div class="quiz-q-text">Cuatro corridas de «haz que el tutor cite la página» producen cuatro implementaciones distintas. Según la guía de Anthropic, ¿cuál es la causa y la corrección?</div>
+            <div class="quiz-q-text">Cuatro corridas de «haz que el agente de atención cite la página del Tarifario» producen cuatro implementaciones distintas. Según la guía de Anthropic, ¿cuál es la causa y la corrección?</div>
             <a class="quiz-review-link" onclick="scrollToId('c2-inconsistencia')">📖 Repaso: Por qué sin spec los agentes producen resultados inconsistentes</a>
             <div class="quiz-options" id="q3-1-options">
               <div class="quiz-option" onclick="qSel(3,1,0)"><div class="quiz-radio"></div><span class="quiz-opt-text">El modelo es inestable; la corrección es fijar la temperatura.</span></div>
@@ -2650,6 +2723,18 @@ Sigue hasta que cubramos todo y escribe specs/SPEC-documento-propio.md.</textare
             <button class="btn btn-primary" id="submitBtn3" onclick="qSubmit(3)">Enviar respuestas — Completar capítulo 3</button>
             <div id="quizResult3" style="display:none"></div>
           </div>
+        </div>
+      </div>
+
+      <div class="card" id="examCard3">
+        <div class="card-header">
+          <div class="card-header-icon" style="background:#dbeafe">🎓</div>
+          <span class="card-header-title">Preguntas tipo examen — Capítulo 3</span>
+          <span class="card-header-badge" style="background:#dbeafe;color:#1e40af">26 preguntas</span>
+        </div>
+        <div class="card-body">
+          <p style="font-size:14px;color:var(--text2);margin-bottom:14px;line-height:1.6">Antes de pasar al siguiente capítulo, responde las preguntas tipo examen de este tema en el simulador. Cubren: <strong>3.4, 3.5, 4.1 y 4.2</strong>.</p>
+          <a class="btn btn-primary" href="simulador-examen.html#cap3" target="_blank" rel="noopener">🎓 Abrir el simulador de examen · Capítulo 3</a>
         </div>
       </div>
 
@@ -6982,7 +7067,7 @@ No cambies nada: quiero decidir yo el orden.</textarea>
 const TOTAL_LESSONS = 14;
 const READ_FILLS = Array.from({length: TOTAL_LESSONS}, (_, i) => 'readFill' + (i + 1));
 const READ_LABELS = Array.from({length: TOTAL_LESSONS}, (_, i) => 'readLabel' + (i + 1));
-const TABS = {"1": ["l1-reflect", "l1-objectives", "c1-vibe", "examMap1", "c1-caso", "c1-tesis", "c1-bucle", "c1-dirigir", "c1-comandos", "c1-flujo", "c1-acelera", "c1-deuda", "c1-ejemplo", "c1-claves", "l1-activity", "quizCard1", "examCard1"], "2": ["l2-reflect", "l2-objectives", "ct-caso", "ct-agente", "ct-patrones", "ct-bucle", "ct-contexto", "ct-cache", "ct-seguridad", "ct-multi", "ct-glosario", "ct-ejemplo", "ct-claves", "l2-activity", "quizCard2"], "3": ["l3-reflect", "l3-objectives", "c2-caso", "c2-inconsistencia", "c2-componentes", "c2-criterios", "c2-briefing", "c2-ejemplo", "c2-claves", "l3-activity", "quizCard3"], "4": ["l4-reflect", "l4-objectives", "cc3-caso", "cc3-que-es", "cc3-instalar", "cc3-tools", "cc3-flujo", "cc3-entrevista", "cc3-riesgos", "cc3-claves", "l4-activity", "quizCard4"], "5": ["l5-reflect", "l5-objectives", "cc4-caso", "cc4-jerarquia", "cc4-escribir", "cc4-modular", "cc4-automemory", "cc4-limite", "cc4-claves", "l5-activity", "quizCard5"], "6": ["l6-reflect", "l6-objectives", "cc5-caso", "cc5-nativos", "cc5-skills", "cc5-dod", "cc5-plugins", "cc5-riesgos", "cc5-claves", "l6-activity", "quizCard6"], "7": ["l7-reflect", "l7-objectives", "cc6-caso", "cc6-eventos", "cc6-contrato", "cc6-tutor", "cc6-riesgos", "cc6-claves", "l7-activity", "quizCard7"], "8": ["l8-reflect", "l8-objectives", "cc7-caso", "cc7-anatomia", "cc7-frontmatter", "cc7-tres", "cc7-cuando-no", "cc7-claves", "l8-activity", "quizCard8"], "9": ["l9-reflect", "l9-objectives", "cc8-caso", "cc8-harness", "cc8-contexto", "cc8-compactacion", "cc8-checkpoints", "cc8-validar", "cc8-claves", "l9-activity", "quizCard9"], "10": ["l10-reflect", "l10-objectives", "cc9-caso", "cc9-elegir", "cc9-orquestador", "cc9-sdk", "cc9-riesgos", "cc9-claves", "l10-activity", "quizCard10"], "11": ["l11-reflect", "l11-objectives", "cc10-caso", "cc10-que-es", "cc10-servidor", "cc10-gobierno", "cc10-riesgos", "cc10-claves", "l11-activity", "quizCard11"], "12": ["l12-reflect", "l12-objectives", "cc11-caso", "cc11-extraer", "cc11-trocear", "cc11-buscar", "cc11-recuperar", "cc11-verificar", "cc11-claves", "l12-activity", "quizCard12"], "13": ["l13-reflect", "l13-objectives", "cc12-caso", "cc12-permisos", "cc12-modos", "cc12-seguridad", "cc12-dod", "cc12-automatizar", "cc12-claves", "l13-activity", "quizCard13"], "14": ["l14-reflect", "l14-objectives", "cc13-caso", "cc13-estandar", "cc13-plan", "cc13-objeciones", "cc13-medir", "cc13-proyecto", "cc13-claves", "l14-activity", "quizCard14"]};
+const TABS = {"1": ["l1-reflect", "l1-objectives", "c1-vibe", "examMap1", "c1-caso", "c1-tesis", "c1-bucle", "c1-dirigir", "c1-comandos", "c1-flujo", "c1-acelera", "c1-deuda", "c1-ejemplo", "c1-claves", "l1-activity", "quizCard1", "examCard1"], "2": ["l2-reflect", "l2-objectives", "ct-caso", "ct-agente", "ct-patrones", "ct-bucle", "ct-contexto", "ct-cache", "ct-seguridad", "ct-multi", "ct-glosario", "ct-ejemplo", "ct-claves", "l2-activity", "quizCard2"], "3": ["l3-reflect", "l3-objectives", "examMap3", "c2-caso", "c2-inconsistencia", "c2-componentes", "c2-criterios", "c2-briefing", "c2-comandos", "c2-ejemplo", "c2-claves", "l3-activity", "quizCard3", "examCard3"], "4": ["l4-reflect", "l4-objectives", "cc3-caso", "cc3-que-es", "cc3-instalar", "cc3-tools", "cc3-flujo", "cc3-entrevista", "cc3-riesgos", "cc3-claves", "l4-activity", "quizCard4"], "5": ["l5-reflect", "l5-objectives", "cc4-caso", "cc4-jerarquia", "cc4-escribir", "cc4-modular", "cc4-automemory", "cc4-limite", "cc4-claves", "l5-activity", "quizCard5"], "6": ["l6-reflect", "l6-objectives", "cc5-caso", "cc5-nativos", "cc5-skills", "cc5-dod", "cc5-plugins", "cc5-riesgos", "cc5-claves", "l6-activity", "quizCard6"], "7": ["l7-reflect", "l7-objectives", "cc6-caso", "cc6-eventos", "cc6-contrato", "cc6-tutor", "cc6-riesgos", "cc6-claves", "l7-activity", "quizCard7"], "8": ["l8-reflect", "l8-objectives", "cc7-caso", "cc7-anatomia", "cc7-frontmatter", "cc7-tres", "cc7-cuando-no", "cc7-claves", "l8-activity", "quizCard8"], "9": ["l9-reflect", "l9-objectives", "cc8-caso", "cc8-harness", "cc8-contexto", "cc8-compactacion", "cc8-checkpoints", "cc8-validar", "cc8-claves", "l9-activity", "quizCard9"], "10": ["l10-reflect", "l10-objectives", "cc9-caso", "cc9-elegir", "cc9-orquestador", "cc9-sdk", "cc9-riesgos", "cc9-claves", "l10-activity", "quizCard10"], "11": ["l11-reflect", "l11-objectives", "cc10-caso", "cc10-que-es", "cc10-servidor", "cc10-gobierno", "cc10-riesgos", "cc10-claves", "l11-activity", "quizCard11"], "12": ["l12-reflect", "l12-objectives", "cc11-caso", "cc11-extraer", "cc11-trocear", "cc11-buscar", "cc11-recuperar", "cc11-verificar", "cc11-claves", "l12-activity", "quizCard12"], "13": ["l13-reflect", "l13-objectives", "cc12-caso", "cc12-permisos", "cc12-modos", "cc12-seguridad", "cc12-dod", "cc12-automatizar", "cc12-claves", "l13-activity", "quizCard13"], "14": ["l14-reflect", "l14-objectives", "cc13-caso", "cc13-estandar", "cc13-plan", "cc13-objeciones", "cc13-medir", "cc13-proyecto", "cc13-claves", "l14-activity", "quizCard14"]};
 const CORRECTAS = {"1": {"1": 1, "2": 1, "3": 2}, "2": {"1": 1, "2": 1, "3": 1}, "3": {"1": 1, "2": 2, "3": 1}, "4": {"1": 1, "2": 1, "3": 1}, "5": {"1": 1, "2": 1, "3": 1}, "6": {"1": 1, "2": 1, "3": 1}, "7": {"1": 1, "2": 1, "3": 1}, "8": {"1": 1, "2": 1, "3": 1}, "9": {"1": 1, "2": 1, "3": 1}, "10": {"1": 1, "2": 1, "3": 1}, "11": {"1": 1, "2": 1, "3": 1}, "12": {"1": 1, "2": 1, "3": 1}, "13": {"1": 1, "2": 1, "3": 1}, "14": {"1": 1, "2": 1, "3": 1}};
 const MINIMOS = {"1": 2, "2": 2, "3": 2, "4": 2, "5": 2, "6": 2, "7": 2, "8": 2, "9": 2, "10": 2, "11": 2, "12": 2, "13": 2, "14": 2};
 const MENSAJE_FINAL = "Completaste Claude Code para Equipos. El agente ejecuta; el equipo es responsable. Siguiente paso: el proyecto final sobre tu repositorio.";
