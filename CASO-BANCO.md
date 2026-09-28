@@ -1,20 +1,28 @@
-# Caso transversal de los cuatro cursos: el Marketplace de Créditos del banco
+# Caso transversal de los cuatro cursos: agentes de IA en la banca
 
-Ficha única y simple. Los cuatro cursos (Claude Code para Equipos, Agentic AI Enterprise Architect,
-Ingeniería de Prompts, AI Governance & LLMOps) usan este mismo caso, con estos nombres y cifras.
+Ficha única. Los cuatro cursos usan este caso: el banco pasa de la automatización rígida (menús, reglas
+fijas) a **tres agentes de IA** que atienden operaciones críticas. Un equipo pequeño (una tech lead y dos
+developers) los construye con Claude; cada cambio pasa por Riesgos, Cumplimiento, Seguridad de la
+Información y Legal. No existe «Sprint 0».
 
-## El producto y el equipo
+| Pilar | Agente | Qué hace | Métrica objetivo | Escenario del examen CCAR-F |
+|-------|--------|----------|------------------|------------------------------|
+| 1 · Atención y consultas | Agente front-office | Responde en lenguaje natural («¿por qué retuvieron mi transferencia?»), consulta el core bancario de forma segura y recuerda el contexto del cliente | +40 % de resolución en el primer contacto (FCR) | 1 · Customer Support Resolution Agent |
+| 2 · Gestión de reclamos | Agente operativo | Clasifica el reclamo, revisa el historial de transacciones buscando anomalías, aprueba compensaciones pequeñas dentro de la política y escala lo complejo con un expediente | Tiempo de resolución de 5 días a 10 minutos | 1 y 6 · Extracción estructurada |
+| 3 · Evaluación de crédito | Agente de riesgo | Lee extractos, declaraciones y la solicitud; simula la capacidad de pago con escenarios de estrés; emite un dictamen con motivos | −15 % de morosidad (NPL) | 3 · Multi-Agent Research System |
 
-El banco lanza el **Marketplace de Créditos**: una app donde **personas y pequeñas empresas** piden un
-préstamo, el banco lo **evalúa y aprueba**, y **inversionistas** lo financian. Es la versión simple del
-business case: sin blockchain, stablecoins, factoring ni firma digital; nada de eso aparece en los
-cursos.
+### Lo que los cursos enseñan a corregir de este diseño (y que pregunta el examen)
 
-Un equipo pequeño (**una tech lead y dos developers**) construye con Claude dos asistentes para el
-Marketplace. Antes de salir a producción, cada cambio pasa por **Riesgos, Cumplimiento, Seguridad de
-la Información y Legal**.
+- **Compensación automática «si es menor a S/ 50 y el cliente es VIP»**: una regla de dinero no se
+  confía al prompt; se hace cumplir con un **hook o prerrequisito programático** que bloquea montos
+  sobre el umbral y deriva a un humano (task 1.4 / 1.5).
+- **Escalar por sentimiento (enojo/urgencia)**: el examen lo marca como mal indicador; se escala cuando
+  el cliente pide un humano, cuando la política no cubre el caso o cuando no hay avance (task 5.2).
+- **«Recuerda interacciones pasadas»**: guardar solo los hechos del caso (montos, fechas, números de
+  operación), nunca datos sensibles completos (task 5.1).
+- **El dictamen de crédito lo decide un humano**: el agente recomienda con motivos; el analista decide.
 
-## Caso 1 · Respuesta a clientes
+## Detalle del pilar 1 · Atención y consultas
 
 Un asistente que responde en la app las preguntas de solicitantes e inversionistas: requisitos,
 tasas, plazos, estado de la solicitud, cómo invertir y cómo reclamar.
@@ -30,7 +38,7 @@ tasas, plazos, estado de la solicitud, cómo invertir y cómo reclamar.
 Ejemplos de preguntas: «¿qué necesito para pedir un préstamo?», «¿qué tasa pagaría por S/ 10,000 a
 24 meses?», «¿cuánto gano si invierto S/ 5,000?», «¿cómo presento un reclamo?».
 
-## Caso 2 · Aprobación de créditos
+## Detalle del pilar 3 · Evaluación de crédito
 
 Un asistente que ayuda al **analista de créditos** a evaluar las solicitudes del Marketplace antes de
 publicarlas a los inversionistas.
@@ -69,6 +77,15 @@ dentro del límite del 30 % (Política de Créditos, p. 7). El flexible y el est
 juez cierra en una ronda. Si sus deudas fueran S/ 600 al mes, la carga subiría a S/ 1,113 = 32 %: el estricto pediría
 rechazar, el flexible propondría 60 meses (cuota S/ 349, carga S/ 949 = 27 %) y el juez recomendaría
 **revisar** con esa contrapropuesta. (Cuotas calculadas con una TEA ilustrativa de 15 %.)
+
+## Detalle del pilar 2 · Gestión de reclamos
+
+1. **Clasificación**: lee el correo o chat del reclamo y lo clasifica (cargo no reconocido,
+   transferencia retenida, comisión indebida, fraude).
+2. **Investigación**: un agente de consulta revisa el historial de transacciones buscando anomalías.
+3. **Ejecución**: si el monto es menor a S/ 50 y la política lo permite, propone la devolución y un
+   hook verifica el umbral antes de ejecutarla; si es complejo o es posible fraude, arma el expediente
+   (cliente, operación, monto, causa probable, acción recomendada) y lo escala a un analista humano.
 
 ## Solo en el curso Agentic AI Enterprise Architect: firma digital y desembolso simulado en bitcoin
 
