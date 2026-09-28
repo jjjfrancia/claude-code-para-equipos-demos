@@ -176,12 +176,6 @@ def portada(curso: dict, examen: dict, capitulos: list[tuple[int, str]]) -> str:
         </section>
       </div>
       {introduccion_banca()}
-      <section class="portada-card" style="margin-top:16px">
-        <h2>El caso</h2>
-        <p style="margin:0 0 12px;color:var(--text2);line-height:1.6">Los cuatro cursos trabajan sobre el mismo producto: el <b>Marketplace de Créditos</b> del banco. En la app, personas y pequeñas empresas piden un préstamo, el banco lo evalúa y aprueba, e inversionistas lo financian. Un equipo de tres personas construye con Claude dos asistentes: uno que <b>responde a los clientes</b> y un equipo de agentes que <b>ayuda a aprobar créditos</b>: uno consulta la información del cliente, tres la evalúan (flexible, estricto y juez), el analista decide y otro agente registra la decisión.</p>
-        {FLUJO_CASO}
-        <p style="margin:12px 0 0;font-size:12px;color:var(--slate)">Documentos y cifras ficticios, creados para el curso.</p>
-      </section>
     </div>
   </div><!-- /lp-0 -->
 '''
