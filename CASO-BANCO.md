@@ -89,7 +89,7 @@ rechazar, el flexible propondría 60 meses (cuota S/ 349, carga S/ 949 = 27 %) y
    inconsistencias ni falta de garantías («historial muy corto», «deuda externa alta»).
 4. **Agente juez (moderador)**, «el árbitro pragmático»: pesa la solidez de ambos argumentos frente al
    **contrato de política bancaria** (las reglas inquebrantables) y dicta sentencia:
-   - **Decisión autónoma** (aprobado o rechazado) solo en casos claros y dentro de los límites que la
+   - **Decisión autónoma** (aprobado, **aprobado con condiciones** —ajuste de tasa, monto o plazo— o rechazado) solo en casos claros y dentro de los límites que la
      política permite automatizar (p. ej. hasta S/ 20,000). Genera una **bitácora de justificación**.
    - **Escalación humana** en casos grises o ambiguos: el analista lee el debate y decide rápido.
    Las reglas inquebrantables (cuota ≤ 30 %, montos, aprobación del jefe sobre S/ 20,000) se hacen
