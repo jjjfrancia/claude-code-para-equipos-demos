@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+.env
+.venv/
+venv/
+# caché generada por tutor_corpus.py a partir del PDF
+teoria/datos/guia_fragmentos.json

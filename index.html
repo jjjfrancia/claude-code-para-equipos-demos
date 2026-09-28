@@ -1,0 +1,246 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ejemplos de teoría de agentes · Claude Code para Equipos</title>
+<style>
+.cgbot{
+  --bg:#e8f1fb; --surface:#ffffff; --card:#ffffff; --card2:#f2f7fe;
+  --ink:#0c2142; --muted:#5b6b86; --line:#c7dbf3;
+  --accent:#1d6fe0; --violet:#6d3fd4; --green:#0e9f6e; --amber:#b5730a; --red:#c0392b;
+}
+body{margin:0}
+.cgbot *{margin:0;padding:0;box-sizing:border-box}
+.cgbot{font-family:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;background:var(--bg);color:var(--ink);
+  line-height:1.55;font-size:18px;overflow-x:hidden;padding:44px 20px 64px}
+.cgbot h1,.cgbot h2,.cgbot h3{font-family:'Sora',system-ui,sans-serif;letter-spacing:-.02em;line-height:1.14}
+.cgbot .in{max-width:980px;margin:0 auto}
+.cgbot .grad{background:linear-gradient(100deg,var(--accent),var(--violet));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.cgbot .ey{display:inline-flex;align-items:center;gap:9px;background:rgba(14,159,110,.1);border:1px solid rgba(14,159,110,.4);
+  color:var(--green);font-size:13px;font-weight:800;padding:8px 18px;border-radius:100px;text-transform:uppercase;letter-spacing:.08em}
+.cgbot .hero{text-align:center;margin-bottom:28px}
+.cgbot .hero h1{font-size:40px;font-weight:850;margin:16px auto 12px;max-width:24ch}
+.cgbot .hero p{font-size:19px;color:var(--muted);max-width:66ch;margin:0 auto}
+.cgbot .qbar{display:inline-block;margin-top:18px;background:var(--surface);border:1px solid var(--line);border-radius:100px;padding:10px 22px;font-size:16px}
+.cgbot .qbar b{color:var(--accent)}
+.cgbot .sec{margin-top:42px}
+.cgbot .sec h2{font-size:28px;font-weight:850;text-align:center;margin-bottom:8px}
+.cgbot .sec .lead{text-align:center;color:var(--muted);font-size:17px;max-width:68ch;margin:0 auto}
+.cgbot .toc{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:10px;margin-top:20px}
+.cgbot .toc a{display:block;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px;text-decoration:none;color:var(--ink)}
+.cgbot .toc a:hover{border-color:var(--accent)}
+.cgbot .toc b{display:block;font-size:14.5px}.cgbot .toc span{display:block;font-size:12.5px;color:var(--muted)}
+.cgbot .grupo{display:inline-block;font-size:11.5px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;border-radius:100px;padding:3px 10px;margin-bottom:6px}
+.cgbot .g-api{color:var(--accent);background:#e7f0ff}.cgbot .g-sdk{color:var(--violet);background:#f0eaff}
+.cgbot .ej{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:26px 26px 22px;margin-top:22px;box-shadow:0 12px 32px rgba(20,58,122,.07);scroll-margin-top:70px}
+.cgbot .ej .top{display:flex;gap:16px;align-items:flex-start}
+.cgbot .ej .num{flex:0 0 auto;width:50px;height:50px;border-radius:50%;background:var(--violet);color:#fff;font-family:'Sora';font-weight:850;font-size:19px;display:flex;align-items:center;justify-content:center}
+.cgbot .ej h3{font-size:22px;font-weight:850}
+.cgbot .ej .fuente{font-size:13px;color:var(--muted);margin-top:2px}
+.cgbot .ej p{font-size:15.5px;color:var(--muted);margin-top:10px}
+.cgbot .ej p b{color:var(--ink)}
+.cgbot .flow{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:14px;background:#eef5fe;border:1px dashed rgba(29,111,224,.4);border-radius:12px;padding:12px 14px}
+.cgbot .pill{display:inline-flex;align-items:center;gap:6px;background:var(--surface);border:1px solid var(--line);border-radius:9px;padding:6px 11px;font-size:13.5px;font-weight:700;white-space:nowrap}
+.cgbot .pill.m{border-color:rgba(109,63,212,.5);background:#f6f2ff}
+.cgbot .pill.c{border-color:rgba(14,159,110,.55);background:#e9f9f1}
+.cgbot .pill.g{border-color:rgba(181,115,10,.5);background:#fff6e6}
+.cgbot .pill.x{border-color:rgba(192,57,43,.45);background:#fdecea}
+.cgbot .ar{color:var(--amber);font-weight:800;font-size:14px}
+.cgbot .cols{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px}
+.cgbot .box{border-radius:12px;padding:13px 16px;font-size:14.5px}
+.cgbot .box b.t{display:block;font-size:12px;text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px}
+.cgbot .box.obs{background:#fff6e6;border:1px solid rgba(181,115,10,.35)}.cgbot .box.obs b.t{color:var(--amber)}
+.cgbot .box.tut{background:#e9f9f1;border:1px solid rgba(14,159,110,.35)}.cgbot .box.tut b.t{color:var(--green)}
+.cgbot .run{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:14px}
+.cgbot code{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:13.5px;background:#0c2142;color:#d7e6ff;padding:7px 12px;border-radius:8px;display:inline-block}
+.cgbot .run a{font-size:14px;font-weight:700;color:var(--accent);text-decoration:none}
+.cgbot .callout{background:#e9f9f1;border:1px solid rgba(14,159,110,.4);border-left:5px solid var(--green);border-radius:14px;padding:18px 22px;margin-top:24px}
+.cgbot .callout b.t{font-family:'Sora';font-size:18px;display:block;margin-bottom:5px;color:var(--green)}
+.cgbot .callout p{font-size:15.5px}
+.cgbot .callout.warn{background:#fff6e6;border-color:rgba(181,115,10,.4);border-left-color:var(--amber)}
+.cgbot .callout.warn b.t{color:var(--amber)}
+.cgbot pre{background:#0c2142;color:#d7e6ff;border-radius:12px;padding:14px 16px;font-size:13.5px;overflow-x:auto;margin-top:10px;line-height:1.6}
+.cgbot .foot{margin-top:44px;text-align:center;color:var(--muted);font-size:13.5px;border-top:1px solid var(--line);padding-top:22px}
+.cgnav{position:sticky;top:0;z-index:50;display:flex;gap:4px;align-items:center;flex-wrap:wrap;background:#0c2142;padding:9px 16px;font-family:'Segoe UI',system-ui,sans-serif}
+.cgnav a{color:#c7dcff;text-decoration:none;font-size:13.5px;font-weight:600;padding:6px 11px;border-radius:8px}
+.cgnav a:hover{background:rgba(255,255,255,.11);color:#fff}
+.cgnav .cgnav-h{background:#1a56b0;color:#fff;margin-right:6px}
+@media(max-width:720px){.cgbot .hero h1{font-size:30px}.cgbot .cols{grid-template-columns:1fr}.cgbot .ej{padding:20px 16px}}
+</style></head><body>
+<div class="cgnav">
+  <a class="cgnav-h" href="README.md">← Claude Code para equipos · demos</a>
+  <a href="#preparar">Preparar</a>
+  <a href="#workflows">Workflows</a>
+  <a href="#agentes">Agentes (SDK)</a>
+  <a href="#fuentes">Fuentes</a>
+</div>
+<div class="cgbot"><div class="in">
+
+  <div class="hero">
+    <span class="ey">🧪 Ejemplos ejecutables · Claude Code para Equipos</span>
+    <h1>La teoría de agentes de Anthropic, <span class="grad">en 11 programas</span></h1>
+    <p>Cada concepto del capítulo 2 tiene aquí un programa corto que corre contra la <b>Guía Scrum 2020</b> real.
+      El caso es siempre el mismo: el <b>Tutor de proyectos</b> que responde por WhatsApp citando la página.</p>
+    <div class="qbar">📂 Código en <b>demos/teoria/</b> · 🐍 Python · 🔑 necesita <b>ANTHROPIC_API_KEY</b></div>
+  </div>
+
+  <div class="toc">
+    <a href="#ej-01"><b>01 · LLM aumentado</b><span>el bucle de tool use a mano</span></a>
+    <a href="#ej-02"><b>02 · Prompt chaining</b><span>cadena con gate por código</span></a>
+    <a href="#ej-03"><b>03 · Routing</b><span>categoría y modelo</span></a>
+    <a href="#ej-04"><b>04 · Parallelization</b><span>secciones y votación</span></a>
+    <a href="#ej-05"><b>05 · Orchestrator-workers</b><span>subtareas dinámicas</span></a>
+    <a href="#ej-06"><b>06 · Evaluator-optimizer</b><span>generar y criticar</span></a>
+    <a href="#ej-07"><b>07 · Agente autónomo</b><span>Agent SDK con topes</span></a>
+    <a href="#ej-08"><b>08 · Prompt caching</b><span>tokens escritos y leídos</span></a>
+    <a href="#ej-09"><b>09 · Guardrails</b><span>prompt injection en dos capas</span></a>
+    <a href="#ej-10"><b>10 · Subagentes</b><span>verificador con contexto limpio</span></a>
+    <a href="#ej-11"><b>11 · Sesiones</b><span>resume y fork</span></a>
+  </div>
+
+  <div class="sec" id="preparar">
+    <h2>Preparar el entorno</h2>
+    <p class="lead">Una sola vez. Los ejemplos 01 a 06 y 08 usan el Client SDK (<b>anthropic</b>); 07, 09, 10 y 11 usan el <b>Claude Agent SDK</b>, que trae el mismo motor de Claude Code.</p>
+    <pre>pip install anthropic claude-agent-sdk pdfplumber
+# Windows PowerShell:  $env:ANTHROPIC_API_KEY="sk-ant-..."
+# macOS / Linux:       export ANTHROPIC_API_KEY="sk-ant-..."
+cd "courses/Claude Code para equipos/demos/teoria"
+python tutor_corpus.py "¿Cuánto dura el Daily Scrum?"     # comprueba el corpus, sin gastar API</pre>
+    <div class="callout warn">
+      <b class="t">💳 Cada corrida gasta tokens reales</b>
+      <p>Los programas imprimen los tokens y, en los del Agent SDK, el costo en USD. Los agentes llevan <b>max_turns</b> y <b>max_budget_usd</b> para que ninguna corrida se alargue. Los números cambian según el modelo y el momento: compáralos con lo que dice «Qué observar», no con cifras fijas.</p>
+    </div>
+  </div>
+
+  <div class="sec" id="workflows">
+    <h2>Workflows: el código fija el camino</h2>
+    <p class="lead">«Sistemas donde LLMs y tools se orquestan por caminos de código predefinidos». Predecibles y baratos: son la base del Tutor.</p>
+
+    <div class="ej" id="ej-01"><div class="top"><div class="num">01</div><div>
+      <span class="grupo g-api">Client SDK · anthropic</span><h3>El LLM aumentado</h3>
+      <div class="fuente">Building effective agents · «The augmented LLM»</div></div></div>
+      <p>El bloque básico: un modelo con una tool de recuperación. El bucle de <b>tool use</b> está escrito a mano: mientras la respuesta pida una tool, el programa la ejecuta y devuelve el resultado.</p>
+      <div class="flow"><span class="pill">🧑‍🎓 pregunta</span><span class="ar">→</span><span class="pill m">🧠 modelo decide buscar</span><span class="ar">→</span><span class="pill c">🔎 buscar_documento</span><span class="ar">→</span><span class="pill m">🧠 redacta con los párrafos</span><span class="ar">→</span><span class="pill">✅ respuesta con (p. N)</span></div>
+      <div class="cols"><div class="box obs"><b class="t">Qué observar</b>La consulta que el <b>modelo</b> genera no es la pregunta literal del alumno: la reformula con los términos de la guía.</div>
+      <div class="box tut"><b class="t">En el Tutor</b>Es el paso 4 del recorrido de una pregunta: el agente busca antes de redactar.</div></div>
+      <div class="run"><code>python 01_llm_aumentado.py</code><a href="teoria/01_llm_aumentado.py" target="_blank">ver código ↗</a></div>
+    </div>
+
+    <div class="ej" id="ej-02"><div class="top"><div class="num">02</div><div>
+      <span class="grupo g-api">Client SDK · anthropic</span><h3>Prompt chaining con gate</h3>
+      <div class="fuente">Building effective agents · «Workflow: Prompt chaining»</div></div></div>
+      <p>Tres llamadas en secuencia. Entre la segunda y la tercera, un <b>gate por código</b> rechaza la respuesta si no cita página o si cita una página que la búsqueda no devolvió.</p>
+      <div class="flow"><span class="pill m">1 · reformular (Haiku)</span><span class="ar">→</span><span class="pill c">buscar</span><span class="ar">→</span><span class="pill m">2 · redactar (Sonnet)</span><span class="ar">→</span><span class="pill g">🚦 gate: ¿páginas válidas?</span><span class="ar">→</span><span class="pill m">3 · adaptar a WhatsApp</span></div>
+      <div class="cols"><div class="box obs"><b class="t">Qué observar</b>Si el gate dice <b>RECHAZA</b>, la cadena se detiene y nada llega al alumno. El gate no es un modelo: es una comparación de conjuntos.</div>
+      <div class="box tut"><b class="t">En el Tutor</b>Pasos fijos más un chequeo determinista: exactamente lo que pide la guía para tareas que se descomponen limpio.</div></div>
+      <div class="run"><code>python 02_prompt_chaining.py</code><a href="teoria/02_prompt_chaining.py" target="_blank">ver código ↗</a></div>
+    </div>
+
+    <div class="ej" id="ej-03"><div class="top"><div class="num">03</div><div>
+      <span class="grupo g-api">Client SDK · anthropic</span><h3>Routing</h3>
+      <div class="fuente">Building effective agents · «Workflow: Routing»</div></div></div>
+      <p>Un clasificador rápido decide la categoría de cuatro mensajes distintos, y el código deriva cada uno a su camino: definición con Haiku, comparación con Sonnet, saludo y fuera de alcance sin modelo.</p>
+      <div class="flow"><span class="pill">mensaje</span><span class="ar">→</span><span class="pill m">🏷️ clasificador (Haiku)</span><span class="ar">→</span><span class="pill c">definición · Haiku</span><span class="pill c">comparación · Sonnet</span><span class="pill g">saludo · código</span><span class="pill x">fuera de alcance · código</span></div>
+      <div class="cols"><div class="box obs"><b class="t">Qué observar</b>La pregunta sobre laptops nunca llega a la búsqueda ni al modelo grande. Ante una categoría desconocida, el código elige el camino más restrictivo.</div>
+      <div class="box tut"><b class="t">En el Tutor</b>Prompts especializados por tipo de pregunta y el modelo pequeño para lo fácil: menos costo sin perder calidad.</div></div>
+      <div class="run"><code>python 03_routing.py</code><a href="teoria/03_routing.py" target="_blank">ver código ↗</a></div>
+    </div>
+
+    <div class="ej" id="ej-04"><div class="top"><div class="num">04</div><div>
+      <span class="grupo g-api">Client SDK · anthropic (async)</span><h3>Parallelization: sectioning y voting</h3>
+      <div class="fuente">Building effective agents · «Workflow: Parallelization»</div></div></div>
+      <p>Primero tres tareas independientes a la vez (redacción, términos clave, pregunta de repaso). Después, tres revisores con enfoques distintos votan si la redacción tiene información sin soporte.</p>
+      <div class="flow"><span class="pill">párrafos</span><span class="ar">→</span><span class="pill m">redacción</span><span class="pill m">términos</span><span class="pill m">repaso</span><span class="ar">→</span><span class="pill g">🗳️ 3 votos</span><span class="ar">→</span><span class="pill c">mayoría por código</span></div>
+      <div class="cols"><div class="box obs"><b class="t">Qué observar</b>El tiempo total en paralelo frente a la suma de las tres llamadas. Y que la decisión ENVIAR o BLOQUEAR la toma el código con 2 de 3 votos.</div>
+      <div class="box tut"><b class="t">En el Tutor</b>El guardrail va en una llamada separada: la guía indica que rinde mejor que pedirle a la misma llamada que responda y se vigile.</div></div>
+      <div class="run"><code>python 04_paralelizacion.py</code><a href="teoria/04_paralelizacion.py" target="_blank">ver código ↗</a></div>
+    </div>
+
+    <div class="ej" id="ej-05"><div class="top"><div class="num">05</div><div>
+      <span class="grupo g-api">Client SDK · anthropic (async)</span><h3>Orchestrator-workers</h3>
+      <div class="fuente">Building effective agents · «Workflow: Orchestrator-workers»</div></div></div>
+      <p>Una pregunta compuesta se parte en subpreguntas que decide el orquestador. Cada worker busca con su subpregunta y responde; un sintetizador une todo conservando las citas.</p>
+      <div class="flow"><span class="pill">pregunta compuesta</span><span class="ar">→</span><span class="pill m">🧭 orquestador → JSON</span><span class="ar">→</span><span class="pill c">worker 1</span><span class="pill c">worker 2</span><span class="pill c">worker n</span><span class="ar">→</span><span class="pill m">🧩 síntesis</span></div>
+      <div class="cols"><div class="box obs"><b class="t">Qué observar</b>El número de subpreguntas cambia con la pregunta. Cada worker recupera páginas distintas, y la síntesis las cita todas.</div>
+      <div class="box tut"><b class="t">En el Tutor</b>«Compara el PO y el Scrum Master en la Planning y la Review»: no se sabe de antemano cuántas búsquedas harán falta.</div></div>
+      <div class="run"><code>python 05_orquestador_workers.py</code><a href="teoria/05_orquestador_workers.py" target="_blank">ver código ↗</a></div>
+    </div>
+
+    <div class="ej" id="ej-06"><div class="top"><div class="num">06</div><div>
+      <span class="grupo g-api">Client SDK · anthropic</span><h3>Evaluator-optimizer</h3>
+      <div class="fuente">Building effective agents · «Workflow: Evaluator-optimizer»</div></div></div>
+      <p>Un generador redacta y un evaluador lo critica en bucle, con tres criterios binarios. Dos los mide el código (longitud y páginas) y uno un modelo (afirmaciones sin soporte).</p>
+      <div class="flow"><span class="pill m">✍️ generador</span><span class="ar">⇄</span><span class="pill g">🔍 evaluador: C1 · C2 · C3</span><span class="ar">→</span><span class="pill c">APROBADO</span><span class="pill x">3 rondas → escalar a humano</span></div>
+      <div class="cols"><div class="box obs"><b class="t">Qué observar</b>El feedback de cada ronda y la condición de parada explícita: si no aprueba en tres rondas, la respuesta no se envía.</div>
+      <div class="box tut"><b class="t">En el Tutor</b>Hay criterio claro (cita, soporte, longitud del canal) y refinar mejora la respuesta de forma medible.</div></div>
+      <div class="run"><code>python 06_evaluador_optimizador.py</code><a href="teoria/06_evaluador_optimizador.py" target="_blank">ver código ↗</a></div>
+    </div>
+
+    <div class="ej" id="ej-08"><div class="top"><div class="num">08</div><div>
+      <span class="grupo g-api">Client SDK · anthropic</span><h3>Prompt caching medido</h3>
+      <div class="fuente">API de Anthropic · Prompt caching · Claude Code · How Claude Code uses prompt caching</div></div></div>
+      <p>La Guía Scrum entera va como bloque del system prompt con <b>cache_control</b>. Se hacen dos preguntas seguidas y se imprimen los tres contadores de tokens de cada una.</p>
+      <div class="flow"><span class="pill">tools</span><span class="ar">→</span><span class="pill">system</span><span class="ar">→</span><span class="pill c">📚 documento · breakpoint</span><span class="ar">|</span><span class="pill x">pregunta (cambia)</span></div>
+      <div class="cols"><div class="box obs"><b class="t">Qué observar</b>1ª llamada: <b>escritos &gt; 0</b>, leídos = 0. 2ª: escritos = 0, <b>leídos &gt; 0</b>, y el ahorro calculado. Leer cuesta 0,1× la entrada; escribir 1,25×.</div>
+      <div class="box tut"><b class="t">En el Tutor</b>Cientos de preguntas diarias sobre el mismo documento: el prefijo estable se paga una vez cada 5 minutos, no en cada mensaje.</div></div>
+      <div class="run"><code>python 08_prompt_caching.py</code><a href="teoria/08_prompt_caching.py" target="_blank">ver código ↗</a></div>
+    </div>
+  </div>
+
+  <div class="sec" id="agentes">
+    <h2>Agentes: el modelo dirige su proceso</h2>
+    <p class="lead">«Sistemas donde los LLMs dirigen dinámicamente sus propios procesos y uso de tools». Con el Claude Agent SDK: el mismo bucle, tools, hooks y subagentes que Claude Code.</p>
+
+    <div class="ej" id="ej-07"><div class="top"><div class="num">07</div><div>
+      <span class="grupo g-sdk">Claude Agent SDK</span><h3>Agente autónomo con condiciones de parada</h3>
+      <div class="fuente">Agent SDK · «How the agent loop works» · Building effective agents · «Agents»</div></div></div>
+      <p>Una tool propia expuesta como servidor MCP en el mismo proceso. El agente decide cuántas veces buscar; el harness decide qué tools existen, cuáles corren solas, cuántos turnos y cuánto dinero.</p>
+      <div class="flow"><span class="pill">objetivo</span><span class="ar">→</span><span class="pill m">🔁 planea · busca · lee resultado</span><span class="ar">→</span><span class="pill g">max_turns · max_budget_usd</span><span class="ar">→</span><span class="pill c">ResultMessage.subtype</span></div>
+      <div class="cols"><div class="box obs"><b class="t">Qué observar</b>Cada tool call, el <b>subtype</b>, los turnos y el costo. Corre <b>python 07_agente_autonomo.py 1</b> para ver <b>error_max_turns</b>.</div>
+      <div class="box tut"><b class="t">En el Tutor</b>Sin Bash, sin escritura, sin red: el agente que responde a alumnos solo puede buscar en el documento.</div></div>
+      <div class="run"><code>python 07_agente_autonomo.py</code><a href="teoria/07_agente_autonomo.py" target="_blank">ver código ↗</a></div>
+    </div>
+
+    <div class="ej" id="ej-09"><div class="top"><div class="num">09</div><div>
+      <span class="grupo g-sdk">anthropic + Claude Agent SDK</span><h3>Guardrails contra prompt injection</h3>
+      <div class="fuente">Claude Code · Security · Agent SDK · Securely deploying AI agents · Hooks</div></div></div>
+      <p>Se simula un PDF malicioso: un fragmento que ordena crear un archivo y responder «Proyecto aprobado». Parte A delimita el texto con un <b>nonce</b> por petición. Parte B deja que los permisos permitan Bash y Write, pero un <b>hook PreToolUse</b> los bloquea siempre.</p>
+      <div class="flow"><span class="pill x">☠️ texto con instrucción</span><span class="ar">→</span><span class="pill g">A · &lt;datos-nonce&gt; = DATOS</span><span class="ar">→</span><span class="pill g">B · hook PreToolUse: deny</span><span class="ar">→</span><span class="pill c">¿existe aprobado.txt? NO</span></div>
+      <div class="cols"><div class="box obs"><b class="t">Qué observar</b>Si el modelo resiste solo, el hook no actúa y el programa lo dice. Si intenta Bash o Write, verás la línea <b>BLOQUEADO</b>. Al final se comprueba el disco.</div>
+      <div class="box tut"><b class="t">En el Tutor</b>Una instrucción en CLAUDE.md es contexto; el hook es determinista. Lo que no debe pasar nunca va en el hook.</div></div>
+      <div class="run"><code>python 09_guardrails_prompt_injection.py</code><a href="teoria/09_guardrails_prompt_injection.py" target="_blank">ver código ↗</a></div>
+    </div>
+
+    <div class="ej" id="ej-10"><div class="top"><div class="num">10</div><div>
+      <span class="grupo g-sdk">Claude Agent SDK</span><h3>Subagente verificador</h3>
+      <div class="fuente">Claude Code · Create custom subagents · Agent SDK · Subagents</div></div></div>
+      <p>El agente principal redacta. Un subagente definido con <b>AgentDefinition</b>, con modelo Haiku y solo la tool de búsqueda, intenta refutar la respuesta con contexto limpio y devuelve solo el veredicto.</p>
+      <div class="flow"><span class="pill m">🧠 principal redacta</span><span class="ar">→</span><span class="pill g">▶ SubagentStart</span><span class="ar">→</span><span class="pill c">🔍 verificador (haiku)</span><span class="ar">→</span><span class="pill g">■ SubagentStop</span><span class="ar">→</span><span class="pill">veredicto</span></div>
+      <div class="cols"><div class="box obs"><b class="t">Qué observar</b>Los hooks marcan cuándo nace y termina el subagente. El costo final incluye lo que gastó el subagente.</div>
+      <div class="box tut"><b class="t">En el Tutor</b>Quien hace no es quien califica: el verificador no ve el razonamiento del redactor, solo el resultado y el documento.</div></div>
+      <div class="run"><code>python 10_subagentes.py</code><a href="teoria/10_subagentes.py" target="_blank">ver código ↗</a></div>
+    </div>
+
+    <div class="ej" id="ej-11"><div class="top"><div class="num">11</div><div>
+      <span class="grupo g-sdk">Claude Agent SDK</span><h3>Memoria de sesión: resume y fork</h3>
+      <div class="fuente">Agent SDK · «Sessions and continuity» · Session management</div></div></div>
+      <p>Una primera consulta crea la sesión. La segunda la <b>reanuda</b> con su session_id y pregunta por lo dicho antes. La tercera la <b>bifurca</b> para explicarlo de otra forma sin tocar la original.</p>
+      <div class="flow"><span class="pill m">1 · nueva sesión</span><span class="ar">→</span><span class="pill c">2 · resume=session_id</span><span class="ar">→</span><span class="pill g">3 · fork_session=True</span></div>
+      <div class="cols"><div class="box obs"><b class="t">Qué observar</b>En la reanudación, el agente responde sin volver a buscar (tool calls = 0) porque el contexto se restauró. La rama del fork tiene otro session_id.</div>
+      <div class="box tut"><b class="t">En el Tutor</b>Una sesión por alumno que se reanuda al siguiente mensaje de WhatsApp, en vez de empezar de cero cada vez.</div></div>
+      <div class="run"><code>python 11_memoria_sesiones.py</code><a href="teoria/11_memoria_sesiones.py" target="_blank">ver código ↗</a></div>
+    </div>
+  </div>
+
+  <div class="sec" id="fuentes">
+    <h2>El corpus y las fuentes</h2>
+    <div class="callout">
+      <b class="t">📚 La Guía de Scrum 2020 (español, Latinoamérica)</b>
+      <p>Ken Schwaber y Jeff Sutherland, descargada de scrumguides.org, licencia <b>Creative Commons BY-SA 4.0</b>. Está en <b>demos/teoria/datos/</b>. <b>tutor_corpus.py</b> la lee con pdfplumber, la parte en fragmentos con su número de página del PDF y busca por coincidencia léxica. La búsqueda es simple a propósito: estos ejemplos tratan del bucle agéntico. El capítulo de RAG la sustituye por búsqueda híbrida y estructural.</p>
+    </div>
+    <div class="callout warn">
+      <b class="t">📖 Documentación de Anthropic usada</b>
+      <p>Building effective agents · Building agents with the Claude Agent SDK · Agent SDK overview y agent loop · Custom tools · Hooks · Subagents · Sessions · Prompt caching (API y Claude Code) · Explore the context window · Security · Securely deploying AI agents · Agent teams. Copias locales en <b>courses/_fuentes_anthropic/</b>.</p>
+    </div>
+  </div>
+
+  <div class="foot"><b>Claude Code para Equipos</b> · Capítulo 2 · Teoría de agentes según Anthropic · CortexGovernor Academy</div>
+</div></div>
+</body></html>
