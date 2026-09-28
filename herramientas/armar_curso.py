@@ -110,7 +110,7 @@ def introduccion_banca() -> str:
         return ''
     doc = open(ruta, encoding='utf-8').read()
     css = re.search(r'<style>(.*?)</style>', doc, re.S).group(1)
-    cuerpo = doc[doc.index('<div class="wrap">'):doc.rindex('<script>')]
+    cuerpo = doc[doc.index('<div class="wrap">'):doc.index('<section class="poster" aria-labelledby="i3">')] + '</div>'
     js = re.search(r'<script>(.*?)</script>', doc[doc.rindex('<script>'):], re.S).group(1)
     css = re.sub(r'@media \(prefers-color-scheme: dark\)\{.*?\}\}', '', css, flags=re.S)
     css = re.sub(r':root\[data-theme="dark"\][^{]*\{[^}]*\}', '', css)
@@ -137,7 +137,7 @@ def introduccion_banca() -> str:
     return ('<style>' + ''.join(fuera) + '.ib .ib-wrap{padding:0}.ib h1{display:none}.ib .poster h2{text-transform:none;letter-spacing:-.01em;font-size:clamp(22px,3vw,30px);margin:0 0 6px}</style>'
             '<section class="portada-card ib" style="margin-top:16px"><h2 style="font-size:15px;margin:0 0 12px;'
             'color:var(--navy);text-transform:uppercase;letter-spacing:.06em">Introducción · Agentes de IA en la banca</h2>'
-            + cuerpo + '<script>' + js + '</script></section>')
+            + cuerpo + '</section>')
 
 def portada(curso: dict, examen: dict, capitulos: list[tuple[int, str]]) -> str:
     c1, c2 = curso['color']

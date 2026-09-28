@@ -1019,124 +1019,7 @@ body{font-family:'Inter',system-ui,sans-serif;font-size:15px;background:var(--na
   </section>
 
   <!-- ═════════ PROMPTS ═════════ -->
-  <section class="poster" aria-labelledby="ib-i3">
-    <div class="poster-head">
-      <h2 id="ib-i3">Los tres system prompts</h2>
-      <span class="tag">PARA COPIAR EN CLASE</span>
-    </div>
-    <div class="tabs" role="tablist" aria-label="Agente">
-      <button role="tab" id="ib-t1" aria-selected="true" aria-controls="ib-p1">Relajado</button>
-      <button role="tab" id="ib-t2" aria-selected="false" aria-controls="ib-p2">Estricto</button>
-      <button role="tab" id="ib-t3" aria-selected="false" aria-controls="ib-p3">Juez</button>
-    </div>
-    <div class="codebox" role="tabpanel" id="ib-p1" aria-labelledby="ib-t1"><button class="copy">Copiar</button><pre>Eres el ANALISTA COMERCIAL de un comité de crédito de un banco.
-Tu rol en el debate: encontrar cómo esta solicitud SÍ puede aprobarse
-dentro de la Política de Créditos.
-
-Recibes el perfil de la solicitud en &lt;perfil&gt; y la política en &lt;politica&gt;.
-
-Reglas:
-- Argumenta solo con datos del perfil y cita la política así: (Política, p. N).
-- Si la solicitud tal como está incumple una regla, propón un ajuste que la
-  haga cumplir (menor monto o mayor plazo) y muestra el cálculo.
-- No inventes ingresos, garantías ni datos que no estén en el perfil.
-- No decides: argumentas. La decisión es del juez.
-
-Responde en este formato:
-&lt;postura&gt;aprobar | aprobar_con_ajuste&lt;/postura&gt;
-&lt;argumentos&gt;3 viñetas como máximo, cada una con su dato y su cita&lt;/argumentos&gt;
-&lt;ajuste&gt;monto, plazo, cuota y carga resultante, o "ninguno"&lt;/ajuste&gt;</pre></div>
-    <div class="codebox" role="tabpanel" id="ib-p2" aria-labelledby="ib-t2" hidden><button class="copy">Copiar</button><pre>Eres el ANALISTA DE RIESGO de un comité de crédito de un banco.
-Tu rol en el debate: encontrar todo motivo por el que esta solicitud NO
-debería aprobarse o debería revisarla una persona.
-
-Recibes el perfil de la solicitud en &lt;perfil&gt; y la política en &lt;politica&gt;.
-
-Reglas:
-- Revisa cada regla de la política y cita la página: (Política, p. N).
-- Haz una prueba de estrés: recalcula la carga con el ingreso más bajo
-  del período, no con el promedio.
-- Señala datos inconsistentes o faltantes; no los supongas.
-- No decides: argumentas. La decisión es del juez.
-
-Responde en este formato:
-&lt;postura&gt;rechazar | revisar&lt;/postura&gt;
-&lt;argumentos&gt;3 viñetas como máximo, cada una con su dato y su cita&lt;/argumentos&gt;
-&lt;estres&gt;carga con el ingreso más bajo, con el cálculo&lt;/estres&gt;</pre></div>
-    <div class="codebox" role="tabpanel" id="ib-p3" aria-labelledby="ib-t3" hidden><button class="copy">Copiar</button><pre>Eres el JUEZ de un comité de crédito de un banco. Lees los argumentos del
-analista comercial y del analista de riesgo y dictas sentencia.
-
-Recibes &lt;perfil&gt;, &lt;politica&gt;, &lt;comercial&gt; y &lt;riesgo&gt;.
-
-Cómo decides:
-1. Verifica cada cálculo y cada cita contra la política. Descarta los
-   argumentos sin dato o sin cita.
-2. Si los dos coinciden y el caso cumple todas las reglas: decide.
-3. Si discrepan, pide UNA ronda más: indica a cada uno qué debe responder.
-   Si tras esa ronda las posturas no cambian, deja de debatir.
-4. Escala a un humano si el caso es gris: cumple con el promedio pero no
-   con el escenario de estrés, faltan datos, o la política no lo cubre.
-
-Límites que no puedes cambiar (los verifica además el sistema):
-- Solo puedes decidir solo hasta S/ 20,000. Por encima, siempre escalas.
-- Nunca apruebas si la carga supera el 30 % del ingreso (Política, p. 7).
-
-Responde en este formato:
-&lt;sentencia&gt;aprobado | aprobado_con_condiciones | rechazado | escalar | otra_ronda&lt;/sentencia&gt;
-&lt;condiciones&gt;ajuste de tasa, monto o plazo, si aplica&lt;/condiciones&gt;
-&lt;motivos&gt;los argumentos que pesaron, de ambos lados, con sus citas&lt;/motivos&gt;
-&lt;bitacora&gt;resumen de una línea para auditoría&lt;/bitacora&gt;</pre></div>
-  </section>
-
-  <!-- ═════════ DEBATE ═════════ -->
-  <section class="poster" aria-labelledby="ib-i4">
-    <div class="poster-head">
-      <h2 id="ib-i4">Un debate real, paso a paso</h2>
-      <span class="tag">CASO FICTICIO · SOLICITUD S-2087</span>
-    </div>
-    <p style="margin:0">Rosa tiene una bodega y pide un préstamo para ampliar su local.</p>
-    <div class="case">
-      <div><small>Monto pedido</small><b>S/ 18,000</b></div>
-      <div><small>Plazo</small><b>36 meses</b></div>
-      <div><small>Ingreso neto</small><b>S/ 4,200</b><br><span class="note">promedio de 6 meses; el más bajo, S/ 3,600</span></div>
-      <div><small>Deudas actuales</small><b>S/ 900 al mes</b><br><span class="note">incluye una tarjeta de otro banco</span></div>
-      <div><small>Antigüedad</small><b>8 meses</b></div>
-    </div>
-
-    <div class="debate">
-      <div class="turn"><div class="av x">EX</div><div class="bubble"><div class="who">Extractor de datos</div><p>Perfil armado y enviado a los dos agentes. Cuota a 36 meses: S/ 616. Carga total: S/ 1,516, el 36,1 % del ingreso promedio.</p></div></div>
-      <div class="round">Ronda 1</div>
-      <div class="turn"><div class="av g">RE</div><div class="bubble"><div class="who">Agente relajado · aprobar con ajuste</div><p>Los ingresos crecen: de S/ 3,600 a S/ 4,800 en seis meses. Tal como está incumple el 30 % (Política, p. 7), pero con <b>S/ 15,000 a 60 meses</b> la cuota baja a S/ 349 y la carga queda en <b>29,7 %</b>. Cumple.</p></div></div>
-      <div class="turn"><div class="av r">ES</div><div class="bubble"><div class="who">Agente estricto · revisar</div><p>Ocho meses de historial es apenas más que el mínimo de seis. La deuda externa ya es el 21 % del ingreso. <b>Prueba de estrés</b>: con el mes más bajo (S/ 3,600), incluso con el ajuste, la carga sube a <b>34,7 %</b>. No cumple.</p></div></div>
-      <div class="turn"><div class="av a">JU</div><div class="bubble"><div class="who">Juez · otra ronda</div><p>Los cálculos de ambos son correctos. Al relajado: ¿qué pasa si repite el mes más bajo? Al estricto: ¿la política exige usar el ingreso más bajo o el promedio?</p></div></div>
-      <div class="round">Ronda 2</div>
-      <div class="turn"><div class="av g">RE</div><div class="bubble"><div class="who">Agente relajado</div><p>La política usa el ingreso promedio. Si el mes bajo se repite, la carga supera el 30 %. Para cumplir también en ese mes, el préstamo tendría que bajar a unos S/ 7,700 a 60 meses (cuota S/ 179).</p></div></div>
-      <div class="turn"><div class="av r">ES</div><div class="bubble"><div class="who">Agente estricto</div><p>La política usa el promedio, pero no dice nada de negocios con ingresos variables. Ese es justamente el punto gris.</p></div></div>
-    </div>
-
-    <div class="verdict">
-      <b>Sentencia del juez: ESCALAR al analista.</b>
-      <p style="margin:6px 0 0">Las posturas ya no cambian. Con el ajuste (S/ 15,000 a 60 meses) cumple la regla del 30 % usando el promedio (Política, p. 7), pero no en el escenario de estrés, y la política no cubre los ingresos variables. Opciones para el analista: aprobar S/ 15,000 a 60 meses (cumple con el promedio) o S/ 7,700 a 60 meses (cumple también en el peor mes).</p>
-      <p style="margin:6px 0 0;font-size:14px;color:var(--ink2)"><b>Bitácora:</b> S-2087 · escalado · cumple con el promedio, falla en el estrés · 2 rondas.</p>
-    </div>
-    <div class="lesson"><b>Recomendación:</b> Un voto por mayoría habría salido «2 contra 1, aprobar» sin ver el mes bajo. El debate hizo visible el riesgo y el juez no decidió solo en un caso gris: se lo dio al analista con los argumentos de ambos lados.</div>
-    <p class="note">Cuotas calculadas con una TEA ilustrativa de 15 %. Caso, cifras y política ficticios, creados para el curso.</p>
-  </section>
-</div>
-
-<script>
-(function(){
-  const tabs=[...document.querySelectorAll('.ib [role="tab"]')];
-  tabs.forEach(t=>t.addEventListener('click',()=>{
-    tabs.forEach(x=>{const on=x===t;x.setAttribute('aria-selected',on);document.getElementById(x.getAttribute('aria-controls')).hidden=!on;});
-  }));
-  document.querySelectorAll('.ib .copy').forEach(b=>b.addEventListener('click',()=>{
-    const pre=b.parentElement.querySelector('pre');
-    const done=()=>{b.textContent='Copiado';setTimeout(()=>b.textContent='Copiar',1500);};
-    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(pre.innerText).then(done).catch(()=>{const r=document.createRange();r.selectNodeContents(pre);const s=getSelection();s.removeAllRanges();s.addRange(r);});}
-  }));
-})();
-</script></section>
+  </div></section>
     </div>
   </div><!-- /lp-0 -->
 
@@ -1231,6 +1114,60 @@ Responde en este formato:
 <p>El agente no se queda quieto cuando le falta información: <b>rellena cada hueco con una suposición</b>, y lo hace con total seguridad. Por eso el resultado «parece andar» aunque esté mal. Estas son las 11 cosas que inventa si no se las defines:</p>
 <div style="overflow-x:auto"><table><thead><tr><th>Qué inventa</th><th>Instrucción incompleta</th><th>Qué pasa</th><th>Cómo se define antes</th></tr></thead><tbody><tr><td><b>1. Reglas de negocio</b></td><td>«Reembolsa cargos duplicados», sin monto máximo</td><td style="color:#991b1b">Reembolsa S/ 800 sin aprobación</td><td style="color:#065f46">«Solo menores a S/ 50 (Política de Reclamos, p. 3)»</td></tr><tr><td><b>2. Datos y fuentes</b></td><td>«Explica por qué se rechazó la transferencia»</td><td style="color:#991b1b">Responde «fondos insuficientes» de memoria, sin mirar el registro</td><td style="color:#065f46">«Toma el motivo solo del registro de la operación»</td></tr><tr><td><b>3. Unidades y formatos</b></td><td>No se dice si los montos están en soles o en céntimos</td><td style="color:#991b1b">El límite queda en céntimos (5000) y el monto llega en soles (80.00): 80 &lt; 5000, reembolsa</td><td style="color:#065f46">«Los montos llegan en soles con dos decimales»</td></tr><tr><td><b>4. Seguridad y permisos</b></td><td>«Consulta la cuenta del cliente»</td><td style="color:#991b1b">No valida identidad: cualquiera ve datos ajenos</td><td style="color:#065f46">«Valida la identidad antes de consultar»</td></tr><tr><td><b>5. Datos sensibles</b></td><td>«Registra lo que hace el agente»</td><td style="color:#991b1b">Guarda la tarjeta completa en los logs</td><td style="color:#065f46">«Nunca escribir tarjeta, DNI ni clave en logs»</td></tr><tr><td><b>6. Qué hacer si no encuentra</b></td><td>«Responde con el Tarifario»</td><td style="color:#991b1b">Si no encuentra la tasa, inventa una</td><td style="color:#065f46">«Si no está, dilo y deriva a un ejecutivo»</td></tr><tr><td><b>7. Alcance</b></td><td>«Arregla el reembolso»</td><td style="color:#991b1b">También cambia el módulo de créditos</td><td style="color:#065f46">«Solo toca src/reclamos/»</td></tr><tr><td><b>8. Herramientas y librerías</b></td><td>«Agrega lectura de PDF»</td><td style="color:#991b1b">Instala una librería que Seguridad no aprobó</td><td style="color:#065f46">«Sin dependencias nuevas»</td></tr><tr><td><b>9. Cuándo escalar</b></td><td>«Resuelve el reclamo»</td><td style="color:#991b1b">Resuelve solo un posible fraude</td><td style="color:#065f46">«Si hay indicio de fraude, escala a un analista»</td></tr><tr><td><b>10. Cómo se comprueba</b></td><td>«Hazlo y avísame»</td><td style="color:#991b1b">Escribe un test que siempre pasa</td><td style="color:#065f46">«Test con S/ 49.90, S/ 50 y S/ 80»</td></tr><tr><td><b>11. Cuándo terminó</b></td><td>No hay criterio de fin</td><td style="color:#991b1b">Dice «listo» porque le parece</td><td style="color:#065f46">«Terminado = tests pasan y lo revisa otra persona»</td></tr></tbody></table></div>
 <div class="callout warning"><span class="callout-icon">⚠</span><div class="callout-text"><strong>Regla antes de enviar una instrucción.</strong> Revisa estas 11 preguntas. Cada una que no respondes, el agente la responde por ti.</div></div>
+<h3>Ejemplo: una instrucción ambigua y cómo falla el agente</h3>
+<p><b>La instrucción que recibe el agente de atención:</b></p>
+<pre><code>Cuando el cliente lo pida, muéstrale sus últimos movimientos.</code></pre>
+<p>Parece clara, pero deja sin definir cinco cosas. El agente las decide solo:</p>
+<div style="overflow-x:auto"><table><thead><tr><th>Lo que no se definió</th><th>Lo que el agente decidió</th><th>Consecuencia</th></tr></thead><tbody>
+<tr><td>¿Quién es el cliente?</td><td>Busca por el nombre que escribe la persona: «María López»</td><td>Hay 14 clientas con ese nombre: le muestra las cuentas de la primera que encuentra, que no es ella</td></tr>
+<tr><td>¿Hay que validar identidad?</td><td>No valida nada</td><td>Cualquiera que escriba un nombre ve movimientos ajenos</td></tr>
+<tr><td>¿Cuántos son «los últimos»?</td><td>Todos los que devuelve la consulta</td><td>Responde con 500 movimientos de tres años; el chat se vuelve ilegible</td></tr>
+<tr><td>¿Qué datos se muestran?</td><td>Todos los campos del registro</td><td>Aparecen números de tarjeta completos y cuentas de destino de terceros</td></tr>
+<tr><td>¿Qué hacer si no hay movimientos?</td><td>Nada definido</td><td>Responde «no tienes movimientos», aunque la consulta falló por un timeout</td></tr>
+</tbody></table></div>
+<p><b>Qué vas a ver en la prueba:</b></p>
+<pre><code>&gt; Soy María López, muéstrame mis últimos movimientos
+● consultar_cliente(nombre=&quot;María López&quot;)   → 14 coincidencias, usa la primera
+● buscar_transacciones(cliente_id=10432)    → 500 registros
+Tus últimos movimientos:
+  2023-01-04  Tarjeta 4557 8812 3309 4821  Supermercado  S/ 120.50
+  2023-01-05  Transferencia a cuenta 191-2837465-0-12       S/ 800.00
+  … (498 movimientos más)</code></pre>
+<p><b>Cómo te das cuenta:</b> prueba con dos clientes que tengan el mismo nombre y con una consulta que falle. Si el agente no pide un dato para distinguirlos o dice «no tienes movimientos» cuando en realidad hubo un error, la instrucción era ambigua.</p>
+<p><b>La instrucción corregida:</b></p>
+<pre><code>Cuando el cliente pida sus movimientos:
+1. Valida su identidad con DNI + código enviado por SMS antes de consultar.
+   Si hay más de un cliente posible, pide el DNI; nunca elijas el primero.
+2. Muestra los últimos 10 movimientos de los últimos 30 días.
+3. Solo fecha, comercio o destinatario y monto. Tarjeta y cuentas
+   enmascaradas (****4821).
+4. Si la consulta falla, di «no pude consultar tus movimientos ahora»
+   y ofrece derivar a un ejecutivo. No digas que no hay movimientos.
+Referencia: Reglamento de Productos, sección 5 (consulta de movimientos).</code></pre>
+<div class="callout info"><span class="callout-icon">💡</span><div class="callout-text"><strong>Recomendación.</strong> Antes de dar una instrucción, pregúntate qué haría el agente en el peor caso razonable: dos clientes con el mismo nombre, una consulta que falla, demasiados resultados. Si la instrucción no lo dice, el agente lo decide.</div></div>
+<div style="border:2px solid #2563eb;border-radius:14px;padding:16px 20px;background:#eff6ff;margin:18px 0">
+<p style="margin:0 0 8px;font-size:17px"><b>🛠 Práctica en clase: el mismo pedido, resultados distintos</b></p>
+<ol>
+<li><b>Cada alumno, por separado (10 min).</b> Abre Claude Code en el repositorio de práctica y envía exactamente la misma instrucción ambigua:
+<pre><code>Cuando el cliente lo pida, muéstrale sus últimos movimientos.</code></pre>
+Guarda lo que hizo el agente: archivos que cambió, qué datos muestra y cómo busca al cliente.</li>
+<li><b>En parejas, comparen (10 min).</b> Completen esta tabla con lo que decidió el agente de cada uno:
+<div style="overflow-x:auto"><table><thead><tr><th>Decisión</th><th>Agente de A</th><th>Agente de B</th><th>¿Iguales?</th></tr></thead><tbody>
+<tr><td>Cómo identifica al cliente</td><td></td><td></td><td></td></tr>
+<tr><td>Si valida identidad</td><td></td><td></td><td></td></tr>
+<tr><td>Cuántos movimientos muestra</td><td></td><td></td><td></td></tr>
+<tr><td>Qué datos muestra (tarjeta, cuentas)</td><td></td><td></td><td></td></tr>
+<tr><td>Qué responde si la consulta falla</td><td></td><td></td><td></td></tr>
+</tbody></table></div></li>
+<li><b>Debate en grupo (10 min).</b> Por cada fila distinta: ¿quién decidió eso, el equipo o el agente? ¿Qué frase de la instrucción, o qué documento (Reglamento, CLAUDE.md, test), habría obligado al agente a hacerlo igual en todos los casos?</li>
+<li><b>Reescriban y repitan (10 min).</b> Con esas frases, cada pareja escribe la instrucción corregida, la vuelve a correr y completa la tabla otra vez.</li>
+</ol>
+<details><summary style="cursor:pointer;font-weight:600;color:#1d4ed8">Ver resultado esperado</summary><div style="margin-top:8px">
+<p>En la primera ronda las tablas salen distintas entre parejas: unos agentes piden el DNI y otros no, unos muestran 10 movimientos y otros cientos, algunos dejan la tarjeta completa. Esa diferencia es la prueba de que el agente decidió por su cuenta.</p>
+<p>En la segunda ronda, con la instrucción que define identidad, cantidad, datos visibles y qué hacer ante un error, las tablas de todas las parejas deberían coincidir. Lo que siga siendo distinto es algo que todavía falta definir.</p>
+<p><b>Conclusión del debate:</b> al agente no se lo corrige después; se lo guía antes, con una instrucción precisa, un documento de referencia y un test que compruebe el resultado.</p>
+</div></details>
+</div>
 <h3>Sin documentación, no hay contra qué validar</h3>
 <p>Definir no basta con decirlo en el chat: tiene que quedar <b>escrito en un documento</b> que el agente pueda leer y contra el cual se pueda comprobar el resultado. Si la regla no está escrita en ningún lado, ni el agente ni el revisor pueden saber si el resultado es correcto: solo «parece» correcto. Anthropic lo pide como primera práctica: darle a Claude una forma de verificar su trabajo (tests, resultados esperados, criterios escritos).</p>
 <div style="overflow-x:auto"><table><thead><tr><th>Documento</th><th>Qué define</th><th>Contra qué se valida</th></tr></thead><tbody>
