@@ -1,7 +1,8 @@
-"""Genera simulador-examen.html a partir de banco-preguntas/*.json y de los títulos de capítulo de index.html.
+"""Genera <carpeta>/simulador-examen.html a partir de <carpeta>/banco-preguntas/*.json.
 
-Corre con: python herramientas/armar_simulador.py
-Valida cada pregunta (campos, dominio, task statement, 4 opciones, índice correcto) antes de escribir.
+Corre con: python herramientas/armar_simulador.py <curso>
+<curso> es una clave de herramientas/cursos.json. Valida cada pregunta (campos, dominio y task statement
+del examen del curso, 4 opciones distintas, índice correcto, ids únicos) antes de escribir.
 """
 import glob
 import json
@@ -11,23 +12,21 @@ import sys
 from collections import Counter
 
 RAIZ = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-TASKS = {1: 7, 2: 5, 3: 6, 4: 6, 5: 6}   # task statements por dominio en la guía oficial
+CURSOS = json.load(open(os.path.join(RAIZ, 'herramientas', 'cursos.json'), encoding='utf-8'))
+EXAMENES = json.load(open(os.path.join(RAIZ, 'herramientas', 'examenes.json'), encoding='utf-8'))
 
 
-def validar(q: dict) -> list[str]:
-    err = []
-    for campo in ('id', 'cap', 'dominio', 'task', 'escenario', 'pregunta', 'opciones', 'correcta', 'explicacion'):
-        if campo not in q:
-            err.append(f'falta {campo}')
+def validar(q: dict, examen: dict) -> list[str]:
+    err = [f'falta {c}' for c in ('id', 'cap', 'dominio', 'task', 'pregunta', 'opciones', 'correcta', 'explicacion') if c not in q]
     if err:
         return err
-    if q['dominio'] not in TASKS:
-        err.append('dominio fuera de 1-5')
-    m = re.fullmatch(r'(\d)\.(\d)', str(q['task']))
-    if not m or int(m.group(1)) != q['dominio'] or not 1 <= int(m.group(2)) <= TASKS.get(q['dominio'], 0):
-        err.append(f"task {q['task']} no corresponde al dominio {q['dominio']}")
-    if not 1 <= q['escenario'] <= 6:
-        err.append('escenario fuera de 1-6')
+    dom = examen['dominios'].get(str(q['dominio']))
+    if not dom:
+        return [f"dominio {q['dominio']} no existe en el examen"]
+    if str(q['task']) not in dom['tasks']:
+        err.append(f"task {q['task']} no pertenece al dominio {q['dominio']}")
+    if examen['escenarios'] and str(q.get('escenario')) not in examen['escenarios']:
+        err.append('escenario inválido')
     if len(q['opciones']) != 4 or len(set(q['opciones'])) != 4:
         err.append('no tiene 4 opciones distintas')
     if q['correcta'] not in (0, 1, 2, 3):
@@ -36,31 +35,36 @@ def validar(q: dict) -> list[str]:
 
 
 def main() -> None:
+    clave = sys.argv[1] if len(sys.argv) > 1 else 'claude-code'
+    curso = CURSOS[clave]
+    examen = EXAMENES[curso['examen']]
+    carpeta = os.path.normpath(os.path.join(RAIZ, curso['carpeta']))
+
     banco = []
-    for f in sorted(glob.glob(os.path.join(RAIZ, 'banco-preguntas', 'cap*.json'))):
+    for f in sorted(glob.glob(os.path.join(carpeta, 'banco-preguntas', 'cap*.json'))):
         banco += json.load(open(f, encoding='utf-8'))
-    problemas = [(q.get('id'), e) for q in banco for e in validar(q)]
-    ids = Counter(q.get('id') for q in banco)
-    problemas += [(i, 'id repetido') for i, n in ids.items() if n > 1]
+    problemas = [(q.get('id'), e) for q in banco for e in validar(q, examen)]
+    problemas += [(i, 'id repetido') for i, n in Counter(q.get('id') for q in banco).items() if n > 1]
     if problemas:
         for p in problemas:
             print('✗', *p)
         sys.exit(1)
 
-    index = open(os.path.join(RAIZ, 'index.html'), encoding='utf-8').read()
-    capitulos = {int(n) + 1: t.strip() for n, t in re.findall(
-        r'id="mtitle-(\d+)">([^<]+)</span>', index)}
+    index = open(os.path.join(carpeta, 'index.html'), encoding='utf-8').read()
+    capitulos = {int(n): t.strip() for n, t in
+                 re.findall(r'<div id="lp-(\d+)"[^>]*>.*?<span class="breadcrumb-lesson">([^<]*)</span>', index, re.S)}
 
+    cfg = dict(examen, codigo=curso['examen'], subtitulo=f'Banco de {len(banco)} preguntas del curso {curso["titulo"]} · caso: Marketplace de Créditos')
     plantilla = open(os.path.join(RAIZ, 'herramientas', 'simulador-plantilla.html'), encoding='utf-8').read()
     html = (plantilla
             .replace('/*BANCO*/[]', json.dumps(banco, ensure_ascii=False))
-            .replace('/*CAPITULOS*/{}', json.dumps(capitulos, ensure_ascii=False)))
-    open(os.path.join(RAIZ, 'simulador-examen.html'), 'w', encoding='utf-8').write(html)
+            .replace('/*CAPITULOS*/{}', json.dumps(capitulos, ensure_ascii=False))
+            .replace('/*EXAMEN*/{}', json.dumps(cfg, ensure_ascii=False)))
+    open(os.path.join(carpeta, 'simulador-examen.html'), 'w', encoding='utf-8').write(html)
 
-    print(f'simulador-examen.html: {len(banco)} preguntas')
-    print('  por dominio:', dict(sorted(Counter(q['dominio'] for q in banco).items())))
-    print('  por capítulo:', dict(sorted(Counter(q['cap'] for q in banco).items())))
-    print('  posición de la correcta:', dict(sorted(Counter(q['correcta'] for q in banco).items())))
+    print(f'  simulador {curso["examen"]}: {len(banco)} preguntas · por dominio',
+          dict(sorted(Counter(q['dominio'] for q in banco).items())),
+          '· correcta en', dict(sorted(Counter(q['correcta'] for q in banco).items())))
 
 
 if __name__ == '__main__':

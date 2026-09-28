@@ -1,0 +1,50 @@
+{
+  "claude-code": {
+    "carpeta": ".",
+    "trozos": "curso",
+    "sigla": "ADM",
+    "titulo": "Claude Code para Equipos",
+    "credencial": "Agentic Developer Master",
+    "bajada": "Dirigir y verificar a un agente que escribe código: de la primera instrucción a un equipo que trabaja con el mismo estándar.",
+    "examen": "CCAR-F",
+    "color": ["#2563eb", "#06b6d4"],
+    "icono": "terminal",
+    "preguntas": 400
+  },
+  "arquitecto": {
+    "carpeta": "arquitecto-agentic",
+    "trozos": "arquitecto",
+    "sigla": "AAEA",
+    "titulo": "Agentic AI Enterprise Architect",
+    "credencial": "Agentic AI Enterprise Architect",
+    "bajada": "Los patrones de agentes de Anthropic, del workflow más simple al sistema multiagente en producción, diseñados sobre el Marketplace.",
+    "examen": "CCAR-P",
+    "color": ["#7c3aed", "#2563eb"],
+    "icono": "nodos",
+    "preguntas": 400
+  },
+  "prompts": {
+    "carpeta": "ingenieria-prompts",
+    "trozos": "prompts",
+    "sigla": "PEM",
+    "titulo": "Ingeniería de Prompts con Claude",
+    "credencial": "Prompt Engineering Master",
+    "bajada": "La API de Claude, prompting, evaluación, tool use, Skills y RAG: cada técnica probada sobre un problema real del Marketplace.",
+    "examen": "CCDV-F",
+    "color": ["#d97706", "#db2777"],
+    "icono": "llaves",
+    "preguntas": 400
+  },
+  "gobierno": {
+    "carpeta": "gobierno-llmops",
+    "trozos": "gobierno",
+    "sigla": "AGLO",
+    "titulo": "AI Governance & LLMOps Specialist",
+    "credencial": "AI Governance & LLMOps Specialist",
+    "bajada": "Gobernar, proteger, observar y operar Claude en el banco: controles por diseño para el Marketplace de Créditos.",
+    "examen": "CCAO-F",
+    "color": ["#059669", "#0891b2"],
+    "icono": "escudo",
+    "preguntas": 400
+  }
+}

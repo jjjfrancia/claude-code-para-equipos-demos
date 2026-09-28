@@ -1,0 +1,61 @@
+{
+  "CCAR-F": {
+    "nombre": "Claude Certified Architect – Foundations",
+    "preguntas": 60, "minutos": 120, "aprobado": 720, "precio": "USD 125",
+    "formato": "Opción múltiple: una respuesta correcta y tres incorrectas. 4 escenarios elegidos al azar de un banco de 6.",
+    "dominios": {
+      "1": {"n": "Agentic Architecture & Orchestration", "es": "Arquitectura agéntica y orquestación", "peso": 27, "tasks": ["1.1","1.2","1.3","1.4","1.5","1.6","1.7"]},
+      "2": {"n": "Tool Design & MCP Integration", "es": "Diseño de tools e integración MCP", "peso": 18, "tasks": ["2.1","2.2","2.3","2.4","2.5"]},
+      "3": {"n": "Claude Code Configuration & Workflows", "es": "Configuración y workflows de Claude Code", "peso": 20, "tasks": ["3.1","3.2","3.3","3.4","3.5","3.6"]},
+      "4": {"n": "Prompt Engineering & Structured Output", "es": "Prompt engineering y salida estructurada", "peso": 20, "tasks": ["4.1","4.2","4.3","4.4","4.5","4.6"]},
+      "5": {"n": "Context Management & Reliability", "es": "Gestión de contexto y confiabilidad", "peso": 15, "tasks": ["5.1","5.2","5.3","5.4","5.5","5.6"]}
+    },
+    "escenarios": {"1": "Agente de atención y resolución", "2": "Generación de código con Claude Code", "3": "Sistema multi-agente de investigación", "4": "Productividad del developer", "5": "Claude Code en CI/CD", "6": "Extracción de datos estructurados"}
+  },
+  "CCAR-P": {
+    "nombre": "Claude Certified Architect – Professional",
+    "preguntas": 63, "minutos": 120, "aprobado": 720, "precio": "USD 175",
+    "formato": "Opción múltiple y respuesta múltiple; cada ítem indica cuántas respuestas elegir.",
+    "dominios": {
+      "1": {"n": "Solution Design & Architecture", "es": "Diseño de la solución y arquitectura", "peso": 17, "tasks": ["1.1","1.2","1.3","1.4","1.5","1.6"]},
+      "2": {"n": "Claude Models, Prompting & Context Engineering", "es": "Modelos, prompting e ingeniería de contexto", "peso": 13, "tasks": ["2.1","2.2","2.3","2.4","2.5"]},
+      "3": {"n": "Integration", "es": "Integración", "peso": 19, "tasks": ["3.1","3.2","3.3","3.4","3.5","3.6","3.7","3.8"]},
+      "4": {"n": "Evaluation, Testing & Optimization", "es": "Evaluación, pruebas y optimización", "peso": 16, "tasks": ["4.1","4.2","4.3","4.4","4.5","4.6"]},
+      "5": {"n": "Governance, Safety & Risk Management", "es": "Gobierno, seguridad y gestión de riesgos", "peso": 14, "tasks": ["5.1","5.2","5.3","5.4","5.5"]},
+      "6": {"n": "Stakeholder Communication & Lifecycle Management", "es": "Comunicación con stakeholders y ciclo de vida", "peso": 14, "tasks": ["6.1","6.2","6.3","6.4","6.5"]},
+      "7": {"n": "Developer Productivity & Operational Enablement", "es": "Productividad del developer y habilitación operativa", "peso": 7, "tasks": ["7.1","7.2","7.3"]}
+    },
+    "escenarios": {}
+  },
+  "CCDV-F": {
+    "nombre": "Claude Certified Developer – Foundations",
+    "preguntas": 53, "minutos": 120, "aprobado": 720, "precio": "USD 125",
+    "formato": "Opción múltiple y respuesta múltiple; cada ítem indica cuántas respuestas elegir.",
+    "dominios": {
+      "1": {"n": "Agents and Workflows", "es": "Agentes y workflows", "peso": 14.7, "tasks": ["1.1","1.2","1.3"]},
+      "2": {"n": "Applications and Integration", "es": "Aplicaciones e integración", "peso": 33.1, "tasks": ["2.1","2.2","2.3","2.4","2.5","2.6"]},
+      "3": {"n": "Claude Code", "es": "Claude Code", "peso": 3.1, "tasks": ["3.1"]},
+      "4": {"n": "Eval, Testing, and Debugging", "es": "Evaluación, pruebas y depuración", "peso": 2.6, "tasks": ["4.1"]},
+      "5": {"n": "Model Selection and Optimization", "es": "Selección de modelo y optimización", "peso": 16.8, "tasks": ["5.1","5.2","5.3","5.4"]},
+      "6": {"n": "Prompt and Context Engineering", "es": "Ingeniería de prompts y de contexto", "peso": 11.0, "tasks": ["6.1","6.2","6.3"]},
+      "7": {"n": "Security and Safety", "es": "Seguridad", "peso": 8.1, "tasks": ["7.1","7.2","7.3","7.4"]},
+      "8": {"n": "Tools and MCPs", "es": "Tools y MCP", "peso": 10.6, "tasks": ["8.1","8.2","8.3"]}
+    },
+    "escenarios": {}
+  },
+  "CCAO-F": {
+    "nombre": "Claude Certified Associate – Foundations",
+    "preguntas": 60, "minutos": 120, "aprobado": 720, "precio": "USD 99",
+    "formato": "Opción múltiple y respuesta múltiple; cada ítem indica cuántas respuestas elegir.",
+    "dominios": {
+      "1": {"n": "Prompting and Task Execution", "es": "Prompting y ejecución de tareas", "peso": 14, "tasks": ["1.1","1.2","1.3","1.4"]},
+      "2": {"n": "Output Evaluation and Validation", "es": "Evaluación y validación de resultados", "peso": 21, "tasks": ["2.1","2.2","2.3","2.4","2.5","2.6"]},
+      "3": {"n": "Product and Model Selection", "es": "Selección de producto y modelo", "peso": 12, "tasks": ["3.1","3.2","3.3","3.4"]},
+      "4": {"n": "Workflow Integration and Solution Design", "es": "Integración en flujos de trabajo y diseño de soluciones", "peso": 16, "tasks": ["4.1","4.2","4.3","4.4","4.5"]},
+      "5": {"n": "Configuration and Knowledge Management", "es": "Configuración y gestión del conocimiento", "peso": 12, "tasks": ["5.1","5.2","5.3","5.4"]},
+      "6": {"n": "Governance, Risk, and Responsible Use", "es": "Gobierno, riesgo y uso responsable", "peso": 15, "tasks": ["6.1","6.2","6.3","6.4"]},
+      "7": {"n": "Troubleshooting and Optimization", "es": "Resolución de problemas y optimización", "peso": 10, "tasks": ["7.1","7.2","7.3"]}
+    },
+    "escenarios": {}
+  }
+}
