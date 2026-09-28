@@ -119,6 +119,14 @@ Sirve para practicar patrones de integración con un sistema externo lento e inc
 BTC/soles con vencimiento, confirmaciones que tardan, idempotencia para no enviar dos veces, límites de
 monto y aprobación humana antes de cada envío. En los cursos siempre se dice que es una simulación.
 
+### Caso complementario del curso de arquitecto: micropagos entre agentes con x402
+
+El Agente Evaluador del banco (B) vende reportes de riesgo a agentes externos (A) por 0.005 USDC cada
+uno con el protocolo x402: A pide el reporte, el servidor de B responde `HTTP 402 Payment Required` con
+los requisitos de pago, A reintenta con el pago firmado en la cabecera `X-PAYMENT`, el servidor lo
+verifica y recién entonces el agente genera el reporte. El cobro lo exige el servidor en código, nunca
+el prompt. En clase se usa una red de prueba (testnet), sin dinero real.
+
 ## Los documentos (ficticios, creados para el curso)
 
 | Documento | Cita | Para qué caso |

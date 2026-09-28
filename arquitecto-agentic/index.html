@@ -3610,6 +3610,8 @@ Salida al detenerse sin terminar: hechos verificados, pendientes, subtype, sessi
       <button class="lesson-tab" onclick="tabScroll(10,'a10-donde',this)">2 · Dónde corre el agente</button>
       <button class="lesson-tab" onclick="tabScroll(10,'a10-integracion',this)">3 · Integración</button>
       <button class="lesson-tab" onclick="tabScroll(10,'a10-observar',this)">4 · Observar y costear</button>
+      <button class="lesson-tab" onclick="tabScroll(10,'a10-x402',this)">💸 Micropagos x402</button>
+      <button class="lesson-tab" onclick="tabScroll(10,'a10-x402-lab',this)">🧪 Laboratorio x402</button>
       <button class="lesson-tab" onclick="tabScroll(10,'a10-claves',this)">✓ Puntos clave</button>
       <button class="lesson-tab" onclick="tabScroll(10,'l10-activity',this)">✍ Actividad</button>
       <button class="lesson-tab" onclick="tabScroll(10,'quizCard10',this)">✓ Quiz</button>
@@ -3759,6 +3761,191 @@ Recuperación: la política viaja completa y cacheada; el histórico de casos po
 Observabilidad: OpenTelemetry a nuestro colector; tableros de costo por caso, turnos, escalamientos por motivo y subtipos.
 Sesiones: almacenamiento propio de transcripciones y directorio de trabajo por caso; reanudación por session_id.</textarea>
 
+        </div>
+      </div>
+
+      <div class="card" id="a10-x402">
+        <div class="card-header">
+          <div class="card-header-icon" style="background:#ecfdf5">💸</div>
+          <span class="card-header-title">Integración agente a agente: micropagos con x402</span>
+          <span class="card-header-badge blue">caso complementario</span>
+        </div>
+        <div class="card-body theory-content">
+<p><strong>Qué es.</strong> <b>x402</b> es un protocolo abierto que usa el código HTTP <code>402 Payment Required</code> para que un agente le pague a otro por cada consulta, en stablecoins como USDC, sin suscripciones, sin tarjeta y sin API keys. El agente cliente tiene su propia billetera; el agente que vende el servicio cobra por cada llamada, por ejemplo 0.005 USDC por un reporte de riesgo.</p>
+<div class="diagram-wrap zoom-trigger" onclick="openZoom('ar10-x402','Micropago entre agentes con x402')" title="Clic para ampliar"><svg id="ar10-x402" viewBox="0 0 920 330" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block;background:#fff;border-radius:10px;font-family:'Inter',system-ui,sans-serif"><defs><marker id="ar10-x402-a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#64748b"/></marker></defs>
+<g font-size="14">
+<rect x="20" y="30" width="220" height="270" rx="14" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/><text x="130" y="62" text-anchor="middle" font-weight="900" fill="#1e3a8a" font-size="16">Agente A</text><text x="130" y="84" text-anchor="middle" fill="#334155">cliente, con wallet</text>
+<rect x="680" y="30" width="220" height="270" rx="14" fill="#ecfdf5" stroke="#059669" stroke-width="2"/><text x="790" y="62" text-anchor="middle" font-weight="900" fill="#065f46" font-size="16">Agente B</text><text x="790" y="84" text-anchor="middle" fill="#334155">evaluador del banco</text>
+<g stroke-width="2.4"><path d="M240 110H676" stroke="#2563eb" marker-end="url(#ar10-x402-a)"/><path d="M680 150H244" stroke="#dc2626" marker-end="url(#ar10-x402-a)"/><path d="M240 196H676" stroke="#d97706" marker-end="url(#ar10-x402-a)"/><path d="M680 250H244" stroke="#059669" marker-end="url(#ar10-x402-a)"/></g>
+<text x="460" y="102" text-anchor="middle" fill="#1e3a8a" font-weight="700">1 · GET /reporte-riesgo</text>
+<text x="460" y="142" text-anchor="middle" fill="#991b1b" font-weight="700">2 · HTTP 402 Payment Required · 0.005 USDC</text>
+<text x="460" y="188" text-anchor="middle" fill="#92400e" font-weight="700">3 · reintenta con X-PAYMENT (pago firmado)</text>
+<rect x="340" y="206" width="240" height="30" rx="8" fill="#fef3c7" stroke="#d97706"/><text x="460" y="226" text-anchor="middle" fill="#92400e">el servidor verifica el pago</text>
+<text x="460" y="268" text-anchor="middle" fill="#065f46" font-weight="700">4 · 200 OK + reporte de riesgo</text>
+<text x="460" y="318" text-anchor="middle" fill="#0f172a" font-weight="800">En clase: red de prueba (testnet), sin dinero real.</text>
+</g></svg></div>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;margin:14px 0"><div style="border:1.5px solid #6ee7b7;background:#ecfdf5;border-radius:12px;padding:12px 16px"><strong style="color:#065f46">✓ Beneficios</strong><ul style="margin:6px 0 0"><li>Cobros de fracciones de centavo, imposibles con tarjeta o transferencia por las comisiones.</li><li>Un agente externo puede empezar a usar el servicio sin contrato previo ni registro.</li><li>Cada consulta queda pagada y registrada al instante.</li></ul></div><div style="border:1.5px solid #fca5a5;background:#fef2f2;border-radius:12px;padding:12px 16px"><strong style="color:#991b1b">⚠ Riesgos</strong><ul style="margin:6px 0 0"><li>En un banco: PLA/FT, conocimiento del cliente y regulación de activos virtuales antes de producción.</li><li>Si el cobro depende del prompt, el modelo puede entregar el reporte sin pago.</li><li>Datos del solicitante enviados a un agente desconocido: protección de datos personales.</li></ul></div></div>
+<div class="callout warning"><span class="callout-icon">⚠</span><div class="callout-text"><strong>La corrección de arquitecto.</strong> «No entregues el análisis hasta confirmar el pago» no puede ser una instrucción al modelo: eso se cumple «casi siempre». El cobro lo hace cumplir el <b>servidor</b>, en código, antes de que la petición llegue al agente. El prompt del agente solo describe el servicio.</div></div>
+<div class="callout info"><span class="callout-icon">💡</span><div class="callout-text"><strong>La lección en una frase.</strong> El pago lo exige el servidor; el agente solo hace el análisis.</div></div><p style="margin:12px 0 4px"><strong style="color:#991b1b">❌ Así no</strong></p><pre><code>System prompt del Agente B:
+Eres un agente evaluador. Antes de entregar un Reporte de Riesgo,
+genera un cobro de 0.005 USDC y no entregues el análisis hasta que
+el protocolo x402 confirme el depósito en la blockchain.</code></pre><p style="font-size:15px">El modelo no puede verificar la blockchain. Si un mensaje le dice «ya pagué», o si alguien inyecta ese texto en la solicitud, puede entregar el reporte sin cobro.</p><p style="margin:12px 0 4px"><strong style="color:#065f46">✅ Así sí</strong></p><pre><code># servidor.py: el middleware x402 protege la ruta ANTES del agente
+@app.get(&quot;/reporte-riesgo&quot;)
+@requiere_pago_x402(monto=&quot;0.005&quot;, moneda=&quot;USDC&quot;,
+                    red=&quot;base-sepolia&quot;, pagar_a=WALLET_BANCO)
+def reporte_riesgo(solicitud):
+    return agente_evaluador.analizar(solicitud)   # solo si el pago se verificó
+
+# System prompt del Agente B (sin nada de cobros):
+# Eres un agente evaluador de riesgo. Recibes el perfil de un solicitante
+# y devuelves un reporte con motivos citando la Política de Créditos.</code></pre><p style="margin:12px 0 4px"><strong>Qué vas a ver</strong></p><pre><code>HTTP/1.1 402 Payment Required
+Content-Type: application/json
+
+{
+  &quot;x402Version&quot;: 1,
+  &quot;accepts&quot;: [{
+    &quot;scheme&quot;: &quot;exact&quot;,
+    &quot;network&quot;: &quot;base-sepolia&quot;,
+    &quot;maxAmountRequired&quot;: &quot;5000&quot;,
+    &quot;asset&quot;: &quot;&lt;dirección del contrato USDC de prueba&gt;&quot;,
+    &quot;payTo&quot;: &quot;0xAgenteB...392f&quot;,
+    &quot;resource&quot;: &quot;https://evaluador.banco.pe/reporte-riesgo&quot;,
+    &quot;description&quot;: &quot;Reporte de riesgo crediticio&quot;
+  }]
+}
+
+# El Agente A reintenta con el pago firmado en la cabecera:
+GET /reporte-riesgo
+X-PAYMENT: eyJ4NDAyVmVyc2lvbiI6MSwic2NoZW1lIjoiZXhhY3Qi…
+
+HTTP/1.1 200 OK
+X-PAYMENT-RESPONSE: eyJ0eEhhc2giOiIweDlmM…
+{&quot;score&quot;: &quot;medio&quot;, &quot;motivos&quot;: [&quot;carga de 29,7 %&quot;, &quot;historial de 8 meses&quot;]}</code></pre><p><strong>Por qué funciona.</strong> La regla de dinero vive en código determinista, como el límite del reembolso: el modelo no puede saltársela aunque lo engañen. Nota: en la especificación, <code>maxAmountRequired</code> va en unidades mínimas; USDC tiene 6 decimales, así que 0.005 USDC = 5000.</p>
+<div style="border:1.5px dashed #2563eb;border-radius:12px;padding:14px 16px;background:#f8fafc;margin-top:14px"><strong>🛠 Pruébalo tú</strong><p style="margin:6px 0">Dibuja en el pizarrón los 4 pasos (petición, 402, pago firmado, 200) y marca en qué paso actúa el código del servidor y en cuál actúa el modelo.</p><details><summary style="cursor:pointer;font-weight:600;color:#1d4ed8">Ver resultado esperado</summary><div style="margin-top:8px">El servidor actúa en los pasos 2 y 3: responde 402 y verifica el pago. El modelo solo actúa después, en el paso 4, cuando genera el reporte. Si el pago no se verifica, el modelo nunca recibe la solicitud.</div></details></div>
+        </div>
+      </div>
+
+      <div class="card" id="a10-x402-lab">
+        <div class="card-header">
+          <div class="card-header-icon" style="background:#fef3c7">🧪</div>
+          <span class="card-header-title">Laboratorio: simulación del protocolo x402 en Python</span>
+          <span class="card-header-badge blue">laboratorio</span>
+        </div>
+        <div class="card-body theory-content">
+<p>Se corre en clase sin blockchain ni dinero real: la «blockchain» es un diccionario. Archivo en el repositorio: <code>laboratorio-final/arquitecto/x402_simulacion.py</code>.</p>
+<pre><code>python x402_simulacion.py</code></pre>
+<p style="margin:12px 0 4px"><strong>Qué vas a ver</strong></p>
+<pre><code>🤖 [Agente cliente] Pido la evaluación sin pagar…
+📡 [Servidor banco] HTTP 402 Payment Required
+💰 [Agente cliente] Pago 0.005 USDC a 0xAgenteEvaluadorBanco789XYZ en base-sepolia…
+🔗 [Blockchain simulada] Confirmada: 0x8c7b7ca827d2429a
+
+🤖 [Agente cliente] Reintento con el comprobante en X-PAYMENT…
+📡 [Servidor banco] HTTP 200
+📊 [Reporte] Riesgo bajo: carga de deuda 22 % del ingreso (Política de Créditos, p. 7). Recomendación: aprobar.
+
+🕵 [Prueba de seguridad] Reutilizo el mismo comprobante…
+📡 [Servidor banco] HTTP 402 Comprobante ya utilizado</code></pre>
+<p style="margin:12px 0 4px"><strong>El código</strong></p>
+<pre><code>&quot;&quot;&quot;Laboratorio: micropagos entre agentes con el protocolo x402 (SIMULACIÓN, sin blockchain ni dinero real).
+
+El Agente Cliente pide un reporte de crédito al Agente Evaluador del banco. El servidor del banco responde
+402 Payment Required; el cliente paga 0.005 USDC (simulado), reintenta con el comprobante y recibe el reporte.
+
+Lo que enseña, además del flujo:
+- El cobro lo exige el SERVIDOR en código, antes de llegar al agente (no el prompt).
+- Un comprobante solo sirve una vez (protección contra reutilización).
+- El pago tiene que ir a la billetera del banco y por el monto exacto.
+- Los montos se manejan en unidades mínimas enteras: USDC tiene 6 decimales, 0.005 USDC = 5000.
+
+Corre con: python x402_simulacion.py
+&quot;&quot;&quot;
+import time
+import uuid
+
+WALLETS = {
+    &quot;agente_banco&quot;: &quot;0xAgenteEvaluadorBanco789XYZ&quot;,
+    &quot;agente_cliente&quot;: &quot;0xAgenteCliente123ABC&quot;,
+}
+PRECIO_UNIDADES = 5000          # 0.005 USDC en unidades mínimas (6 decimales)
+RED = &quot;base-sepolia&quot;            # red de prueba: en clase no se usa dinero real
+
+blockchain_simulada = {}        # hash -&gt; {origen, destino, monto}
+
+
+def usdc(unidades: int) -&gt; str:
+    return f&quot;{unidades / 1_000_000:.3f} USDC&quot;
+
+
+def agente_evaluador(perfil: dict) -&gt; str:
+    &quot;&quot;&quot;El agente (aquí simulado) solo analiza; no sabe nada de cobros.&quot;&quot;&quot;
+    return &quot;Riesgo bajo: carga de deuda 22 % del ingreso (Política de Créditos, p. 7). Recomendación: aprobar.&quot;
+
+
+class ServidorBanco:
+    def __init__(self):
+        self.pagos_usados = set()
+
+    def evaluar_credito(self, perfil: dict, headers: dict | None = None) -&gt; dict:
+        headers = headers or {}
+        comprobante = headers.get(&quot;X-PAYMENT&quot;)
+
+        # 1) Sin comprobante: el servidor responde 402 con los requisitos de pago.
+        if not comprobante:
+            return {&quot;status&quot;: 402, &quot;error&quot;: &quot;Payment Required&quot;, &quot;accepts&quot;: [{
+                &quot;scheme&quot;: &quot;exact&quot;, &quot;network&quot;: RED, &quot;maxAmountRequired&quot;: str(PRECIO_UNIDADES),
+                &quot;payTo&quot;: WALLETS[&quot;agente_banco&quot;], &quot;resource&quot;: &quot;/evaluar_credito&quot;,
+                &quot;description&quot;: &quot;Reporte de riesgo crediticio&quot;}]}
+
+        # 2) Verificación del pago, en código, antes de llamar al agente.
+        tx = blockchain_simulada.get(comprobante)
+        if tx is None:
+            return {&quot;status&quot;: 402, &quot;error&quot;: &quot;Pago no encontrado&quot;}
+        if comprobante in self.pagos_usados:
+            return {&quot;status&quot;: 402, &quot;error&quot;: &quot;Comprobante ya utilizado&quot;}
+        if tx[&quot;destino&quot;] != WALLETS[&quot;agente_banco&quot;]:
+            return {&quot;status&quot;: 402, &quot;error&quot;: &quot;El pago no fue a la billetera del banco&quot;}
+        if tx[&quot;monto&quot;] &lt; PRECIO_UNIDADES:
+            return {&quot;status&quot;: 402, &quot;error&quot;: f&quot;Monto insuficiente: {usdc(tx[&#x27;monto&#x27;])}&quot;}
+
+        self.pagos_usados.add(comprobante)
+        # 3) Solo ahora el agente recibe la solicitud.
+        return {&quot;status&quot;: 200, &quot;X-PAYMENT-RESPONSE&quot;: comprobante, &quot;reporte&quot;: agente_evaluador(perfil)}
+
+
+def pagar(origen: str, destino: str, monto: int) -&gt; str:
+    &quot;&quot;&quot;Simula una transferencia on-chain y devuelve su hash.&quot;&quot;&quot;
+    tx_hash = &quot;0x&quot; + uuid.uuid4().hex[:16]
+    time.sleep(0.5)                                   # latencia de una red rápida (L2)
+    blockchain_simulada[tx_hash] = {&quot;origen&quot;: origen, &quot;destino&quot;: destino, &quot;monto&quot;: monto}
+    return tx_hash
+
+
+if __name__ == &quot;__main__&quot;:
+    banco = ServidorBanco()
+    perfil = {&quot;solicitud&quot;: &quot;S-2087&quot;, &quot;ingreso_neto&quot;: 4200, &quot;deudas&quot;: 900}
+
+    print(&quot;🤖 [Agente cliente] Pido la evaluación sin pagar…&quot;)
+    r1 = banco.evaluar_credito(perfil)
+    print(f&quot;📡 [Servidor banco] HTTP {r1[&#x27;status&#x27;]} {r1[&#x27;error&#x27;]}&quot;)
+
+    req = r1[&quot;accepts&quot;][0]
+    monto = int(req[&quot;maxAmountRequired&quot;])
+    print(f&quot;💰 [Agente cliente] Pago {usdc(monto)} a {req[&#x27;payTo&#x27;]} en {req[&#x27;network&#x27;]}…&quot;)
+    tx = pagar(WALLETS[&quot;agente_cliente&quot;], req[&quot;payTo&quot;], monto)
+    print(f&quot;🔗 [Blockchain simulada] Confirmada: {tx}&quot;)
+
+    print(&quot;\n🤖 [Agente cliente] Reintento con el comprobante en X-PAYMENT…&quot;)
+    r2 = banco.evaluar_credito(perfil, headers={&quot;X-PAYMENT&quot;: tx})
+    print(f&quot;📡 [Servidor banco] HTTP {r2[&#x27;status&#x27;]}&quot;)
+    print(f&quot;📊 [Reporte] {r2.get(&#x27;reporte&#x27;)}&quot;)
+
+    print(&quot;\n🕵 [Prueba de seguridad] Reutilizo el mismo comprobante…&quot;)
+    r3 = banco.evaluar_credito(perfil, headers={&quot;X-PAYMENT&quot;: tx})
+    print(f&quot;📡 [Servidor banco] HTTP {r3[&#x27;status&#x27;]} {r3[&#x27;error&#x27;]}&quot;)
+</code></pre>
+<div class="callout info"><span class="callout-icon">💡</span><div class="callout-text"><strong>Tres decisiones de arquitecto en el código.</strong> 1) El servidor verifica el pago antes de llamar al agente. 2) Un comprobante solo sirve una vez (la prueba final lo demuestra). 3) Los montos van en unidades mínimas enteras: 0.005 USDC = 5000.</div></div>
+<div style="border:1.5px dashed #2563eb;border-radius:12px;padding:14px 16px;background:#f8fafc;margin-top:14px"><strong>🛠 Pruébalo tú</strong><p style="margin:6px 0">Cambia la función <code>pagar</code> para que el cliente pague 0.004 USDC (4000) y vuelve a correr el laboratorio.</p><details><summary style="cursor:pointer;font-weight:600;color:#1d4ed8">Ver resultado esperado</summary><div style="margin-top:8px">El segundo intento responde <code>HTTP 402 Monto insuficiente: 0.004 USDC</code> y el agente nunca recibe la solicitud.</div></details></div>
         </div>
       </div>
 
@@ -4138,7 +4325,7 @@ Rollback: versión anterior de prompts y modelo disponible; se activa si cae la 
 const TOTAL_LESSONS = 11;
 const READ_FILLS = Array.from({length: TOTAL_LESSONS}, (_, i) => 'readFill' + (i + 1));
 const READ_LABELS = Array.from({length: TOTAL_LESSONS}, (_, i) => 'readLabel' + (i + 1));
-const TABS = {"1": ["l1-reflect", "l1-objectives", "a1-caso", "a1-teoria", "a1-simple", "a1-decision", "a1-glosario", "a1-claves", "l1-activity", "quizCard1"], "2": ["l2-reflect", "l2-objectives", "a2-caso", "a2-bloque", "a2-aci", "a2-reparto", "a2-claves", "l2-activity", "quizCard2"], "3": ["l3-reflect", "l3-objectives", "a3-caso", "a3-teoria", "a3-impl", "a3-parada", "a3-claves", "l3-activity", "quizCard3"], "4": ["l4-reflect", "l4-objectives", "a4-caso", "a4-teoria", "a4-impl", "a4-riesgos", "a4-claves", "l4-activity", "quizCard4"], "5": ["l5-reflect", "l5-objectives", "a5-caso", "a5-teoria", "a5-impl", "a5-parada", "a5-claves", "l5-activity", "quizCard5"], "6": ["l6-reflect", "l6-objectives", "a6-caso", "a6-teoria", "a6-sdk", "a6-parada", "a6-claves", "l6-activity", "quizCard6"], "7": ["l7-reflect", "l7-objectives", "a7-caso", "a7-teoria", "a7-criterios", "a7-parada", "a7-claves", "l7-activity", "quizCard7"], "8": ["l8-reflect", "l8-objectives", "a8-caso", "a8-teoria", "a8-bucle", "a8-parada", "a8-principios", "a8-glosario", "a8-claves", "l8-activity", "quizCard8"], "9": ["l9-reflect", "l9-objectives", "a9-caso", "a9-contexto", "a9-errores", "a9-humano", "a9-equipos", "a9-claves", "l9-activity", "quizCard9"], "10": ["l10-reflect", "l10-objectives", "a10-caso", "a10-valor", "a10-donde", "a10-integracion", "a10-observar", "a10-claves", "l10-activity", "quizCard10"], "11": ["l11-reflect", "l11-objectives", "a11-caso", "a11-discovery", "a11-comunicar", "a11-ciclo", "a11-habilitar", "a11-cierre", "a11-claves", "l11-activity", "quizCard11"]};
+const TABS = {"1": ["l1-reflect", "l1-objectives", "a1-caso", "a1-teoria", "a1-simple", "a1-decision", "a1-glosario", "a1-claves", "l1-activity", "quizCard1"], "2": ["l2-reflect", "l2-objectives", "a2-caso", "a2-bloque", "a2-aci", "a2-reparto", "a2-claves", "l2-activity", "quizCard2"], "3": ["l3-reflect", "l3-objectives", "a3-caso", "a3-teoria", "a3-impl", "a3-parada", "a3-claves", "l3-activity", "quizCard3"], "4": ["l4-reflect", "l4-objectives", "a4-caso", "a4-teoria", "a4-impl", "a4-riesgos", "a4-claves", "l4-activity", "quizCard4"], "5": ["l5-reflect", "l5-objectives", "a5-caso", "a5-teoria", "a5-impl", "a5-parada", "a5-claves", "l5-activity", "quizCard5"], "6": ["l6-reflect", "l6-objectives", "a6-caso", "a6-teoria", "a6-sdk", "a6-parada", "a6-claves", "l6-activity", "quizCard6"], "7": ["l7-reflect", "l7-objectives", "a7-caso", "a7-teoria", "a7-criterios", "a7-parada", "a7-claves", "l7-activity", "quizCard7"], "8": ["l8-reflect", "l8-objectives", "a8-caso", "a8-teoria", "a8-bucle", "a8-parada", "a8-principios", "a8-glosario", "a8-claves", "l8-activity", "quizCard8"], "9": ["l9-reflect", "l9-objectives", "a9-caso", "a9-contexto", "a9-errores", "a9-humano", "a9-equipos", "a9-claves", "l9-activity", "quizCard9"], "10": ["l10-reflect", "l10-objectives", "a10-caso", "a10-valor", "a10-donde", "a10-integracion", "a10-observar", "a10-x402", "a10-x402-lab", "a10-claves", "l10-activity", "quizCard10"], "11": ["l11-reflect", "l11-objectives", "a11-caso", "a11-discovery", "a11-comunicar", "a11-ciclo", "a11-habilitar", "a11-cierre", "a11-claves", "l11-activity", "quizCard11"]};
 const CORRECTAS = {"1": {"1": 1, "2": 2, "3": 1}, "2": {"1": 1, "2": 2, "3": 1}, "3": {"1": 1, "2": 1, "3": 1}, "4": {"1": 1, "2": 2, "3": 1}, "5": {"1": 1, "2": 1, "3": 1}, "6": {"1": 1, "2": 1, "3": 2}, "7": {"1": 1, "2": 2, "3": 1}, "8": {"1": 1, "2": 1, "3": 1}, "9": {"1": 1, "2": 1, "3": 2}, "10": {"1": 1, "2": 1, "3": 1}, "11": {"1": 1, "2": 1, "3": 1}};
 const MINIMOS = {"1": 2, "2": 2, "3": 2, "4": 2, "5": 2, "6": 2, "7": 2, "8": 2, "9": 2, "10": 2, "11": 2};
 const MENSAJE_FINAL = "Completaste Agentic AI Enterprise Architect. Empieza simple, comp\u00f3n patrones, y agrega autonom\u00eda solo donde mejora el resultado y se puede detener.";
