@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Simulador de examen CCA-F</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+*{box-sizing:border-box}
+:root{
+  --bg:#f4f6fb;--panel:#ffffff;--panel2:#f8fafc;--line:#e2e8f0;--line2:#cbd5e1;
+  --text:#0f172a;--text2:#475569;--text3:#64748b;
+  --accent:#2563eb;--accent-ink:#ffffff;--accent-soft:#eff6ff;--accent-line:#bfdbfe;
+  --ok:#047857;--ok-soft:#d1fae5;--bad:#b91c1c;--bad-soft:#fee2e2;--warn:#92400e;--warn-soft:#fef3c7;
+  --d1:#2563eb;--d2:#0891b2;--d3:#7c3aed;--d4:#d97706;--d5:#059669;
+  --shadow:0 1px 3px rgba(15,23,42,.08),0 1px 2px rgba(15,23,42,.04);
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  color-scheme:dark;--bg:#0b1220;--panel:#111a2e;--panel2:#0f172a;--line:#1f2a44;--line2:#2c3a5c;
+  --text:#e5ecf6;--text2:#a9b6cc;--text3:#7f8ca3;--accent:#60a5fa;--accent-ink:#0b1220;--accent-soft:#132544;--accent-line:#1e3a6b;
+  --ok:#34d399;--ok-soft:#0d2e24;--bad:#f87171;--bad-soft:#3a1618;--warn:#fbbf24;--warn-soft:#33260b;
+  --d1:#60a5fa;--d2:#22d3ee;--d3:#a78bfa;--d4:#fbbf24;--d5:#34d399;--shadow:none}}
+:root[data-theme="dark"]{
+  color-scheme:dark;--bg:#0b1220;--panel:#111a2e;--panel2:#0f172a;--line:#1f2a44;--line2:#2c3a5c;
+  --text:#e5ecf6;--text2:#a9b6cc;--text3:#7f8ca3;--accent:#60a5fa;--accent-ink:#0b1220;--accent-soft:#132544;--accent-line:#1e3a6b;
+  --ok:#34d399;--ok-soft:#0d2e24;--bad:#f87171;--bad-soft:#3a1618;--warn:#fbbf24;--warn-soft:#33260b;
+  --d1:#60a5fa;--d2:#22d3ee;--d3:#a78bfa;--d4:#fbbf24;--d5:#34d399;--shadow:none}
+body{margin:0;background:var(--bg);color:var(--text);font:15px/1.6 'Inter',system-ui,-apple-system,'Segoe UI',sans-serif}
+.wrap{max-width:980px;margin:0 auto;padding-inline:16px;padding-block:20px 60px}
+header.top{display:flex;flex-wrap:wrap;align-items:center;gap:12px;justify-content:space-between;margin-bottom:18px}
+.brand{display:flex;align-items:center;gap:10px}
+.badge{font:600 11px/1 'JetBrains Mono',ui-monospace,monospace;letter-spacing:.06em;background:var(--accent);color:var(--accent-ink);padding:6px 8px;border-radius:6px}
+h1{font-size:20px;margin:0;text-wrap:balance}
+.sub{color:var(--text3);font-size:13px}
+a.back{color:var(--accent);font-weight:600;font-size:13px;text-decoration:none}
+a.back:hover{text-decoration:underline}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:12px;box-shadow:var(--shadow)}
+.pad{padding:20px}
+.grid{display:grid;gap:14px}
+.modes{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.mode h2{font-size:16px;margin:0 0 4px}
+.mode p{margin:0 0 14px;color:var(--text2);font-size:14px}
+.mode .facts{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
+.chip{font-size:12px;font-weight:600;padding:3px 9px;border-radius:999px;background:var(--panel2);border:1px solid var(--line);color:var(--text2);font-variant-numeric:tabular-nums}
+.btn{appearance:none;border:1px solid var(--accent);background:var(--accent);color:var(--accent-ink);font:600 14px/1 'Inter',system-ui,sans-serif;padding:11px 16px;border-radius:9px;cursor:pointer}
+.btn.ghost{background:transparent;color:var(--accent)}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.btn:focus-visible,.opt:focus-visible,select:focus-visible{outline:3px solid var(--accent-line);outline-offset:2px}
+select{font:500 14px 'Inter',system-ui,sans-serif;padding:9px 10px;border-radius:8px;border:1px solid var(--line2);background:var(--panel);color:var(--text);max-width:100%}
+.row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.domains{margin-top:18px}
+.domains h3{font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--text3);margin:0 0 10px}
+.dbar{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 12px;align-items:center;font-size:13px;margin-bottom:8px}
+.dbar .track{grid-column:1/-1;height:8px;border-radius:99px;background:var(--panel2);border:1px solid var(--line);overflow:hidden}
+.dbar .fill{height:100%}
+.status{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;padding:12px 16px;border-bottom:1px solid var(--line);position:sticky;top:env(safe-area-inset-top,0px);background:var(--panel);border-radius:12px 12px 0 0;z-index:2}
+.timer{font:600 15px 'JetBrains Mono',ui-monospace,monospace;font-variant-numeric:tabular-nums}
+.timer.low{color:var(--bad)}
+.progress{flex:1 1 160px;height:6px;background:var(--panel2);border-radius:99px;overflow:hidden;border:1px solid var(--line)}
+.progress div{height:100%;background:var(--accent)}
+.qmeta{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
+.dom{color:#fff;border:none}
+.ctx{background:var(--panel2);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:8px;padding:12px 14px;color:var(--text2);font-size:14px;margin-bottom:14px}
+.ctx b{color:var(--text)}
+.q{font-size:17px;font-weight:700;margin:0 0 14px;text-wrap:pretty}
+.opts{display:grid;gap:10px}
+.opt{display:grid;grid-template-columns:30px minmax(0,1fr);gap:10px;align-items:start;text-align:left;width:100%;padding:12px 14px;border-radius:10px;border:1.5px solid var(--line);background:var(--panel);color:var(--text);font:inherit;cursor:pointer}
+.opt:hover{border-color:var(--accent-line);background:var(--accent-soft)}
+.opt .l{display:grid;place-items:center;width:26px;height:26px;border-radius:50%;border:1.5px solid var(--line2);font-weight:700;font-size:13px}
+.opt.sel{border-color:var(--accent);background:var(--accent-soft)}
+.opt.sel .l{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.opt.ok{border-color:var(--ok);background:var(--ok-soft)}
+.opt.ok .l{background:var(--ok);border-color:var(--ok);color:var(--panel)}
+.opt.bad{border-color:var(--bad);background:var(--bad-soft)}
+.opt.bad .l{background:var(--bad);border-color:var(--bad);color:var(--panel)}
+.opt[disabled]{cursor:default}
+.exp{margin-top:14px;padding:14px;border-radius:10px;font-size:14px;border:1px solid var(--line)}
+.exp.ok{background:var(--ok-soft);border-color:var(--ok)}
+.exp.bad{background:var(--bad-soft);border-color:var(--bad)}
+.exp a{color:var(--accent);font-weight:600}
+.nav{display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between;margin-top:18px}
+.dots{display:flex;flex-wrap:wrap;gap:5px;margin-top:16px}
+.dot{width:26px;height:26px;border-radius:6px;border:1px solid var(--line2);background:var(--panel);font:600 11px 'Inter',sans-serif;color:var(--text3);cursor:pointer;font-variant-numeric:tabular-nums}
+.dot.ans{background:var(--accent-soft);border-color:var(--accent-line);color:var(--accent)}
+.dot.cur{outline:2px solid var(--accent)}
+.dot.ok{background:var(--ok-soft);border-color:var(--ok);color:var(--ok)}
+.dot.bad{background:var(--bad-soft);border-color:var(--bad);color:var(--bad)}
+.dot.flag{box-shadow:inset 0 -3px 0 var(--warn)}
+.score{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin:14px 0}
+.stat{padding:14px;border:1px solid var(--line);border-radius:10px;background:var(--panel2)}
+.stat .n{font-size:26px;font-weight:800;font-variant-numeric:tabular-nums}
+.stat .t{font-size:12px;color:var(--text3);text-transform:uppercase;letter-spacing:.05em}
+.pass{color:var(--ok)}.fail{color:var(--bad)}
+.review{margin-top:18px;display:grid;gap:12px}
+.rv{border:1px solid var(--line);border-radius:10px;padding:14px}
+.rv .q{font-size:15px}
+.note{font-size:12px;color:var(--text3);margin-top:10px}
+.empty{padding:30px;text-align:center;color:var(--text2)}
+@media (max-width:520px){.q{font-size:16px}.pad{padding:16px}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div class="brand"><span class="badge">CCA-F</span><div><h1>Simulador de examen · Claude Certified Architect – Foundations</h1><div class="sub">Banco de preguntas del curso Claude Code para equipos · caso: Asistente de Normativa del banco</div></div></div>
+    <a class="back" href="index.html">← Volver al curso</a>
+  </header>
+  <main id="app"></main>
+</div>
+<script>
+const BANCO = [];
+const CAPITULOS = {"1": "Vibe Coding — la tesis", "2": "Teoría de agentes — según Anthropic", "3": "Spec Driven Development", "4": "Fundamentos de Claude Code", "5": "CLAUDE.md — Memoria de Proyecto", "6": "Comandos de Claude Code", "7": "Hooks — automatización determinista", "8": "Creación de agentes", "9": "Agent Harness", "10": "Multi-agentes y Orquestador", "11": "MCP — herramientas y datos", "12": "RAG — estructural, jerárquico y tablas", "13": "Permisos, Seguridad, Inspección y DoD", "14": "Adopción en el equipo y Proyecto Final"};
+const DOMINIOS = {
+  1:{n:'Agentic Architecture & Orchestration',es:'Arquitectura agéntica y orquestación',peso:27,c:'--d1'},
+  2:{n:'Tool Design & MCP Integration',es:'Diseño de tools e integración MCP',peso:18,c:'--d2'},
+  3:{n:'Claude Code Configuration & Workflows',es:'Configuración y workflows de Claude Code',peso:20,c:'--d3'},
+  4:{n:'Prompt Engineering & Structured Output',es:'Prompt engineering y salida estructurada',peso:20,c:'--d4'},
+  5:{n:'Context Management & Reliability',es:'Gestión de contexto y confiabilidad',peso:15,c:'--d5'}
+};
+const ESCENARIOS = {1:'Agente de atención y resolución',2:'Generación de código con Claude Code',3:'Sistema multi-agente de investigación',4:'Productividad del developer',5:'Claude Code en CI/CD',6:'Extracción de datos estructurados'};
+const EXAMEN = {preguntas:60, minutos:120, aprobado:720};
+const LETRAS = ['A','B','C','D'];
+const $app = document.getElementById('app');
+let S = null, tick = null;
+
+const store = {
+  get(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}},
+  set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}
+};
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const fmt = s => esc(s).replace(/`([^`]+)`/g,'<code>$1</code>');
+const barajar = a => {a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
+const domChip = d => `<span class="chip dom" style="background:var(${DOMINIOS[d].c})">D${d} · ${esc(DOMINIOS[d].es)}</span>`;
+
+function capDesdeUrl(){
+  const h = (location.hash||'').replace('#','');
+  let m = h.match(/^cap(\d+)$/); if(m) return +m[1];
+  m = (location.search||'').match(/cap=(\d+)/); if(m) return +m[1];
+  return null;
+}
+
+function inicio(){
+  clearInterval(tick); S = null;
+  const hist = store.get('ccaf-historial', []);
+  const porDom = {1:0,2:0,3:0,4:0,5:0}; BANCO.forEach(q=>porDom[q.dominio]++);
+  const caps = Object.keys(CAPITULOS).map(Number).sort((a,b)=>a-b);
+  const cnt = c => BANCO.filter(q=>q.cap===c).length;
+  const cap = capDesdeUrl();
+  if(!BANCO.length){ $app.innerHTML = '<div class="panel empty">El banco de preguntas todavía no está cargado.</div>'; return; }
+  $app.innerHTML = `
+  <div class="grid modes">
+    <section class="panel pad mode">
+      <h2>Examen completo</h2>
+      <p>Como el examen real: ${EXAMEN.preguntas} preguntas elegidas al azar con el peso de cada dominio, ${EXAMEN.minutos} minutos, y la corrección solo al final.</p>
+      <div class="facts"><span class="chip">${EXAMEN.preguntas} preguntas</span><span class="chip">${EXAMEN.minutos} min</span><span class="chip">aprueba con ${EXAMEN.aprobado}/1000</span></div>
+      <button class="btn" id="bExamen">Empezar examen</button>
+    </section>
+    <section class="panel pad mode">
+      <h2>Práctica por capítulo</h2>
+      <p>Las preguntas de un capítulo, con la explicación después de cada respuesta y el enlace a la sección del curso para repasar.</p>
+      <div class="row" style="margin-bottom:14px"><select id="sCap" aria-label="Capítulo">${caps.map(c=>`<option value="${c}" ${c===cap?'selected':''}>Cap. ${c} · ${esc(CAPITULOS[c])} (${cnt(c)})</option>`).join('')}</select></div>
+      <button class="btn" id="bCap">Practicar capítulo</button>
+    </section>
+    <section class="panel pad mode">
+      <h2>Banco completo</h2>
+      <p>Las ${BANCO.length} preguntas del curso en modo práctica, filtradas por dominio si quieres reforzar uno en concreto.</p>
+      <div class="row" style="margin-bottom:14px"><select id="sDom" aria-label="Dominio"><option value="0">Todos los dominios (${BANCO.length})</option>${[1,2,3,4,5].map(d=>`<option value="${d}">D${d} · ${esc(DOMINIOS[d].es)} (${porDom[d]})</option>`).join('')}</select></div>
+      <button class="btn" id="bTodo">Practicar</button>
+    </section>
+  </div>
+  <section class="panel pad domains">
+    <h3>Los 5 dominios del examen y cuántas preguntas tiene el banco</h3>
+    ${[1,2,3,4,5].map(d=>`<div class="dbar"><span><b>D${d}</b> ${esc(DOMINIOS[d].n)} <span class="sub">· ${esc(DOMINIOS[d].es)}</span></span><span class="chip">${DOMINIOS[d].peso}% del examen · ${porDom[d]} preguntas</span><div class="track"><div class="fill" style="width:${DOMINIOS[d].peso/27*100}%;background:var(${DOMINIOS[d].c})"></div></div></div>`).join('')}
+    ${hist.length?`<h3 style="margin-top:18px">Tus últimos intentos en este navegador</h3>${hist.slice(-5).reverse().map(h=>`<div class="row sub" style="margin-bottom:4px"><span class="chip">${esc(h.fecha)}</span><span>${esc(h.modo)}</span><b class="${h.escala>=EXAMEN.aprobado?'pass':'fail'}">${h.correctas}/${h.total} · ${h.escala}/1000</b></div>`).join('')}`:''}
+  </section>`;
+  document.getElementById('bExamen').onclick = examenCompleto;
+  document.getElementById('bCap').onclick = () => { const c=+document.getElementById('sCap').value; practica(BANCO.filter(q=>q.cap===c), `Práctica · Capítulo ${c}`); };
+  document.getElementById('bTodo').onclick = () => { const d=+document.getElementById('sDom').value; practica(barajar(d?BANCO.filter(q=>q.dominio===d):BANCO), d?`Práctica · D${d}`:'Práctica · banco completo'); };
+  if(cap && BANCO.some(q=>q.cap===cap)) practica(BANCO.filter(q=>q.cap===cap), `Práctica · Capítulo ${cap}`);
+}
+
+function examenCompleto(){
+  const cuota = {}; let total = 0;
+  [1,2,3,4,5].forEach(d=>{cuota[d]=Math.round(EXAMEN.preguntas*DOMINIOS[d].peso/100); total+=cuota[d];});
+  cuota[1] += EXAMEN.preguntas-total;
+  let sel = [];
+  [1,2,3,4,5].forEach(d=>{ sel = sel.concat(barajar(BANCO.filter(q=>q.dominio===d)).slice(0,cuota[d])); });
+  if(sel.length<EXAMEN.preguntas){ const ids=new Set(sel.map(q=>q.id)); sel=sel.concat(barajar(BANCO.filter(q=>!ids.has(q.id))).slice(0,EXAMEN.preguntas-sel.length)); }
+  S = {modo:'examen', titulo:'Examen completo', qs:barajar(sel), i:0, resp:{}, marcadas:{}, fin:Date.now()+EXAMEN.minutos*60000, terminado:false};
+  tick = setInterval(()=>{ const el=document.getElementById('timer'); if(!el) return; const r=S.fin-Date.now(); if(r<=0){ corregir(); return; } el.textContent=reloj(r); el.classList.toggle('low', r<600000); }, 1000);
+  pintar();
+}
+function practica(qs, titulo){ S = {modo:'practica', titulo, qs, i:0, resp:{}, marcadas:{}, terminado:false}; pintar(); }
+const reloj = ms => { const s=Math.max(0,Math.floor(ms/1000)); return `${String(Math.floor(s/3600)).padStart(1,'0')}:${String(Math.floor(s%3600/60)).padStart(2,'0')}:${String(s%60).padStart(2,'0')}`; };
+
+function pintar(){
+  const q = S.qs[S.i], r = S.resp[q.id], practicaVista = S.modo==='practica' && r!==undefined;
+  const respondidas = Object.keys(S.resp).length;
+  $app.innerHTML = `
+  <section class="panel">
+    <div class="status">
+      <b>${esc(S.titulo)}</b>
+      <div class="progress" aria-label="Avance"><div style="width:${respondidas/S.qs.length*100}%"></div></div>
+      <span class="chip">${S.i+1} / ${S.qs.length}</span>
+      ${S.modo==='examen'?`<span class="timer" id="timer">${reloj(S.fin-Date.now())}</span>`:''}
+    </div>
+    <div class="pad">
+      <div class="qmeta">${domChip(q.dominio)}<span class="chip">Task ${esc(q.task)}</span><span class="chip">Escenario ${q.escenario} · ${esc(ESCENARIOS[q.escenario]||'')}</span><span class="chip">Cap. ${q.cap}</span></div>
+      ${q.contexto?`<div class="ctx"><b>Escenario.</b> ${fmt(q.contexto)}</div>`:''}
+      <p class="q">${fmt(q.pregunta)}</p>
+      <div class="opts">${q.opciones.map((o,k)=>{
+        let c=''; if(practicaVista){ if(k===q.correcta) c='ok'; else if(k===r) c='bad'; } else if(k===r) c='sel';
+        return `<button class="opt ${c}" data-k="${k}" ${practicaVista?'disabled':''}><span class="l">${LETRAS[k]}</span><span>${fmt(o)}</span></button>`; }).join('')}</div>
+      ${practicaVista?`<div class="exp ${r===q.correcta?'ok':'bad'}"><b>${r===q.correcta?'✓ Correcto.':'✗ La correcta es la '+LETRAS[q.correcta]+'.'}</b> ${fmt(q.explicacion)}${q.repaso?` <a href="index.html#${esc(q.repaso)}" target="_blank" rel="noopener">Repasar en el capítulo ${q.cap} →</a>`:''}</div>`:''}
+      <div class="nav">
+        <div class="row"><button class="btn ghost" id="bPrev" ${S.i===0?'disabled':''}>← Anterior</button>${S.modo==='examen'?`<button class="btn ghost" id="bFlag">${S.marcadas[q.id]?'Quitar marca':'Marcar para revisar'}</button>`:''}</div>
+        <div class="row"><button class="btn ghost" id="bSalir">Salir</button>${S.i<S.qs.length-1?`<button class="btn" id="bNext">Siguiente →</button>`:`<button class="btn" id="bFin">${S.modo==='examen'?'Entregar examen':'Ver resultado'}</button>`}</div>
+      </div>
+      <div class="dots">${S.qs.map((x,k)=>{ let c=''; const rr=S.resp[x.id]; if(rr!==undefined) c = S.modo==='practica' ? (rr===x.correcta?'ok':'bad') : 'ans'; return `<button class="dot ${c} ${k===S.i?'cur':''} ${S.marcadas[x.id]?'flag':''}" data-i="${k}" aria-label="Pregunta ${k+1}">${k+1}</button>`; }).join('')}</div>
+    </div>
+  </section>`;
+  $app.querySelectorAll('.opt').forEach(b=>b.onclick=()=>{ S.resp[q.id]=+b.dataset.k; pintar(); });
+  $app.querySelectorAll('.dot').forEach(b=>b.onclick=()=>{ S.i=+b.dataset.i; pintar(); });
+  const on=(id,f)=>{const e=document.getElementById(id); if(e) e.onclick=f;};
+  on('bPrev',()=>{S.i--;pintar();}); on('bNext',()=>{S.i++;pintar();});
+  on('bFlag',()=>{S.marcadas[q.id]=!S.marcadas[q.id];pintar();});
+  on('bSalir',inicio); on('bFin',corregir);
+}
+
+function corregir(){
+  clearInterval(tick); S.terminado = true;
+  const total=S.qs.length, ok=S.qs.filter(q=>S.resp[q.id]===q.correcta).length;
+  const escala = Math.round(100 + 900*ok/total);
+  const porDom = {}; S.qs.forEach(q=>{ porDom[q.dominio]=porDom[q.dominio]||{t:0,ok:0}; porDom[q.dominio].t++; if(S.resp[q.id]===q.correcta) porDom[q.dominio].ok++; });
+  const hist = store.get('ccaf-historial', []); hist.push({fecha:new Date().toLocaleDateString('es'), modo:S.titulo, correctas:ok, total, escala}); store.set('ccaf-historial', hist.slice(-30));
+  const falladas = S.qs.filter(q=>S.resp[q.id]!==q.correcta);
+  $app.innerHTML = `
+  <section class="panel pad">
+    <h2 style="margin:0">${esc(S.titulo)} · resultado</h2>
+    <div class="score">
+      <div class="stat"><div class="t">Puntaje aproximado</div><div class="n ${escala>=EXAMEN.aprobado?'pass':'fail'}">${escala}</div><div class="sub">${escala>=EXAMEN.aprobado?'Por encima':'Por debajo'} del corte de ${EXAMEN.aprobado}</div></div>
+      <div class="stat"><div class="t">Correctas</div><div class="n">${ok} / ${total}</div><div class="sub">${Math.round(ok/total*100)} %</div></div>
+      <div class="stat"><div class="t">Sin responder</div><div class="n">${S.qs.filter(q=>S.resp[q.id]===undefined).length}</div><div class="sub">cuentan como incorrectas</div></div>
+    </div>
+    <div class="domains">${Object.keys(porDom).sort().map(d=>{const p=porDom[d];return `<div class="dbar"><span><b>D${d}</b> ${esc(DOMINIOS[d].es)}</span><span class="chip">${p.ok}/${p.t}</span><div class="track"><div class="fill" style="width:${p.ok/p.t*100}%;background:var(${DOMINIOS[d].c})"></div></div></div>`}).join('')}</div>
+    <p class="note">El examen oficial usa una escala de 100 a 1000 ajustada por dificultad; aquí es una aproximación lineal para orientarte.</p>
+    <div class="row" style="margin-top:14px"><button class="btn" id="bVolver">Volver al inicio</button>${falladas.length?`<button class="btn ghost" id="bRep">Practicar solo las ${falladas.length} falladas</button>`:''}</div>
+    ${falladas.length?`<h3 style="margin-top:22px">Revisión de las falladas</h3><div class="review">${falladas.map(q=>`<div class="rv"><div class="qmeta">${domChip(q.dominio)}<span class="chip">Task ${esc(q.task)}</span><span class="chip">Cap. ${q.cap}</span></div>${q.contexto?`<div class="ctx">${fmt(q.contexto)}</div>`:''}<p class="q">${fmt(q.pregunta)}</p><p>${S.resp[q.id]!==undefined?`Tu respuesta: <b class="fail">${LETRAS[S.resp[q.id]]}</b> · `:''}Correcta: <b class="pass">${LETRAS[q.correcta]} · ${fmt(q.opciones[q.correcta])}</b></p><div class="exp">${fmt(q.explicacion)}${q.repaso?` <a href="index.html#${esc(q.repaso)}" target="_blank" rel="noopener">Repasar →</a>`:''}</div></div>`).join('')}</div>`:''}
+  </section>`;
+  document.getElementById('bVolver').onclick = inicio;
+  const rep=document.getElementById('bRep'); if(rep) rep.onclick=()=>practica(falladas,'Repaso de falladas');
+  window.scrollTo(0,0);
+}
+window.addEventListener('hashchange', inicio);
+inicio();
+</script>
+</body>
+</html>
