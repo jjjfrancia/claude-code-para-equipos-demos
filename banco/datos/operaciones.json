@@ -1,0 +1,11 @@
+[
+ {"id": "OP-88120", "cliente": "C-1001", "fecha": "2026-09-27 18:42", "tipo": "transferencia_interbancaria", "monto": 850.00, "destino": "BCP ****3310", "estado": "rechazada", "causa": "fondos_insuficientes", "saldo_al_momento": 320.40},
+ {"id": "OP-88121", "cliente": "C-1002", "fecha": "2026-09-27 10:05", "tipo": "transferencia_app", "monto": 6200.00, "destino": "Interbank ****7781", "estado": "rechazada", "causa": "limite_diario_excedido", "saldo_al_momento": 24650.00},
+ {"id": "OP-88122", "cliente": "C-1003", "fecha": "2026-09-26 21:13", "tipo": "transferencia_app", "monto": 300.00, "destino": "BBVA ****0042", "estado": "completada", "causa": null, "saldo_al_momento": 2400.75},
+ {"id": "CG-5501", "cliente": "C-1001", "fecha": "2026-09-25 13:02", "tipo": "compra_tarjeta", "monto": 38.90, "comercio": "Farmacia Salud Total", "pais": "PE", "estado": "completada"},
+ {"id": "CG-5502", "cliente": "C-1001", "fecha": "2026-09-25 13:02", "tipo": "compra_tarjeta", "monto": 38.90, "comercio": "Farmacia Salud Total", "pais": "PE", "estado": "completada"},
+ {"id": "CG-5610", "cliente": "C-1002", "fecha": "2026-09-26 03:11", "tipo": "compra_tarjeta", "monto": 1240.00, "comercio": "ElectroMax Online", "pais": "US", "estado": "completada"},
+ {"id": "CG-5611", "cliente": "C-1002", "fecha": "2026-09-26 03:15", "tipo": "compra_tarjeta", "monto": 980.00, "comercio": "GiftCards Store", "pais": "US", "estado": "completada"},
+ {"id": "CG-5612", "cliente": "C-1002", "fecha": "2026-09-26 03:19", "tipo": "compra_tarjeta", "monto": 1500.00, "comercio": "Crypto Exchange XY", "pais": "US", "estado": "completada"},
+ {"id": "CG-5700", "cliente": "C-1003", "fecha": "2026-09-24 09:30", "tipo": "comision", "monto": 12.00, "comercio": "Retiro cajero otra red", "pais": "PE", "estado": "completada"}
+]

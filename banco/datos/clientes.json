@@ -1,0 +1,5 @@
+[
+ {"codigo": "C-1001", "nombre": "Rosa Quispe", "dni": "45872310", "celular": "+51 987 654 321", "segmento": "sueldo", "cuenta": "191-4521-4821", "saldo": 320.40, "promedio_compra": 85.0},
+ {"codigo": "C-1002", "nombre": "Jorge Ramírez", "dni": "10457789", "celular": "+51 912 345 678", "segmento": "vip", "cuenta": "191-7730-1190", "saldo": 18450.00, "promedio_compra": 310.0},
+ {"codigo": "C-1003", "nombre": "Lucía Torres", "dni": "70112233", "celular": "+51 955 111 222", "segmento": "independiente", "cuenta": "191-2208-5567", "saldo": 2100.75, "promedio_compra": 120.0}
+]

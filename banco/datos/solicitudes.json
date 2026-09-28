@@ -1,0 +1,6 @@
+[
+ {"id": "S-1042", "cliente": "C-1001", "ingreso_neto": 3500, "deudas_mensuales": 400, "antiguedad_meses": 24, "tipo_empleo": "dependiente", "monto": 15000, "plazo": 36, "central_riesgo": "Normal", "deudas_no_declaradas": 0, "documentos_completos": true, "notas": "Ingresos estables, planilla hace 2 años."},
+ {"id": "S-1043", "cliente": "C-1003", "ingreso_neto": 3500, "deudas_mensuales": 600, "antiguedad_meses": 24, "tipo_empleo": "independiente", "monto": 15000, "plazo": 36, "central_riesgo": "Normal", "deudas_no_declaradas": 0, "documentos_completos": true, "notas": "Ingresos crecientes 18 % anual; rubro diseño gráfico."},
+ {"id": "S-1044", "cliente": "C-1002", "ingreso_neto": 9800, "deudas_mensuales": 1200, "antiguedad_meses": 7, "tipo_empleo": "dependiente", "monto": 35000, "plazo": 48, "central_riesgo": "CPP", "deudas_no_declaradas": 350, "documentos_completos": true, "notas": "Cambió de empleo hace 7 meses; tuvo un atraso hace 5 meses."},
+ {"id": "S-1045", "cliente": "C-1003", "ingreso_neto": 2200, "deudas_mensuales": 0, "antiguedad_meses": 30, "tipo_empleo": "dependiente", "monto": 60000, "plazo": 60, "central_riesgo": "Normal", "deudas_no_declaradas": 0, "documentos_completos": true, "notas": "Pide más del máximo."}
+]

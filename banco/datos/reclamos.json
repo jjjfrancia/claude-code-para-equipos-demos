@@ -1,0 +1,5 @@
+[
+ {"id": "R-2001", "cliente": "C-1001", "canal": "chat", "texto": "Hola, me cobraron dos veces la compra en Farmacia Salud Total del 25 de septiembre, S/ 38.90. Quiero que me devuelvan uno."},
+ {"id": "R-2002", "cliente": "C-1002", "canal": "correo", "texto": "No reconozco tres compras de madrugada en tiendas de Estados Unidos del 26/09. Yo estaba en Lima durmiendo. Bloqueen mi tarjeta."},
+ {"id": "R-2003", "cliente": "C-1003", "canal": "chat", "texto": "Me cobraron S/ 12 por retirar en un cajero, ¿eso es correcto? Quiero hablar con una persona."}
+]
