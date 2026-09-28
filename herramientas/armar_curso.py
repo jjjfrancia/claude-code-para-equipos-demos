@@ -45,20 +45,29 @@ def logo(curso: dict, tam: int) -> str:
             f'font-size="{22 if len(curso["sigla"]) <= 3 else 19}" font-weight="900" letter-spacing="1">{H.escape(curso["sigla"])}</text></svg>')
 
 
-FLUJO_CASO = '''<div class="diagram-wrap zoom-trigger" onclick="openZoom('portadaFlujo','El Marketplace de Créditos: de la solicitud al repago')" title="Clic para ampliar"><svg id="portadaFlujo" viewBox="0 0 920 210" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block;background:#fff;border-radius:10px;font-family:'Inter',system-ui,sans-serif">
+FLUJO_CASO = '''<div class="diagram-wrap zoom-trigger" onclick="openZoom('portadaFlujo','El Marketplace de Créditos: los dos asistentes')" title="Clic para ampliar"><svg id="portadaFlujo" viewBox="0 0 920 300" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block;background:#fff;border-radius:10px;font-family:'Inter',system-ui,sans-serif">
 <defs><marker id="pfA" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#64748b"/></marker></defs>
-<text x="20" y="30" font-size="15" font-weight="800" fill="#0f172a">El caso de los cuatro cursos: el Marketplace de Créditos del banco</text>
+<text x="20" y="30" font-size="15" font-weight="800" fill="#1e3a8a">Caso 1 · Respuesta a clientes</text>
 <g font-size="13">
-<rect x="20" y="52" width="130" height="78" rx="12" fill="#eff6ff" stroke="#2563eb"/><text x="85" y="84" text-anchor="middle" font-weight="800" fill="#1e3a8a">1 · Publica</text><text x="85" y="104" text-anchor="middle" fill="#334155">empresa o persona</text>
-<rect x="170" y="52" width="130" height="78" rx="12" fill="#ecfeff" stroke="#0891b2"/><text x="235" y="84" text-anchor="middle" font-weight="800" fill="#155e75">2 · Score</text><text x="235" y="104" text-anchor="middle" fill="#334155">Open Finance</text>
-<rect x="320" y="52" width="130" height="78" rx="12" fill="#d1fae5" stroke="#059669"/><text x="385" y="84" text-anchor="middle" font-weight="800" fill="#065f46">3 · Fondean</text><text x="385" y="104" text-anchor="middle" fill="#334155">varios prestamistas</text>
-<rect x="470" y="52" width="140" height="78" rx="12" fill="#fef3c7" stroke="#d97706"/><text x="540" y="80" text-anchor="middle" font-weight="800" fill="#92400e">4 · Pagaré + factura</text><text x="540" y="100" text-anchor="middle" fill="#334155">firma y endoso</text><text x="540" y="118" text-anchor="middle" fill="#92400e" font-size="12">solo empresas</text>
-<rect x="630" y="52" width="130" height="78" rx="12" fill="#fee2e2" stroke="#dc2626"/><text x="695" y="84" text-anchor="middle" font-weight="800" fill="#991b1b">5 · Desembolso</text><text x="695" y="104" text-anchor="middle" fill="#334155">stablecoin o soles</text>
-<rect x="780" y="52" width="120" height="78" rx="12" fill="#f1f5f9" stroke="#64748b"/><text x="840" y="84" text-anchor="middle" font-weight="800" fill="#0f172a">6 · Repago</text><text x="840" y="104" text-anchor="middle" fill="#334155">reparto a cada uno</text>
+<rect x="20" y="44" width="190" height="62" rx="12" fill="#eff6ff" stroke="#2563eb"/><text x="115" y="70" text-anchor="middle" font-weight="800" fill="#1e3a8a">Cliente pregunta</text><text x="115" y="90" text-anchor="middle" fill="#334155">en la app</text>
+<rect x="250" y="44" width="200" height="62" rx="12" fill="#ecfeff" stroke="#0891b2"/><text x="350" y="70" text-anchor="middle" font-weight="800" fill="#155e75">Busca en el Tarifario</text><text x="350" y="90" text-anchor="middle" fill="#334155">y el Reglamento</text>
+<rect x="490" y="44" width="200" height="62" rx="12" fill="#d1fae5" stroke="#059669"/><text x="590" y="70" text-anchor="middle" font-weight="800" fill="#065f46">Responde y cita</text><text x="590" y="90" text-anchor="middle" fill="#334155">«Tarifario, p. 4»</text>
+<rect x="730" y="44" width="170" height="62" rx="12" fill="#f1f5f9" stroke="#64748b"/><text x="815" y="70" text-anchor="middle" font-weight="800" fill="#0f172a">Si no sabe</text><text x="815" y="90" text-anchor="middle" fill="#334155">deriva a un ejecutivo</text>
 </g>
-<g stroke="#64748b" stroke-width="2" marker-end="url(#pfA)"><path d="M150 91h18"/><path d="M300 91h18"/><path d="M450 91h18"/><path d="M610 91h18"/><path d="M760 91h18"/></g>
-<text x="20" y="165" font-size="13" fill="#334155">Socios: Equifax/Infocorp y Sentinel (central de riesgo) · CAVALI/Factrack (factura y pagaré) · PSC INDECOPI (firma digital) · rampa fiat ↔ stablecoin</text>
-<text x="20" y="190" font-size="13" fill="#991b1b" font-weight="700">Regla que atraviesa todo: nunca se desembolsa a una empresa sin pagaré firmado y factura endosada en CAVALI.</text>
+<g stroke="#64748b" stroke-width="2" marker-end="url(#pfA)"><path d="M210 75h38"/><path d="M450 75h38"/><path d="M690 75h38"/></g>
+<text x="20" y="150" font-size="15" font-weight="800" fill="#065f46">Caso 2 · Aprobación de créditos</text>
+<g font-size="12.5">
+<rect x="20" y="164" width="120" height="70" rx="12" fill="#eff6ff" stroke="#2563eb"/><text x="80" y="194" text-anchor="middle" font-weight="800" fill="#1e3a8a">Solicitud</text><text x="80" y="213" text-anchor="middle" fill="#334155">S/ 15,000</text>
+<rect x="165" y="164" width="130" height="70" rx="12" fill="#ecfeff" stroke="#0891b2"/><text x="230" y="190" text-anchor="middle" font-weight="800" fill="#155e75">Agente de</text><text x="230" y="207" text-anchor="middle" font-weight="800" fill="#155e75">consulta</text><text x="230" y="224" text-anchor="middle" fill="#334155">deudas, historial</text>
+<rect x="320" y="160" width="130" height="34" rx="10" fill="#d1fae5" stroke="#059669"/><text x="385" y="182" text-anchor="middle" font-weight="700" fill="#065f46">Flexible</text>
+<rect x="320" y="204" width="130" height="34" rx="10" fill="#fee2e2" stroke="#dc2626"/><text x="385" y="226" text-anchor="middle" font-weight="700" fill="#991b1b">Estricto</text>
+<rect x="475" y="164" width="110" height="70" rx="12" fill="#fef3c7" stroke="#d97706"/><text x="530" y="194" text-anchor="middle" font-weight="800" fill="#92400e">Juez</text><text x="530" y="213" text-anchor="middle" fill="#334155">recomienda</text>
+<rect x="610" y="164" width="140" height="70" rx="12" fill="#0f172a"/><text x="680" y="194" text-anchor="middle" font-weight="800" fill="#fff">Analista</text><text x="680" y="213" text-anchor="middle" fill="#cbd5e1">decide</text>
+<rect x="775" y="164" width="125" height="70" rx="12" fill="#f1f5f9" stroke="#64748b"/><text x="837" y="190" text-anchor="middle" font-weight="800" fill="#0f172a">Agente de</text><text x="837" y="207" text-anchor="middle" font-weight="800" fill="#0f172a">registro</text><text x="837" y="224" text-anchor="middle" fill="#334155">sistema + auditoría</text>
+</g>
+<g stroke="#64748b" stroke-width="2" marker-end="url(#pfA)"><path d="M140 199h23"/><path d="M295 190l23-10"/><path d="M295 208l23 12"/><path d="M450 177l23 12"/><path d="M450 221l23-12"/><path d="M585 199h23"/><path d="M750 199h23"/></g>
+<text x="20" y="270" font-size="13" fill="#334155">Regla de la Política de Créditos: la cuota no supera el 30 % del ingreso neto (p. 7). Sobre S/ 20,000 aprueba también el jefe de créditos.</text>
+<text x="20" y="290" font-size="13" fill="#991b1b" font-weight="700">Consultar y recomendar lo hacen agentes; decidir, el analista; registrar, un agente solo después de la decisión.</text>
 </svg></div>'''
 
 CSS_PORTADA = '''
@@ -130,9 +139,9 @@ def portada(curso: dict, examen: dict, capitulos: list[tuple[int, str]]) -> str:
       </div>
       <section class="portada-card" style="margin-top:16px">
         <h2>El caso</h2>
-        <p style="margin:0 0 12px;color:var(--text2);line-height:1.6">Los cuatro cursos trabajan sobre el mismo producto: el <b>Marketplace de Créditos</b> del banco. Empresas y personas publican una solicitud, la plataforma calcula un score con Open Finance, varios prestamistas la fondean y el dinero se desembolsa en stablecoin o en soles, con liquidación en blockchain. El equipo que lo construye y lo opera con Claude es el protagonista de cada capítulo.</p>
+        <p style="margin:0 0 12px;color:var(--text2);line-height:1.6">Los cuatro cursos trabajan sobre el mismo producto: el <b>Marketplace de Créditos</b> del banco. En la app, personas y pequeñas empresas piden un préstamo, el banco lo evalúa y aprueba, e inversionistas lo financian. Un equipo de tres personas construye con Claude dos asistentes: uno que <b>responde a los clientes</b> y un equipo de agentes que <b>ayuda a aprobar créditos</b>: uno consulta la información del cliente, tres la evalúan (flexible, estricto y juez), el analista decide y otro agente registra la decisión.</p>
         {FLUJO_CASO}
-        <p style="margin:12px 0 0;font-size:12px;color:var(--slate)">Cifras ilustrativas tomadas del business case «Marketplace de Créditos» (Perú, setiembre 2026).</p>
+        <p style="margin:12px 0 0;font-size:12px;color:var(--slate)">Documentos y cifras ficticios, creados para el curso.</p>
       </section>
     </div>
   </div><!-- /lp-0 -->

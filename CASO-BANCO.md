@@ -40,6 +40,14 @@ publicarlas a los inversionistas.
   meses, montos de S/ 1,000 a S/ 50,000, plazo de 6 a 60 meses.
 - Devuelve una **recomendación** (aprobar, rechazar o revisar) con los motivos y la página de la
   política que aplica: «Política de Créditos, p. 7».
+- El flujo lo hacen **agentes con roles distintos**, en este orden:
+  1. **Agente de consulta**: reúne la información de la solicitud sin modificar nada: datos del cliente,
+     ingresos, deudas vigentes, historial de pagos en el banco y reporte de la central de riesgo.
+  2. **Tres agentes de evaluación** (abajo) debaten y emiten la recomendación.
+  3. **El analista humano** revisa y decide.
+  4. **Agente de registro**: anota en el sistema del banco la solicitud, la recomendación, la decisión
+     del analista y sus motivos, con fecha y responsable (trazabilidad para auditoría). Es el único
+     agente que escribe, y solo después de la decisión humana.
 - La recomendación sale de **tres agentes que debaten**, no de uno solo:
   - **Analista flexible**: busca cómo la solicitud *sí* puede cumplir la política (p. ej. un plazo más
     largo que baja la cuota por debajo del 30 %).
