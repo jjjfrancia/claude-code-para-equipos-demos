@@ -7,9 +7,9 @@ Información y Legal. No existe «Sprint 0».
 
 | Pilar | Agente | Qué hace | Métrica objetivo | Escenario del examen CCAR-F |
 |-------|--------|----------|------------------|------------------------------|
-| 1 · Atención y consultas | Agente front-office | Responde en lenguaje natural («¿por qué retuvieron mi transferencia?»), consulta el core bancario de forma segura y recuerda el contexto del cliente | +40 % de resolución en el primer contacto (FCR) | 1 · Customer Support Resolution Agent |
-| 2 · Gestión de reclamos | Agente operativo | Clasifica el reclamo, revisa el historial de transacciones buscando anomalías, aprueba compensaciones pequeñas dentro de la política y escala lo complejo con un expediente | Tiempo de resolución de 5 días a 10 minutos | 1 y 6 · Extracción estructurada |
-| 3 · Evaluación de crédito | Agente de riesgo | Lee extractos, declaraciones y la solicitud; simula la capacidad de pago con escenarios de estrés; emite un dictamen con motivos | −15 % de morosidad (NPL) | 3 · Multi-Agent Research System |
+| 1 · Atención y consultas | Agente front-office | Valida la identidad, responde en lenguaje natural («¿por qué se rechazó mi transferencia de ayer?»), consulta en tiempo real el registro de la operación (solo lectura) y explica la causa («fondos insuficientes en la cuenta de origen») | +40 % de resolución en el primer contacto (FCR) | 1 · Customer Support Resolution Agent |
+| 2 · Gestión de reclamos | Agente operativo | Ante un cargo duplicado: lee el reclamo, busca la transacción, la compara con el patrón histórico de fraude, reembolsa montos bajos dentro de la política y pre-redacta y escala lo complejo | Tiempo de respuesta (TAT) de 3 días a 5 minutos | 1 y 6 · Extracción estructurada |
+| 3 · Evaluación de crédito | Agente de riesgo | Procesa estados de cuenta, declaraciones de impuestos y comportamiento transaccional; pasa el perfil por el debate relajado contra estricto; emite una recomendación justificada al juez o al validador humano | −15 % de morosidad (NPL) | 3 · Multi-Agent Research System |
 
 ### Lo que los cursos enseñan a corregir de este diseño (y que pregunta el examen)
 

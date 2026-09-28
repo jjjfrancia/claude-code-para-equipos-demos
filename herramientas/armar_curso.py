@@ -75,7 +75,8 @@ CSS_PORTADA = '''
 .topbar-title{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
 @media (max-width:1180px){.topbar-title{display:none}}
 .topbar .course-badge{display:none}
-.cc-extra-links{flex-wrap:nowrap!important;overflow-x:auto;min-width:0;scrollbar-width:thin}
+[class*="extra-links"]{flex-wrap:nowrap!important;overflow-x:auto;min-width:0;scrollbar-width:thin;align-items:center}
+@media (max-width:1500px){[class*="extra-links"] a:not(.cc-exam-link){display:none!important}}
 #li-0{color:#e2e8f0;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:10px;padding:9px 12px;cursor:pointer}
 #li-0.active{background:#2563eb;border-color:#2563eb;color:#fff}
 .portada{max-width:1080px;margin:0 auto;padding:36px 32px 60px}
@@ -100,6 +101,43 @@ CSS_PORTADA = '''
 @media (max-width:720px){.portada{padding:18px 16px 40px}.portada-hero{grid-template-columns:1fr;padding:22px}.portada-hero h1{font-size:26px}}
 '''
 
+
+
+def introduccion_banca() -> str:
+    """Las infografías de material-de-clase como introducción del curso, con el CSS acotado a .ib."""
+    ruta = os.path.join(RAIZ, 'material-de-clase', 'infografias-agentes-banca.html')
+    if not os.path.exists(ruta):
+        return ''
+    doc = open(ruta, encoding='utf-8').read()
+    css = re.search(r'<style>(.*?)</style>', doc, re.S).group(1)
+    cuerpo = doc[doc.index('<div class="wrap">'):doc.rindex('<script>')]
+    js = re.search(r'<script>(.*?)</script>', doc[doc.rindex('<script>'):], re.S).group(1)
+    css = re.sub(r'@media \(prefers-color-scheme: dark\)\{.*?\}\}', '', css, flags=re.S)
+    css = re.sub(r':root\[data-theme="dark"\][^{]*\{[^}]*\}', '', css)
+    fuera = []
+    for sel, dec in re.findall(r'([^{}]+)\{([^{}]*)\}', css):
+        sel = sel.strip()
+        if not sel or sel.startswith('@'):
+            continue
+        if sel in (':root', 'body'):
+            fuera.append('.ib{' + dec + '}')
+            continue
+        partes = []
+        for x in sel.split(','):
+            x = x.strip()
+            if x.startswith(':root'):
+                x = x.replace(':root', '').strip()
+            partes.append('.ib ' + x if x not in ('*',) else '.ib *')
+        fuera.append(','.join(partes) + '{' + dec + '}')
+    for viejo in ('i1', 'i2', 'i3', 'i4', 't1', 't2', 't3', 'p1', 'p2', 'p3'):
+        cuerpo = re.sub(rf'(id|aria-controls|aria-labelledby)="{viejo}"', rf'\1="ib-{viejo}"', cuerpo)
+    cuerpo = cuerpo.replace('<div class="wrap">', '<div class="ib-wrap">', 1)
+    js = js.replace("document.querySelectorAll('[role=\"tab\"]')", "document.querySelectorAll('.ib [role=\"tab\"]')")
+    js = js.replace("document.querySelectorAll('.copy')", "document.querySelectorAll('.ib .copy')")
+    return ('<style>' + ''.join(fuera) + '.ib .ib-wrap{padding:0}.ib h1{display:none}.ib .poster h2{text-transform:none;letter-spacing:-.01em;font-size:clamp(22px,3vw,30px);margin:0 0 6px}</style>'
+            '<section class="portada-card ib" style="margin-top:16px"><h2 style="font-size:15px;margin:0 0 12px;'
+            'color:var(--navy);text-transform:uppercase;letter-spacing:.06em">Introducción · Agentes de IA en la banca</h2>'
+            + cuerpo + '<script>' + js + '</script></section>')
 
 def portada(curso: dict, examen: dict, capitulos: list[tuple[int, str]]) -> str:
     c1, c2 = curso['color']
@@ -137,6 +175,7 @@ def portada(curso: dict, examen: dict, capitulos: list[tuple[int, str]]) -> str:
           <ol class="portada-caps">{caps}</ol>
         </section>
       </div>
+      {introduccion_banca()}
       <section class="portada-card" style="margin-top:16px">
         <h2>El caso</h2>
         <p style="margin:0 0 12px;color:var(--text2);line-height:1.6">Los cuatro cursos trabajan sobre el mismo producto: el <b>Marketplace de Créditos</b> del banco. En la app, personas y pequeñas empresas piden un préstamo, el banco lo evalúa y aprueba, e inversionistas lo financian. Un equipo de tres personas construye con Claude dos asistentes: uno que <b>responde a los clientes</b> y un equipo de agentes que <b>ayuda a aprobar créditos</b>: uno consulta la información del cliente, tres la evalúan (flexible, estricto y juez), el analista decide y otro agente registra la decisión.</p>
@@ -237,6 +276,10 @@ def main() -> None:
         datos = json.load(open(f, encoding='utf-8'))
         n_preg += len(datos)
         json.dump(datos, open(os.path.join(destino, os.path.basename(f)), 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
+    img = os.path.join(RAIZ, 'material-de-clase', 'debate-juez.webp')
+    if os.path.exists(img) and os.path.normpath(salida) != os.path.normpath(os.path.join(RAIZ, 'material-de-clase')):
+        import shutil
+        shutil.copyfile(img, os.path.join(salida, 'debate-juez.webp'))
     subprocess.run([sys.executable, os.path.join(RAIZ, 'herramientas', 'armar_simulador.py'), clave], check=True)
     print(f'{clave}: {total} capítulos · {len(html) // 1024} KB · {n_preg} preguntas → {os.path.relpath(salida, RAIZ)}/')
 
