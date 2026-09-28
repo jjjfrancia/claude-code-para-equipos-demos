@@ -78,6 +78,23 @@ juez cierra en una ronda. Si sus deudas fueran S/ 600 al mes, la carga subiría 
 rechazar, el flexible propondría 60 meses (cuota S/ 349, carga S/ 949 = 27 %) y el juez recomendaría
 **revisar** con esa contrapropuesta. (Cuotas calculadas con una TEA ilustrativa de 15 %.)
 
+
+### El triángulo de decisión del pilar 3 (arquitectura de debate con juez)
+
+1. **Extractor de datos**: arma un perfil estructurado de la solicitud y envía **el mismo perfil** a
+   los dos agentes.
+2. **Agente relajado (comercial)**, «el optimista contratado»: busca el cómo *sí*; valora el potencial
+   futuro y las justificaciones del cliente («ingresos crecientes», «industria estable»).
+3. **Agente estricto (riesgo)**, «el guardián del capital»: busca el cómo *no*; no perdona
+   inconsistencias ni falta de garantías («historial muy corto», «deuda externa alta»).
+4. **Agente juez (moderador)**, «el árbitro pragmático»: pesa la solidez de ambos argumentos frente al
+   **contrato de política bancaria** (las reglas inquebrantables) y dicta sentencia:
+   - **Decisión autónoma** (aprobado o rechazado) solo en casos claros y dentro de los límites que la
+     política permite automatizar (p. ej. hasta S/ 20,000). Genera una **bitácora de justificación**.
+   - **Escalación humana** en casos grises o ambiguos: el analista lee el debate y decide rápido.
+   Las reglas inquebrantables (cuota ≤ 30 %, montos, aprobación del jefe sobre S/ 20,000) se hacen
+   cumplir en código, no solo en el prompt del juez.
+
 ## Detalle del pilar 2 · Gestión de reclamos
 
 1. **Clasificación**: lee el correo o chat del reclamo y lo clasifica (cargo no reconocido,
