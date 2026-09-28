@@ -612,6 +612,54 @@ body{font-family:'Inter',system-ui,sans-serif;font-size:15px;background:var(--na
 .cc-extra-links a{background:#fff;color:#174f78;border:1px solid #b9d3e6;border-radius:8px;padding:7px 9px;text-decoration:none;font-size:11.5px;font-weight:800;white-space:nowrap}
 .cc-extra-links a:hover{background:#edf6fc}
 @media(max-width:1050px){.cc-extra-links{display:none}}
+/* Barra lateral y buscador del prototipo de portada (2026-09-28) */
+.app-body{grid-template-columns:300px 1fr}
+.sidebar-header{padding:22px 22px 14px;border-bottom:0}
+.sidebar-course{font-size:15px}
+.sb-inicio{margin:6px 14px 10px!important;padding:12px 16px!important;border-radius:10px!important;align-items:center!important;gap:12px!important;font-size:15px;font-weight:600;color:rgba(255,255,255,.85)}
+.sb-inicio svg{width:20px;height:20px;fill:currentColor;flex-shrink:0}
+.sb-inicio.active{background:#2563eb!important;border-color:#2563eb!important;color:#fff;box-shadow:0 6px 18px rgba(37,99,235,.35)}
+.sidebar .module-group{border-bottom:1px solid rgba(255,255,255,.07);margin:0 10px}
+.sidebar .module-hdr{padding:12px 8px;gap:12px}
+.sidebar .module-num{width:26px;height:26px;border-radius:7px;font-size:12px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.75)}
+.sidebar .module-num.active{background:#2563eb;border-color:#2563eb;color:#fff}
+.sidebar .module-num.done{background:#10b981;border-color:#10b981;color:#fff}
+.sidebar .module-title-txt{font-size:14px;font-weight:500;color:rgba(255,255,255,.78)}
+.sidebar .module-title-txt.active,.sidebar .sb-abierto .module-title-txt{color:#fff}
+.sidebar .module-chevron{font-size:0;width:9px;height:9px;border-right:1.6px solid rgba(255,255,255,.55);border-bottom:1.6px solid rgba(255,255,255,.55);transform:rotate(45deg) translate(-2px,-2px);flex-shrink:0}
+.sidebar .module-chevron.open{transform:rotate(-135deg) translate(-2px,-2px)}
+.sidebar .lesson-list{padding:0 0 10px 0}
+.sidebar .lesson-list > .lesson-item{display:none}
+.sb-subs{display:grid;gap:2px;padding:0 0 0 44px}
+.sb-sub{position:relative;display:flex;align-items:center;gap:12px;padding:7px 8px;border-radius:7px;font-size:13.5px;color:rgba(255,255,255,.62);cursor:pointer}
+.sb-sub::before{content:"";width:14px;height:14px;border-radius:50%;border:1.6px solid rgba(255,255,255,.45);flex-shrink:0;box-sizing:border-box}
+.sb-sub:hover{background:rgba(255,255,255,.05);color:#fff}
+.sb-sub.activo{color:#fff}
+.sb-sub.activo::before{border:4px solid #fff;background:#2563eb;box-shadow:0 0 0 1.6px #2563eb}
+.sidebar-footer{padding:16px 14px;border-top:0}
+.sb-sim{display:grid;grid-template-columns:34px minmax(0,1fr) 14px;gap:12px;align-items:center;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:14px;color:#fff;text-decoration:none}
+.sb-sim:hover{background:rgba(255,255,255,.1)}
+.sb-sim svg{width:30px;height:30px;fill:#60a5fa}
+.sb-sim b{display:block;font-size:13.5px;font-weight:700}
+.sb-sim span{font-size:12px;color:rgba(255,255,255,.7);line-height:1.35}
+.sb-sim i{font-style:normal;font-size:22px;color:rgba(255,255,255,.7)}
+.sb-buscar{position:relative;display:flex;align-items:center;gap:8px;margin-left:auto;width:260px;height:36px;padding:0 10px 0 12px;border:1px solid var(--border);border-radius:10px;background:#f8fafc}
+.sb-buscar:focus-within{border-color:#93c5fd;background:#fff;box-shadow:0 0 0 3px rgba(37,99,235,.12)}
+.sb-buscar svg{width:17px;height:17px;fill:none;stroke:#64748b;stroke-width:2;stroke-linecap:round;flex-shrink:0}
+.sb-buscar input{flex:1;min-width:0;border:0;background:transparent;font:inherit;font-size:13px;color:var(--text);outline:none}
+.sb-buscar input::-webkit-search-cancel-button{display:none}
+.sb-buscar kbd{font:600 11px/1 Inter,system-ui,sans-serif;color:#64748b;background:#fff;border:1px solid var(--border);border-radius:5px;padding:3px 5px;white-space:nowrap}
+.sb-buscar-res{position:absolute;top:42px;left:0;width:380px;max-height:60vh;overflow:auto;background:#fff;border:1px solid var(--border);border-radius:12px;box-shadow:0 16px 40px rgba(15,23,42,.16);padding:6px;z-index:50}
+.sb-res{display:grid;grid-template-columns:54px minmax(0,1fr);gap:8px;padding:8px 10px;border-radius:8px;font-size:13px;color:var(--text);cursor:pointer}
+.sb-res b{color:#2563eb;font-size:12px}
+.sb-res.sel,.sb-res:hover{background:#eff6ff}
+.sb-vacio{padding:10px;font-size:13px;color:#64748b}
+.cc-extra-links{margin-left:10px}
+.topbar-title{flex:0 0 auto;white-space:nowrap}
+.brand-name,.brand-name-df{white-space:nowrap}
+@media (max-width:1800px){.cc-extra-links a:not(.cc-exam-link){display:none!important}}
+@media(max-width:1180px){.sb-buscar{width:200px}}
+@media(max-width:900px){.sb-buscar{display:none}}
 </style>
 <body>
 
@@ -630,6 +678,12 @@ body{font-family:'Inter',system-ui,sans-serif;font-size:15px;background:var(--na
   <svg class="portada-logo" style="flex-shrink:0" width="30" height="30" viewBox="0 0 120 120" role="img" aria-label="Logo Claude Code para Equipos" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="lg-ADM" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2563eb"/><stop offset="1" stop-color="#06b6d4"/></linearGradient></defs><rect x="4" y="4" width="112" height="112" rx="28" fill="url(#lg-ADM)"/><g transform="translate(36 16)" fill="none" stroke="#fff" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"><path d="M10 16l8 8-8 8" /><path d="M22 34h16" /></g><text x="60" y="97" text-anchor="middle" fill="#fff" font-family="Inter,system-ui,sans-serif" font-size="22" font-weight="900" letter-spacing="1">ADM</text></svg>
   <span class="course-badge">ADM</span>
   <span class="topbar-title">Claude Code para Equipos</span>
+  <div class="sb-buscar" id="sbBuscar">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>
+    <input id="sbBuscarInput" type="search" placeholder="Buscar en el curso..." aria-label="Buscar en el curso" autocomplete="off">
+    <kbd id="sbBuscarTecla">⌘ K</kbd>
+    <div class="sb-buscar-res" id="sbBuscarRes" hidden></div>
+  </div>
   <div class="cc-extra-links">
     <a href="figuras-svg.html">Figuras SVG</a>
     <a href="frontera-2026.html">Frontera 2026</a>
@@ -652,7 +706,7 @@ body{font-family:'Inter',system-ui,sans-serif;font-size:15px;background:var(--na
       <div class="sidebar-label">Contenido del curso</div>
       <div class="sidebar-course">Claude Code para Equipos</div>
     </div>
-    <div class="lesson-item active" id="li-0" onclick="goToLesson(0)" style="margin:8px 10px;font-weight:700">🏠 Portada del curso</div>
+    <div class="lesson-item active sb-inicio" id="li-0" onclick="goToLesson(0)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.2 11.2 12 3.8l8.8 7.4a1 1 0 0 1-.64 1.77H18.6V20a1 1 0 0 1-1 1h-3.6v-5.2h-4V21H6.4a1 1 0 0 1-1-1v-7.03H3.84a1 1 0 0 1-.64-1.77z"/></svg><span>Inicio del curso</span></div>
     <div class="module-group">
       <div class="module-hdr" onclick="toggleModule(this)">
         <div class="module-num active" id="mnum-0">1</div>
@@ -878,13 +932,11 @@ body{font-family:'Inter',system-ui,sans-serif;font-size:15px;background:var(--na
       </div>
     </div>
     <div class="sidebar-footer">
-      <div class="cert-chip">
-        <span class="cert-icon">🎓</span>
-        <div class="cert-text">
-          <strong>Credencial ADM</strong>
-          Agentic Developer Master · 14 capítulos sobre el caso del Tutor de proyectos
-        </div>
-      </div>
+      <a class="sb-sim" href="simulador-examen.html" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 1.5 8.2 12 13.4l8.6-4.3V15h1.9V8.2z"/><path d="M5.2 12.1v4.2c0 .4.2.8.6 1.1 1.6 1.1 3.8 1.8 6.2 1.8s4.6-.7 6.2-1.8c.4-.3.6-.7.6-1.1v-4.2L12 15.5z"/></svg>
+        <span><b>Simulador de examen</b>400 preguntas tipo certificación</span>
+        <i aria-hidden="true">›</i>
+      </a>
     </div>
   </nav>
 
@@ -7296,6 +7348,164 @@ document.addEventListener('DOMContentLoaded',()=>{
   }
   window.addEventListener('hashchange', abrirDesdeHash);
   window.addEventListener('load', abrirDesdeHash);
+})();
+</script>
+<script>
+/* Barra lateral del prototipo de portada (2026-09-28): «Inicio del curso», un capítulo abierto a la
+   vez con sus cuatro secciones reales (las tarjetas que existen en cada capítulo) y el buscador del
+   curso en la barra superior. Todo se arma leyendo el propio HTML: no hay listas escritas a mano. */
+(function(){
+  const SECCIONES = [
+    ['Introducción',    t => /^Objetivos/.test(t)],
+    ['Conceptos clave', t => /^1 ·/.test(t)],
+    ['Ejercicios',      t => /^Actividad/.test(t)],
+    ['Resumen',         t => /^Puntos clave/.test(t)],
+  ];
+  const tituloDe = card => (card.querySelector('.card-header-title')||{}).textContent || '';
+  const main = () => document.getElementById('mainContent');
+  /* activeLesson arranca en 1 aunque se vea la portada: lo que manda es qué pantalla está visible. */
+  const actual = () => { const p = document.getElementById('lp-0'); return (p && p.style.display !== 'none') ? 0 : activeLesson; };
+
+  function tarjetas(n){
+    const lp = document.getElementById('lp-'+n);
+    return lp ? [...lp.querySelectorAll('.card')].filter(c => c.querySelector('.card-header-title')) : [];
+  }
+
+  function irA(n, card){
+    goToLesson(n);
+    if(card) requestAnimationFrame(() => card.scrollIntoView({block:'start', behavior:'smooth'}));
+  }
+
+  function construirSubtemas(){
+    document.querySelectorAll('.sidebar .module-group').forEach((grupo, k) => {
+      const n = k + 1, lista = grupo.querySelector('.lesson-list');
+      if(!lista || lista.querySelector('.sb-subs')) return;
+      const cards = tarjetas(n), ul = document.createElement('div');
+      ul.className = 'sb-subs';
+      SECCIONES.forEach(([nombre, es]) => {
+        const card = cards.find(c => es(tituloDe(c).trim()));
+        if(!card) return;
+        const a = document.createElement('div');
+        a.className = 'sb-sub'; a.textContent = nombre; a._card = card;
+        a.onclick = e => { e.stopPropagation(); irA(n, card); };
+        ul.appendChild(a);
+      });
+      lista.appendChild(ul);
+    });
+  }
+
+  function abrirSolo(n){
+    document.querySelectorAll('.sidebar .module-group').forEach((grupo, k) => {
+      const abierto = (k + 1) === n;
+      const lista = grupo.querySelector('.lesson-list'), chev = grupo.querySelector('.module-chevron');
+      if(lista) lista.style.display = abierto ? '' : 'none';
+      if(chev) chev.classList.toggle('open', abierto);
+      grupo.classList.toggle('sb-abierto', abierto);
+    });
+  }
+
+  function marcarSubtema(){
+    const n = actual(), m = main();
+    document.querySelectorAll('.sb-sub').forEach(s => s.classList.remove('activo'));
+    if(!n || !m) return;
+    const grupo = document.querySelectorAll('.sidebar .module-group')[n-1];
+    if(!grupo) return;
+    const subs = [...grupo.querySelectorAll('.sb-sub')];
+    const tope = m.getBoundingClientRect().top + 120;
+    let visible = subs[0];
+    let mejor = -Infinity;  /* la sección que más recientemente pasó el borde, sea cual sea su orden en la lista */
+    subs.forEach(s => { const y = s._card.getBoundingClientRect().top; if(y <= tope && y > mejor){ mejor = y; visible = s; } });
+    if(visible) visible.classList.add('activo');
+  }
+
+  /* Un capítulo abierto a la vez: el de la lección activa; en la portada, el capítulo 1. */
+  const irOriginal = goToLesson;
+  goToLesson = function(n){
+    irOriginal(n);
+    abrirSolo(n || 1);
+    marcarSubtema();
+  };
+  toggleModule = function(hdr){
+    const grupos = [...document.querySelectorAll('.sidebar .module-group')];
+    const n = grupos.indexOf(hdr.closest('.module-group')) + 1;
+    if(n < 1) return;
+    if(actual() !== n) { goToLesson(n); return; }
+    const lista = hdr.nextElementSibling, abierto = lista.style.display !== 'none';
+    lista.style.display = abierto ? 'none' : '';
+    hdr.querySelector('.module-chevron').classList.toggle('open', !abierto);
+  };
+
+  /* El capítulo completado se marca en su número, porque la fila de la lección ya no se ve. */
+  const completarOriginal = completeLesson;
+  completeLesson = function(n){
+    completarOriginal(n);
+    const num = document.getElementById('mnum-'+(n-1));
+    if(num) num.classList.add('done');
+  };
+
+  /* ── Buscador del curso ─────────────────────────────────────────────── */
+  function indice(){
+    const filas = [];
+    for(let n = 1; n <= TOTAL_LESSONS; n++){
+      const cap = (document.getElementById('mtitle-'+(n-1))||{}).textContent || ('Capítulo '+n);
+      filas.push({n, card:null, titulo:cap, cap});
+      tarjetas(n).forEach(c => filas.push({n, card:c, titulo:tituloDe(c).trim(), cap}));
+    }
+    return filas;
+  }
+  const normal = t => t.normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase();
+
+  function montarBuscador(){
+    const caja = document.getElementById('sbBuscar'), input = document.getElementById('sbBuscarInput'),
+          panel = document.getElementById('sbBuscarRes');
+    if(!caja) return;
+    let filas = null, sel = 0, vistos = [];
+    function pintar(){
+      const q = normal(input.value.trim());
+      if(!q){ panel.hidden = true; return; }
+      filas = filas || indice();
+      vistos = filas.filter(f => normal(f.titulo).includes(q) || normal(f.cap).includes(q)).slice(0, 12);
+      sel = 0;
+      panel.innerHTML = vistos.length
+        ? vistos.map((f,i) => `<div class="sb-res${i===0?' sel':''}" data-i="${i}"><b>Cap. ${f.n}</b><span></span></div>`).join('')
+        : '<div class="sb-vacio">Ningún capítulo ni sección contiene ese texto.</div>';
+      panel.querySelectorAll('.sb-res span').forEach((s,i) => s.textContent = vistos[i].card ? vistos[i].titulo : vistos[i].cap);
+      panel.hidden = false;
+    }
+    function elegir(i){
+      const f = vistos[i]; if(!f) return;
+      panel.hidden = true; input.value = ''; input.blur();
+      irA(f.n, f.card);
+    }
+    input.addEventListener('input', pintar);
+    input.addEventListener('keydown', e => {
+      const items = panel.querySelectorAll('.sb-res');
+      if(e.key === 'ArrowDown' || e.key === 'ArrowUp'){
+        e.preventDefault(); if(!items.length) return;
+        items[sel].classList.remove('sel');
+        sel = (sel + (e.key === 'ArrowDown' ? 1 : items.length - 1)) % items.length;
+        items[sel].classList.add('sel'); items[sel].scrollIntoView({block:'nearest'});
+      } else if(e.key === 'Enter'){ e.preventDefault(); elegir(sel); }
+      else if(e.key === 'Escape'){ panel.hidden = true; input.blur(); }
+    });
+    panel.addEventListener('mousedown', e => {
+      const r = e.target.closest('.sb-res'); if(r){ e.preventDefault(); elegir(Number(r.dataset.i)); }
+    });
+    input.addEventListener('blur', () => setTimeout(() => { panel.hidden = true; }, 120));
+    document.addEventListener('keydown', e => {
+      if((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k'){ e.preventDefault(); input.focus(); input.select(); }
+    });
+    const tecla = document.getElementById('sbBuscarTecla');
+    if(tecla && !/Mac|iPhone|iPad/.test(navigator.platform)) tecla.textContent = 'Ctrl K';
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    construirSubtemas();
+    abrirSolo(actual() || 1);
+    marcarSubtema();
+    montarBuscador();
+    const m = main(); if(m) m.addEventListener('scroll', marcarSubtema, {passive:true});
+  });
 })();
 </script>
 </body>
