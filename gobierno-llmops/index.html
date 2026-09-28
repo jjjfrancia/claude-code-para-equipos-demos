@@ -1673,6 +1673,7 @@ def recuperar(pregunta: str, usuario: Usuario, k: int = 8) -&gt; list[Chunk]:
       <button class="lesson-tab" onclick="tabScroll(3,'gv3-inyeccion',this)">2 · Inyección</button>
       <button class="lesson-tab" onclick="tabScroll(3,'gv3-nativos',this)">3 · Controles nativos</button>
       <button class="lesson-tab" onclick="tabScroll(3,'gv3-agencia',this)">4 · Agencia y acceso</button>
+      <button class="lesson-tab" onclick="tabScroll(3,'gv3-marco-a2a',this)">🛡 Marco A2A</button>
       <button class="lesson-tab" onclick="tabScroll(3,'gv3-claves',this)">✓ Puntos clave</button>
       <button class="lesson-tab" onclick="tabScroll(3,'l3-activity',this)">✍ Actividad</button>
       <button class="lesson-tab" onclick="tabScroll(3,'quizCard3',this)">✓ Quiz</button>
@@ -1888,6 +1889,100 @@ opciones = ClaudeAgentOptions(
 <div style="overflow-x:auto;-webkit-overflow-scrolling:touch"><table><thead><tr><th>Tipo de herramienta</th><th>Para qué sirve</th><th>Qué no resuelve</th></tr></thead><tbody><tr><td>Motores de reglas conversacionales</td><td>Definir temas permitidos, desvíos y flujos de conversación.</td><td>No sustituyen al control de permisos de las herramientas.</td></tr><tr><td>Validadores de estructura de salida</td><td>Comprobar que la salida cumple un esquema, tipos y rangos; reintentar o rechazar si no.</td><td>No juzgan si el contenido es verdadero: para eso está la verificación contra la evidencia.</td></tr><tr><td>Clasificadores de seguridad dedicados</td><td>Modelos pequeños entrenados para detectar toxicidad o ataques; rápidos y baratos.</td><td>Tienen falsos negativos: son una capa, no el perímetro entero.</td></tr></tbody></table></div>
 <div class="callout info"><span class="callout-icon">💡</span><div class="callout-text"><strong>Parseo defensivo.</strong> Lo que devuelve un modelo se valida siempre antes de usarlo: puede venir con escapes rotos, truncado o con un campo de más. Un texto que suena seguro no es un dato validado, y una excepción al parsear no debe convertirse en un error opaco para el usuario.</div></div>
 
+        </div>
+      </div>
+
+      <div class="card" id="gv3-marco-a2a">
+        <div class="card-header">
+          <div class="card-header-icon" style="background:#fee2e2">🛡</div>
+          <span class="card-header-title">Marco de gobierno para ecosistemas de agentes (A2A)</span>
+          <span class="card-header-badge blue">concepto</span>
+        </div>
+        <div class="card-body theory-content">
+<p><strong>Qué es.</strong> Cuando los agentes no solo recomiendan créditos sino que también <b>pagan y cobran</b> con stablecoins (protocolo x402), el banco necesita un marco de control con cuatro pilares: guardarraíles, trazabilidad, observabilidad y cumplimiento.</p>
+<div class="diagram-wrap zoom-trigger" onclick="openZoom('gb03-marco','Marco de gobierno para ecosistemas de agentes')" title="Clic para ampliar"><svg id="gb03-marco" viewBox="0 0 920 330" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block;background:#fff;border-radius:10px;font-family:'Inter',system-ui,sans-serif"><defs><marker id="gb03-marco-a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#64748b"/></marker></defs>
+<g font-size="14">
+<text x="460" y="28" text-anchor="middle" font-size="17" font-weight="900" fill="#0f172a">Gobierno de agentes que deciden créditos y pagan con stablecoins</text>
+<rect x="20" y="48" width="210" height="230" rx="14" fill="#fee2e2" stroke="#dc2626" stroke-width="2"/><text x="125" y="80" text-anchor="middle" font-weight="900" fill="#991b1b" font-size="16">1 · Guardarraíles</text><text x="125" y="104" text-anchor="middle" fill="#334155">control en tiempo real</text><text x="125" y="146" text-anchor="middle" fill="#0f172a">0.05 USDC por pago</text><text x="125" y="170" text-anchor="middle" fill="#0f172a">10 USDC al día</text><text x="125" y="194" text-anchor="middle" fill="#0f172a">filtro de inyección</text><text x="125" y="250" text-anchor="middle" fill="#991b1b" font-weight="700">evita fugas de fondos</text>
+<rect x="245" y="48" width="210" height="230" rx="14" fill="#fef3c7" stroke="#d97706" stroke-width="2"/><text x="350" y="80" text-anchor="middle" font-weight="900" fill="#92400e" font-size="16">2 · Trazabilidad</text><text x="350" y="104" text-anchor="middle" fill="#334155">ruta del dinero y</text><text x="350" y="122" text-anchor="middle" fill="#334155">de la decisión</text><text x="350" y="160" text-anchor="middle" fill="#0f172a">hash del pago ↔ wallet</text><text x="350" y="184" text-anchor="middle" fill="#0f172a">prompt → respuesta</text><text x="350" y="208" text-anchor="middle" fill="#0f172a">bitácora cifrada</text><text x="350" y="250" text-anchor="middle" fill="#92400e" font-weight="700">cumplir PLA/FT (AML)</text>
+<rect x="470" y="48" width="210" height="230" rx="14" fill="#ecfeff" stroke="#0891b2" stroke-width="2"/><text x="575" y="80" text-anchor="middle" font-weight="900" fill="#155e75" font-size="16">3 · Observabilidad</text><text x="575" y="104" text-anchor="middle" fill="#334155">salud del ecosistema</text><text x="575" y="146" text-anchor="middle" fill="#0f172a">latencia LLM + red</text><text x="575" y="170" text-anchor="middle" fill="#0f172a">drift del juez</text><text x="575" y="194" text-anchor="middle" fill="#0f172a">alertas de anomalías</text><text x="575" y="250" text-anchor="middle" fill="#155e75" font-weight="700">detectar fallas temprano</text>
+<rect x="695" y="48" width="205" height="230" rx="14" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/><text x="797" y="80" text-anchor="middle" font-weight="900" fill="#1e3a8a" font-size="16">4 · Cumplimiento</text><text x="797" y="104" text-anchor="middle" fill="#334155">marcos y leyes</text><text x="797" y="146" text-anchor="middle" fill="#0f172a">EU AI Act: alto riesgo</text><text x="797" y="170" text-anchor="middle" fill="#0f172a">NIST AI RMF</text><text x="797" y="194" text-anchor="middle" fill="#0f172a">Datos Personales, SBS</text><text x="797" y="250" text-anchor="middle" fill="#1e3a8a" font-weight="700">demostrar control</text>
+<text x="460" y="312" text-anchor="middle" fill="#0f172a" font-weight="800">Los límites de dinero se programan; no se piden en el prompt.</text>
+</g></svg></div>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:12px;margin:14px 0">
+<div style="border:1.5px solid #fca5a5;background:#fef2f2;border-radius:12px;padding:12px 16px"><strong>1 · Guardarraíles</strong><p style="margin:6px 0 0;font-size:15px">Barreras que el agente no puede violar: ningún pago mayor a 0.05 USDC ni más de 10.00 USDC al día sin re-autenticación humana; una capa que revisa las entradas para detectar prompt injection (por ejemplo, NeMo Guardrails), para que un agente externo no manipule precios.</p></div>
+<div style="border:1.5px solid #fcd34d;background:#fffbeb;border-radius:12px;padding:12px 16px"><strong>2 · Trazabilidad</strong><p style="margin:6px 0 0;font-size:15px">Cada pago queda vinculado por su hash a la wallet del agente responsable, y cada decisión guarda, cifrado, qué instrucción recibió el agente y qué respondió. Así se audita por qué cobró o pagó. Es la base del cumplimiento PLA/FT.</p></div>
+<div style="border:1.5px solid #67e8f9;background:#ecfeff;border-radius:12px;padding:12px 16px"><strong>3 · Observabilidad</strong><p style="margin:6px 0 0;font-size:15px">Vigilar la salud del ecosistema con herramientas como Arize Phoenix, LangSmith o Datadog: latencia del modelo y de la red, y deriva (drift) del agente juez, que empieza a decidir distinto o de forma injusta con el tiempo.</p></div>
+<div style="border:1.5px solid #93c5fd;background:#eff6ff;border-radius:12px;padding:12px 16px"><strong>4 · Cumplimiento</strong><p style="margin:6px 0 0;font-size:15px">El EU AI Act clasifica la evaluación de crédito de personas como <b>alto riesgo</b>: exige documentación técnica, registros automáticos, supervisión humana y ciberseguridad. El NIST AI RMF evalúa si el sistema es confiable, seguro, explicable y justo. En Perú, además, la Ley de Protección de Datos Personales y las normas de la SBS.</p></div>
+</div>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;margin:14px 0"><div style="border:1.5px solid #6ee7b7;background:#ecfdf5;border-radius:12px;padding:12px 16px"><strong style="color:#065f46">✓ Beneficios</strong><ul style="margin:6px 0 0"><li>Un agente en bucle no puede vaciar la billetera: se detiene en 10 USDC.</li><li>Auditoría completa: cada pago y cada decisión tienen responsable y motivo.</li><li>El banco puede mostrar al regulador cómo controla a sus agentes.</li></ul></div><div style="border:1.5px solid #fca5a5;background:#fef2f2;border-radius:12px;padding:12px 16px"><strong style="color:#991b1b">⚠ Riesgos</strong><ul style="margin:6px 0 0"><li>Poner los límites en el prompt: el modelo los cumple «casi siempre».</li><li>Bitácoras con datos personales sin cifrar.</li><li>Adoptar herramientas de observabilidad sin definir qué alerta y quién responde.</li></ul></div></div>
+<div class="callout info"><span class="callout-icon">💡</span><div class="callout-text"><strong>La lección en una frase.</strong> Los límites de dinero son código que corre antes de firmar el pago.</div></div><p style="margin:12px 0 4px"><strong style="color:#991b1b">❌ Así no</strong></p><pre><code>System prompt del agente:
+Nunca gastes más de 0.05 USDC por transacción ni más de 10 USDC al día.</code></pre><p style="font-size:15px">Si el agente entra en un bucle, o un mensaje externo lo convence de que «esta vez está autorizado», el límite no existe: nada lo hace cumplir.</p><p style="margin:12px 0 4px"><strong style="color:#065f46">✅ Así sí</strong></p><pre><code>def guardarrail_financiero(wallet, monto):
+    # corre en código ANTES de firmar cualquier pago
+    if monto &gt; LIMITE_TRANSACCION:          # 0.05 USDC
+        return bloquear(&quot;excede el límite por transacción&quot;)
+    if gasto_hoy[wallet] + monto &gt; LIMITE_DIARIO:   # 10.00 USDC
+        return bloquear(&quot;presupuesto diario agotado: requiere re-autenticación humana&quot;)
+    gasto_hoy[wallet] += monto
+    return aprobar()</code></pre><p style="margin:12px 0 4px"><strong>Qué vas a ver</strong></p><pre><code>Pago de 0.005 USDC → Aprobado. Gasto de hoy: 0.005 USDC.
+Pago de 0.060 USDC → BLOQUEADO: 0.060 USDC excede el límite por transacción de 0.050 USDC.
+
+Simulación de un agente en bucle que paga 0.005 USDC sin parar…
+Pagos aprobados antes del bloqueo: 1999 · gasto del día: 10.000 USDC
+Última decisión: BLOQUEADO: presupuesto diario agotado. Requiere re-autenticación humana.
+Registros en la bitácora: 2002</code></pre><p><strong>Por qué funciona.</strong> El guardarraíl no depende de lo que «entienda» el modelo: se ejecuta siempre y deja cada decisión en la bitácora.</p>
+<p style="margin:14px 0 4px"><strong>El laboratorio completo</strong> (<code>laboratorio-final/gobierno/guardarrail_financiero.py</code>). Los montos van en unidades mínimas enteras: 0.05 USDC = 50 000.</p>
+<pre><code>&quot;&quot;&quot;Laboratorio: guardarraíl financiero para agentes que pagan con stablecoins (x402). Simulación.
+
+Reglas del banco (Política de Gobierno de Agentes):
+- Límite por transacción: 0.05 USDC.
+- Límite diario por agente: 10.00 USDC. Por encima, se exige re-autenticación humana.
+Montos en unidades mínimas enteras (USDC tiene 6 decimales): 0.05 USDC = 50_000.
+
+Corre con: python guardarrail_financiero.py
+&quot;&quot;&quot;
+from collections import defaultdict
+
+LIMITE_TRANSACCION = 50_000        # 0.05 USDC
+LIMITE_DIARIO = 10_000_000         # 10.00 USDC
+
+gasto_hoy = defaultdict(int)       # wallet -&gt; unidades gastadas hoy
+bitacora = []                      # trazabilidad: cada decisión queda registrada
+
+
+def usdc(u: int) -&gt; str:
+    return f&quot;{u / 1_000_000:.3f} USDC&quot;
+
+
+def guardarrail_financiero(wallet: str, monto: int) -&gt; dict:
+    &quot;&quot;&quot;Se ejecuta en código ANTES de firmar cualquier pago. El modelo no puede saltarlo.&quot;&quot;&quot;
+    if monto &lt;= 0:
+        decision = {&quot;valido&quot;: False, &quot;razon&quot;: &quot;BLOQUEADO: monto inválido.&quot;}
+    elif monto &gt; LIMITE_TRANSACCION:
+        decision = {&quot;valido&quot;: False, &quot;razon&quot;: f&quot;BLOQUEADO: {usdc(monto)} excede el límite por transacción de {usdc(LIMITE_TRANSACCION)}.&quot;}
+    elif gasto_hoy[wallet] + monto &gt; LIMITE_DIARIO:
+        decision = {&quot;valido&quot;: False, &quot;razon&quot;: &quot;BLOQUEADO: presupuesto diario agotado. Requiere re-autenticación humana.&quot;}
+    else:
+        gasto_hoy[wallet] += monto
+        decision = {&quot;valido&quot;: True, &quot;razon&quot;: f&quot;Aprobado. Gasto de hoy: {usdc(gasto_hoy[wallet])}.&quot;}
+    bitacora.append({&quot;wallet&quot;: wallet, &quot;monto&quot;: usdc(monto), **decision})
+    return decision
+
+
+if __name__ == &quot;__main__&quot;:
+    agente = &quot;0xAgenteClienteBanco&quot;
+    for monto in (5_000, 60_000):                       # 0.005 y 0.06 USDC
+        print(f&quot;Pago de {usdc(monto)} → {guardarrail_financiero(agente, monto)[&#x27;razon&#x27;]}&quot;)
+
+    print(&quot;\nSimulación de un agente en bucle que paga 0.005 USDC sin parar…&quot;)
+    pagos = 0
+    while guardarrail_financiero(agente, 5_000)[&quot;valido&quot;]:
+        pagos += 1
+    print(f&quot;Pagos aprobados antes del bloqueo: {pagos} · gasto del día: {usdc(gasto_hoy[agente])}&quot;)
+    print(f&quot;Última decisión: {bitacora[-1][&#x27;razon&#x27;]}&quot;)
+    print(f&quot;Registros en la bitácora: {len(bitacora)}&quot;)
+</code></pre>
+<div style="border:1.5px dashed #2563eb;border-radius:12px;padding:14px 16px;background:#f8fafc;margin-top:14px"><strong>🛠 Pruébalo tú</strong><p style="margin:6px 0">Cambia LIMITE_DIARIO a 1 USDC (1_000_000) y vuelve a correr el laboratorio. ¿Cuántos pagos de 0.005 USDC aprueba antes de bloquear al agente?</p><details><summary style="cursor:pointer;font-weight:600;color:#1d4ed8">Ver resultado esperado</summary><div style="margin-top:8px">La salida dice «Pagos aprobados antes del bloqueo: 199 · gasto del día: 1.000 USDC». Son 199 pagos del bucle más el primer pago de prueba: 200 × 0.005 = 1.000 USDC. El siguiente pago se bloquea con «presupuesto diario agotado. Requiere re-autenticación humana».</div></details></div>
         </div>
       </div>
 
@@ -2947,7 +3042,7 @@ FASE 4 · CONVIVIR CON EL CAMBIO (continua)
 const TOTAL_LESSONS = 6;
 const READ_FILLS = Array.from({length: TOTAL_LESSONS}, (_, i) => 'readFill' + (i + 1));
 const READ_LABELS = Array.from({length: TOTAL_LESSONS}, (_, i) => 'readLabel' + (i + 1));
-const TABS = {"1": ["l1-reflect", "l1-objectives", "gv1-caso", "gv1-diseno", "gv1-riesgo", "gv1-amenazas", "gv1-matriz", "gv1-claves", "l1-activity", "quizCard1"], "2": ["l2-reflect", "l2-objectives", "gv2-caso", "gv2-ingesta", "gv2-rag", "gv2-olvido", "gv2-cumplimiento", "gv2-claves", "l2-activity", "quizCard2"], "3": ["l3-reflect", "l3-objectives", "gv3-caso", "gv3-perimetro", "gv3-inyeccion", "gv3-nativos", "gv3-agencia", "gv3-claves", "l3-activity", "quizCard3"], "4": ["l4-reflect", "l4-objectives", "gv4-caso", "gv4-telemetria", "gv4-auditoria", "gv4-evals", "gv4-drift", "gv4-claves", "l4-activity", "quizCard4"], "5": ["l5-reflect", "l5-objectives", "gv5-caso", "gv5-superficies", "gv5-modelos", "gv5-migracion", "gv5-stakeholders", "gv5-claves", "l5-activity", "quizCard5"], "6": ["l6-reflect", "l6-objectives", "gv6-caso", "gv6-decisiones", "gv6-politica", "gv6-gasto", "gv6-nuevo", "gv6-claves", "l6-activity", "quizCard6"]};
+const TABS = {"1": ["l1-reflect", "l1-objectives", "gv1-caso", "gv1-diseno", "gv1-riesgo", "gv1-amenazas", "gv1-matriz", "gv1-claves", "l1-activity", "quizCard1"], "2": ["l2-reflect", "l2-objectives", "gv2-caso", "gv2-ingesta", "gv2-rag", "gv2-olvido", "gv2-cumplimiento", "gv2-claves", "l2-activity", "quizCard2"], "3": ["l3-reflect", "l3-objectives", "gv3-caso", "gv3-perimetro", "gv3-inyeccion", "gv3-nativos", "gv3-agencia", "gv3-marco-a2a", "gv3-claves", "l3-activity", "quizCard3"], "4": ["l4-reflect", "l4-objectives", "gv4-caso", "gv4-telemetria", "gv4-auditoria", "gv4-evals", "gv4-drift", "gv4-claves", "l4-activity", "quizCard4"], "5": ["l5-reflect", "l5-objectives", "gv5-caso", "gv5-superficies", "gv5-modelos", "gv5-migracion", "gv5-stakeholders", "gv5-claves", "l5-activity", "quizCard5"], "6": ["l6-reflect", "l6-objectives", "gv6-caso", "gv6-decisiones", "gv6-politica", "gv6-gasto", "gv6-nuevo", "gv6-claves", "l6-activity", "quizCard6"]};
 const CORRECTAS = {"1": {"1": 1, "2": 1, "3": 1}, "2": {"1": 1, "2": 1, "3": 1}, "3": {"1": 1, "2": 1, "3": 1}, "4": {"1": 1, "2": 1, "3": 1}, "5": {"1": 1, "2": 1, "3": 1}, "6": {"1": 1, "2": 1, "3": 1}};
 const MINIMOS = {"1": 2, "2": 2, "3": 2, "4": 2, "5": 2, "6": 2};
 const MENSAJE_FINAL = "Completaste AI Governance & LLMOps Specialist. El control se dise\u00f1a en el plano, se hace cumplir con configuraci\u00f3n y se demuestra con evidencia: telemetr\u00eda, evals y auditor\u00eda.";
