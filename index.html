@@ -1161,8 +1161,8 @@ Responde en este formato:
     <div class="lesson-tabs" id="tabs1">
       <button class="lesson-tab tab-active" onclick="tabScroll(1,'l1-reflect',this)">💭 Reflexión</button>
       <button class="lesson-tab" onclick="tabScroll(1,'l1-objectives',this)">🎯 Objetivos</button>
+      <button class="lesson-tab" onclick="tabScroll(1,'c1-inventa',this)">❗ Lo que el agente inventa</button>
       <button class="lesson-tab" onclick="tabScroll(1,'c1-vibe',this)">🎧 Vibe coding</button>
-      <button class="lesson-tab" onclick="tabScroll(1,'examMap1',this)">🧭 Examen: qué cubre</button>
       <button class="lesson-tab" onclick="tabScroll(1,'c1-caso',this)">📍 El caso</button>
       <button class="lesson-tab" onclick="tabScroll(1,'c1-tesis',this)">⚡ Tradicional vs agéntico</button>
       <button class="lesson-tab" onclick="tabScroll(1,'c1-bucle',this)">🔁 El bucle</button>
@@ -1175,6 +1175,7 @@ Responde en este formato:
       <button class="lesson-tab" onclick="tabScroll(1,'c1-claves',this)">✓ Puntos clave</button>
       <button class="lesson-tab" onclick="tabScroll(1,'l1-activity',this)">✍ Actividad</button>
       <button class="lesson-tab" onclick="tabScroll(1,'quizCard1',this)">✓ Quiz</button>
+<button class="lesson-tab" onclick="tabScroll(1,'examMap1',this)">🧭 Lo aprendido</button>
       <button class="lesson-tab" onclick="tabScroll(1,'examCard1',this)">🎓 Examen</button>
       <span style="flex:1"></span>
       <span style="font-size:11px;color:var(--slate);white-space:nowrap;padding:0 12px" id="readLabel1">0% leído</span>
@@ -1220,6 +1221,31 @@ Responde en este formato:
         </div>
       </div>
 
+      <div class="card" id="c1-inventa">
+        <div class="card-header">
+          <div class="card-header-icon" style="background:#fee2e2">❗</div>
+          <span class="card-header-title">Todo lo que no defines, el agente lo inventa</span>
+          <span class="card-header-badge blue">idea central</span>
+        </div>
+        <div class="card-body theory-content">
+<p>El agente no se queda quieto cuando le falta información: <b>rellena cada hueco con una suposición</b>, y lo hace con total seguridad. Por eso el resultado «parece andar» aunque esté mal. Estas son las 11 cosas que inventa si no se las defines:</p>
+<div style="overflow-x:auto"><table><thead><tr><th>Qué inventa</th><th>Instrucción incompleta</th><th>Qué pasa</th><th>Cómo se define antes</th></tr></thead><tbody><tr><td><b>1. Reglas de negocio</b></td><td>«Reembolsa cargos duplicados», sin monto máximo</td><td style="color:#991b1b">Reembolsa S/ 800 sin aprobación</td><td style="color:#065f46">«Solo menores a S/ 50 (Política de Reclamos, p. 3)»</td></tr><tr><td><b>2. Datos y fuentes</b></td><td>«Explica por qué se rechazó la transferencia»</td><td style="color:#991b1b">Responde «fondos insuficientes» de memoria, sin mirar el registro</td><td style="color:#065f46">«Toma el motivo solo del registro de la operación»</td></tr><tr><td><b>3. Unidades y formatos</b></td><td>No se dice si los montos están en soles o en céntimos</td><td style="color:#991b1b">El límite queda en céntimos (5000) y el monto llega en soles (80.00): 80 &lt; 5000, reembolsa</td><td style="color:#065f46">«Los montos llegan en soles con dos decimales»</td></tr><tr><td><b>4. Seguridad y permisos</b></td><td>«Consulta la cuenta del cliente»</td><td style="color:#991b1b">No valida identidad: cualquiera ve datos ajenos</td><td style="color:#065f46">«Valida la identidad antes de consultar»</td></tr><tr><td><b>5. Datos sensibles</b></td><td>«Registra lo que hace el agente»</td><td style="color:#991b1b">Guarda la tarjeta completa en los logs</td><td style="color:#065f46">«Nunca escribir tarjeta, DNI ni clave en logs»</td></tr><tr><td><b>6. Qué hacer si no encuentra</b></td><td>«Responde con el Tarifario»</td><td style="color:#991b1b">Si no encuentra la tasa, inventa una</td><td style="color:#065f46">«Si no está, dilo y deriva a un ejecutivo»</td></tr><tr><td><b>7. Alcance</b></td><td>«Arregla el reembolso»</td><td style="color:#991b1b">También cambia el módulo de créditos</td><td style="color:#065f46">«Solo toca src/reclamos/»</td></tr><tr><td><b>8. Herramientas y librerías</b></td><td>«Agrega lectura de PDF»</td><td style="color:#991b1b">Instala una librería que Seguridad no aprobó</td><td style="color:#065f46">«Sin dependencias nuevas»</td></tr><tr><td><b>9. Cuándo escalar</b></td><td>«Resuelve el reclamo»</td><td style="color:#991b1b">Resuelve solo un posible fraude</td><td style="color:#065f46">«Si hay indicio de fraude, escala a un analista»</td></tr><tr><td><b>10. Cómo se comprueba</b></td><td>«Hazlo y avísame»</td><td style="color:#991b1b">Escribe un test que siempre pasa</td><td style="color:#065f46">«Test con S/ 49.90, S/ 50 y S/ 80»</td></tr><tr><td><b>11. Cuándo terminó</b></td><td>No hay criterio de fin</td><td style="color:#991b1b">Dice «listo» porque le parece</td><td style="color:#065f46">«Terminado = tests pasan y lo revisa otra persona»</td></tr></tbody></table></div>
+<div class="callout warning"><span class="callout-icon">⚠</span><div class="callout-text"><strong>Regla antes de enviar una instrucción.</strong> Revisa estas 11 preguntas. Cada una que no respondes, el agente la responde por ti.</div></div>
+<h3>Sin documentación, no hay contra qué validar</h3>
+<p>Definir no basta con decirlo en el chat: tiene que quedar <b>escrito en un documento</b> que el agente pueda leer y contra el cual se pueda comprobar el resultado. Si la regla no está escrita en ningún lado, ni el agente ni el revisor pueden saber si el resultado es correcto: solo «parece» correcto. Anthropic lo pide como primera práctica: darle a Claude una forma de verificar su trabajo (tests, resultados esperados, criterios escritos).</p>
+<div style="overflow-x:auto"><table><thead><tr><th>Documento</th><th>Qué define</th><th>Contra qué se valida</th></tr></thead><tbody>
+<tr><td><b>Política de Reclamos</b></td><td>Montos que se reembolsan solos (menos de S/ 50), cuándo escalar</td><td>Cada reembolso del agente de reclamos</td></tr>
+<tr><td><b>Tarifario y Reglamento de Productos</b></td><td>Tasas, comisiones, requisitos</td><td>Cada respuesta del agente de atención (debe citar la página)</td></tr>
+<tr><td><b>Política de Créditos</b></td><td>Cuota máxima 30 %, montos, plazos, quién aprueba</td><td>Cada recomendación del juez de crédito</td></tr>
+<tr><td><b>Spec de la tarea</b> (SPEC.md)</td><td>Qué se construye, qué no, criterios de aceptación</td><td>El código que entrega el agente</td></tr>
+<tr><td><b>CLAUDE.md del repositorio</b></td><td>Reglas del equipo: no datos sensibles en logs, sin dependencias nuevas, cómo correr los tests</td><td>Cada cambio, en cada sesión</td></tr>
+<tr><td><b>Tests</b></td><td>Resultados esperados escritos por una persona (S/ 49.90 sí, S/ 80 no)</td><td>Se ejecutan y responden OK o FAIL, sin opinión</td></tr>
+</tbody></table></div>
+<div class="callout info"><span class="callout-icon">💡</span><div class="callout-text"><strong>Recomendación.</strong> Antes de pedirle algo al agente, pregúntate: ¿en qué documento está escrita la regla y cómo voy a comprobar que la cumplió? Si no hay respuesta, primero escribe el documento o el test.</div></div>
+<p>Todo lo demás del curso (la spec, los criterios, los tests, CLAUDE.md, los hooks y el plan mode) son formas de <b>definir por escrito</b> lo que el agente, si no, inventaría, y de <b>comprobarlo</b> contra ese escrito.</p>
+        </div>
+      </div>
+
       <div class="card" id="c1-vibe">
         <div class="card-header">
           <div class="card-header-icon" style="background:#f5f3ff">🎧</div>
@@ -1244,6 +1270,27 @@ Responde en este formato:
 <text x="460" y="280" text-anchor="middle" fill="#0f172a" font-weight="800">El nombre no importa: el trabajo pasa de escribir código a dirigir y validar.</text>
 </g></svg></div>
 <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;margin:14px 0"><div style="border:1.5px solid #6ee7b7;background:#ecfdf5;border-radius:12px;padding:12px 16px"><strong style="color:#065f46">✓ Beneficios</strong><ul style="margin:6px 0 0"><li>Prototipos en minutos: una idea se prueba el mismo día.</li><li>Personas de negocio pueden expresar lo que necesitan sin escribir código.</li><li>El equipo técnico se concentra en decidir y verificar.</li></ul></div><div style="border:1.5px solid #fca5a5;background:#fef2f2;border-radius:12px;padding:12px 16px"><strong style="color:#991b1b">⚠ Riesgos</strong><ul style="margin:6px 0 0"><li>Aceptar código que nadie leyó ni entiende.</li><li>En un banco: reglas de dinero, datos de clientes y auditoría quedan al azar.</li><li>Deuda que crece tan rápido como el código.</li></ul></div></div>
+<h3>¿Cuándo usar vibe coding y cuándo no?</h3>
+<p>El vibe coding «puro» (describir y aceptar sin revisar) sirve cuando <b>un error cuesta poco y se detecta rápido</b>. Cuanto más cuesta un error, más hay que definir por escrito y verificar.</p>
+<div style="overflow-x:auto"><table><thead><tr><th>Situación</th><th>¿Vibe coding puro?</th><th>Por qué</th></tr></thead><tbody>
+<tr><td>Prototipo para mostrar una idea al comité (sin datos reales)</td><td style="color:#065f46"><b>Sí</b></td><td>Se descarta después; si falla, no pasa nada</td></tr>
+<tr><td>Explorar un repositorio o una API que no conoces</td><td style="color:#065f46"><b>Sí</b></td><td>Solo lees y aprendes; no se cambia nada en producción</td></tr>
+<tr><td>Script de un solo uso para ordenar archivos o datos de prueba</td><td style="color:#065f46"><b>Sí</b></td><td>Lo revisas en segundos y lo borras</td></tr>
+<tr><td>Maqueta de pantalla o informe interno sin datos de clientes</td><td style="color:#065f46"><b>Sí</b>, con revisión visual</td><td>El resultado se ve y se corrige al instante</td></tr>
+<tr><td>Código que va a producción</td><td style="color:#991b1b"><b>No</b>: dirigido</td><td>Lo usan clientes y lo mantienen otras personas</td></tr>
+<tr><td>Cualquier regla de dinero (reembolsos, tasas, límites de crédito)</td><td style="color:#991b1b"><b>No</b>: dirigido + tests + hooks</td><td>Un error es plata perdida y un hallazgo de auditoría</td></tr>
+<tr><td>Código que toca datos personales o de tarjetas</td><td style="color:#991b1b"><b>No</b>: dirigido + revisión de Seguridad</td><td>Ley de Protección de Datos Personales y normas de la SBS</td></tr>
+<tr><td>Cambios en el core bancario o en integraciones con otros sistemas</td><td style="color:#991b1b"><b>No</b>: plan mode + spec aprobada</td><td>El error se propaga a otros sistemas y es difícil de revertir</td></tr>
+</tbody></table></div>
+<p><b>Qué evaluar antes de decidir</b> (si respondes «sí» a cualquiera, no uses vibe coding puro):</p>
+<ol>
+<li>¿El resultado va a llegar a producción o lo van a usar clientes?</li>
+<li>¿Toca dinero, límites o decisiones de crédito?</li>
+<li>¿Maneja datos personales, de tarjetas o de cuentas?</li>
+<li>¿Otra persona va a mantener este código después?</li>
+<li>¿Un error sería difícil de detectar o de revertir?</li>
+<li>¿Hay una norma, política o auditoría que exija explicar cómo funciona?</li>
+</ol>
 <div class="callout info"><span class="callout-icon">💡</span><div class="callout-text"><strong>La lección en una frase.</strong> Vibe coding sí, pero con una regla verificable y alguien que revise.</div></div><p style="margin:12px 0 4px"><strong style="color:#991b1b">❌ Así no</strong></p><pre><code>hazme un agente que conteste a los clientes por qué se rechazó su transferencia</code></pre><p style="font-size:15px">Vibe coding puro: el agente inventa de dónde sacar el motivo, cómo validar la identidad y qué decir. «Parece andar» en la demo y nadie sabe si responde bien.</p><p style="margin:12px 0 4px"><strong style="color:#065f46">✅ Así sí</strong></p><pre><code>Crea el agente de atención que responde por qué se rechazó una transferencia.
 Reglas: validar identidad antes de consultar; tomar el motivo solo del
 registro de la operación (solo lectura); nunca mostrar el número de cuenta
@@ -1255,24 +1302,6 @@ Muéstrame el plan antes de implementar.</code></pre><p style="margin:12px 0 4px
   4. Enmascarar la cuenta (****4821)
 ¿Apruebas el plan?</code></pre><p><strong>Por qué funciona.</strong> La intención sigue en lenguaje natural, pero ahora tiene reglas, fuente de verdad, tests y un plan que tú apruebas.</p>
 <div style="border:1.5px dashed #2563eb;border-radius:12px;padding:14px 16px;background:#f8fafc;margin-top:14px"><strong>🛠 Pruébalo tú</strong><p style="margin:6px 0">Escribe una instrucción de vibe coding «puro» para el agente de reclamos y reescríbela como vibe coding dirigido: agrega la regla, la fuente, los tests y «muéstrame el plan antes de implementar».</p><details><summary style="cursor:pointer;font-weight:600;color:#1d4ed8">Ver resultado esperado</summary><div style="margin-top:8px">Pasas de «haz que el agente devuelva los cargos duplicados» a «reembolsa solo cargos duplicados menores a S/ 50 (Política de Reclamos, p. 3), en src/reclamos/, con tests para S/ 49.90, S/ 50 y S/ 80; muéstrame el plan antes de implementar».</div></details></div>
-        </div>
-      </div>
-
-      <div class="card" id="examMap1">
-        <div class="card-header">
-          <div class="card-header-icon" style="background:#dbeafe">🧭</div>
-          <span class="card-header-title">Qué cubre del examen Claude Certified Architect – Foundations</span>
-          <span class="card-header-badge blue">examen</span>
-        </div>
-        <div class="card-body theory-content">
-<p>Este capítulo prepara estos objetivos oficiales del examen CCAR-F:</p>
-<ul>
-<li><b>3.4 · Determine when to use plan mode vs direct execution</b>: plan mode para cambios grandes o con decisiones de arquitectura; ejecución directa para cambios pequeños y claros.</li>
-<li><b>3.5 · Apply iterative refinement techniques</b>: ejemplos concretos, tests primero e iterar compartiendo los fallos.</li>
-<li><b>4.1 · Design prompts with explicit criteria</b>: criterios explícitos en vez de instrucciones vagas.</li>
-<li><b>4.6 · Multi-instance review</b>: la sesión que generó el código no es la mejor para revisarlo.</li>
-</ul>
-<p>Escenario del examen más parecido: <b>2 · Code Generation with Claude Code</b>.</p>
         </div>
       </div>
 
@@ -1388,15 +1417,15 @@ y haz que pase.</code></pre><p style="margin:12px 0 4px"><strong>Qué vas a ver<
 <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;margin:14px 0"><div style="border:1.5px solid #6ee7b7;background:#ecfdf5;border-radius:12px;padding:12px 16px"><strong style="color:#065f46">✓ Beneficios</strong><ul style="margin:6px 0 0"><li>Instrucciones cortas que funcionan.</li><li>El agente usa lo que ya sabe hacer: buscar, leer y probar.</li><li>Menos idas y vueltas.</li></ul></div><div style="border:1.5px solid #fca5a5;background:#fef2f2;border-radius:12px;padding:12px 16px"><strong style="color:#991b1b">⚠ Riesgos</strong><ul style="margin:6px 0 0"><li>Si falta «cómo se comprueba», el agente decide solo qué es «arreglado».</li><li>Si dictas cada paso, el agente copia tus errores.</li><li>Sin «dónde mirar», explora todo el repositorio y gasta contexto.</li></ul></div></div>
 <div class="callout info"><span class="callout-icon">💡</span><div class="callout-text"><strong>La lección en una frase.</strong> Dale el síntoma, dónde mirar y cómo comprobarlo; no le dictes los pasos.</div></div><p style="margin:12px 0 4px"><strong style="color:#991b1b">❌ Así no</strong></p><pre><code>Abre src/reclamos/reembolso.py, ve a la línea 42,
 cambia el if por monto &lt;= 50 y luego
-abre tests/ y agrega un test.</code></pre><p style="font-size:15px">Dictaste la solución sin investigar la causa. Si el error estaba en otra parte (por ejemplo, el monto llega en céntimos), lo dejas escondido.</p><p style="margin:12px 0 4px"><strong style="color:#065f46">✅ Así sí</strong></p><pre><code>El agente de reclamos está reembolsando cargos de S/ 80.
+abre tests/ y agrega un test.</code></pre><p style="font-size:15px">Dictaste la solución sin investigar la causa. El error real estaba en otra parte (las unidades) y queda escondido.</p><p style="margin:12px 0 4px"><strong style="color:#065f46">✅ Así sí</strong></p><pre><code>El agente de reclamos está reembolsando cargos de S/ 80.
 El código está en src/reclamos/.
 Reprodúcelo con un test, encuentra la causa, arréglalo
 y corre toda la suite.</code></pre><p style="margin:12px 0 4px"><strong>Qué vas a ver</strong></p><pre><code>● Grep &quot;reembols&quot; src/reclamos/
 ● Read src/reclamos/reembolso.py
-  El monto llega en céntimos (8000) y se compara con 50 soles.
+  El límite está en céntimos (5000) y el monto llega en soles (80.00): 80 &lt; 5000.
 ● Write tests/test_reembolso.py   → 1 failed (reembolsó S/ 80)
-● Edit src/reclamos/reembolso.py   (convierte céntimos a soles)
-● Bash pytest   → 42 passed</code></pre><p><strong>Por qué funciona.</strong> El agente investigó y encontró la causa real (las unidades), que tu instrucción dictada habría pasado por alto.</p>
+● Edit src/reclamos/reembolso.py   (límite en soles: 50.00)
+● Bash pytest   → 42 passed</code></pre><p><strong>Por qué funciona.</strong> El agente investigó y encontró la causa real: el límite y el monto estaban en unidades distintas, 5000 céntimos contra 80 soles, que tu instrucción dictada habría pasado por alto.</p>
 <div style="border:1.5px dashed #2563eb;border-radius:12px;padding:14px 16px;background:#f8fafc;margin-top:14px"><strong>🛠 Pruébalo tú</strong><p style="margin:6px 0">Reescribe esta instrucción con las tres partes: «arregla el bug de los reembolsos».</p><details><summary style="cursor:pointer;font-weight:600;color:#1d4ed8">Ver resultado esperado</summary><div style="margin-top:8px">«El agente de reclamos reembolsa cargos mayores a S/ 50 (síntoma). El código está en src/reclamos/ (dónde mirar). Reprodúcelo con un test y corre la suite al final (cómo se comprueba).»</div></details></div>
         </div>
       </div>
@@ -1668,6 +1697,24 @@ Después dime tres riesgos que ves para llevarlo a producción. No cambies nada.
             <button class="btn btn-primary" id="submitBtn1" onclick="qSubmit(1)">Enviar respuestas — Completar capítulo 1</button>
             <div id="quizResult1" style="display:none"></div>
           </div>
+        </div>
+      </div>
+
+      <div class="card" id="examMap1">
+        <div class="card-header">
+          <div class="card-header-icon" style="background:#dbeafe">🧭</div>
+          <span class="card-header-title">Lo que aprendiste y el examen</span>
+          <span class="card-header-badge blue">examen</span>
+        </div>
+        <div class="card-body theory-content">
+<p>Este capítulo prepara estos objetivos oficiales del examen CCAR-F:</p>
+<ul>
+<li><b>3.4 · Determine when to use plan mode vs direct execution</b>: plan mode para cambios grandes o con decisiones de arquitectura; ejecución directa para cambios pequeños y claros.</li>
+<li><b>3.5 · Apply iterative refinement techniques</b>: ejemplos concretos, tests primero e iterar compartiendo los fallos.</li>
+<li><b>4.1 · Design prompts with explicit criteria</b>: criterios explícitos en vez de instrucciones vagas.</li>
+<li><b>4.6 · Multi-instance review</b>: la sesión que generó el código no es la mejor para revisarlo.</li>
+</ul>
+<p>Escenario del examen más parecido: <b>2 · Code Generation with Claude Code</b>.</p>
         </div>
       </div>
 
@@ -7067,7 +7114,7 @@ No cambies nada: quiero decidir yo el orden.</textarea>
 const TOTAL_LESSONS = 14;
 const READ_FILLS = Array.from({length: TOTAL_LESSONS}, (_, i) => 'readFill' + (i + 1));
 const READ_LABELS = Array.from({length: TOTAL_LESSONS}, (_, i) => 'readLabel' + (i + 1));
-const TABS = {"1": ["l1-reflect", "l1-objectives", "c1-vibe", "examMap1", "c1-caso", "c1-tesis", "c1-bucle", "c1-dirigir", "c1-comandos", "c1-flujo", "c1-acelera", "c1-deuda", "c1-ejemplo", "c1-claves", "l1-activity", "quizCard1", "examCard1"], "2": ["l2-reflect", "l2-objectives", "ct-caso", "ct-agente", "ct-patrones", "ct-bucle", "ct-contexto", "ct-cache", "ct-seguridad", "ct-multi", "ct-glosario", "ct-ejemplo", "ct-claves", "l2-activity", "quizCard2"], "3": ["l3-reflect", "l3-objectives", "examMap3", "c2-caso", "c2-inconsistencia", "c2-componentes", "c2-criterios", "c2-briefing", "c2-comandos", "c2-ejemplo", "c2-claves", "l3-activity", "quizCard3", "examCard3"], "4": ["l4-reflect", "l4-objectives", "cc3-caso", "cc3-que-es", "cc3-instalar", "cc3-tools", "cc3-flujo", "cc3-entrevista", "cc3-riesgos", "cc3-claves", "l4-activity", "quizCard4"], "5": ["l5-reflect", "l5-objectives", "cc4-caso", "cc4-jerarquia", "cc4-escribir", "cc4-modular", "cc4-automemory", "cc4-limite", "cc4-claves", "l5-activity", "quizCard5"], "6": ["l6-reflect", "l6-objectives", "cc5-caso", "cc5-nativos", "cc5-skills", "cc5-dod", "cc5-plugins", "cc5-riesgos", "cc5-claves", "l6-activity", "quizCard6"], "7": ["l7-reflect", "l7-objectives", "cc6-caso", "cc6-eventos", "cc6-contrato", "cc6-tutor", "cc6-riesgos", "cc6-claves", "l7-activity", "quizCard7"], "8": ["l8-reflect", "l8-objectives", "cc7-caso", "cc7-anatomia", "cc7-frontmatter", "cc7-tres", "cc7-cuando-no", "cc7-claves", "l8-activity", "quizCard8"], "9": ["l9-reflect", "l9-objectives", "cc8-caso", "cc8-harness", "cc8-contexto", "cc8-compactacion", "cc8-checkpoints", "cc8-validar", "cc8-claves", "l9-activity", "quizCard9"], "10": ["l10-reflect", "l10-objectives", "cc9-caso", "cc9-elegir", "cc9-orquestador", "cc9-sdk", "cc9-riesgos", "cc9-claves", "l10-activity", "quizCard10"], "11": ["l11-reflect", "l11-objectives", "cc10-caso", "cc10-que-es", "cc10-servidor", "cc10-gobierno", "cc10-riesgos", "cc10-claves", "l11-activity", "quizCard11"], "12": ["l12-reflect", "l12-objectives", "cc11-caso", "cc11-extraer", "cc11-trocear", "cc11-buscar", "cc11-recuperar", "cc11-verificar", "cc11-claves", "l12-activity", "quizCard12"], "13": ["l13-reflect", "l13-objectives", "cc12-caso", "cc12-permisos", "cc12-modos", "cc12-seguridad", "cc12-dod", "cc12-automatizar", "cc12-claves", "l13-activity", "quizCard13"], "14": ["l14-reflect", "l14-objectives", "cc13-caso", "cc13-estandar", "cc13-plan", "cc13-objeciones", "cc13-medir", "cc13-proyecto", "cc13-claves", "l14-activity", "quizCard14"]};
+const TABS = {"1": ["l1-reflect", "l1-objectives", "c1-inventa", "c1-vibe", "c1-caso", "c1-tesis", "c1-bucle", "c1-dirigir", "c1-comandos", "c1-flujo", "c1-acelera", "c1-deuda", "c1-ejemplo", "c1-claves", "l1-activity", "quizCard1", "examMap1", "examCard1"], "2": ["l2-reflect", "l2-objectives", "ct-caso", "ct-agente", "ct-patrones", "ct-bucle", "ct-contexto", "ct-cache", "ct-seguridad", "ct-multi", "ct-glosario", "ct-ejemplo", "ct-claves", "l2-activity", "quizCard2"], "3": ["l3-reflect", "l3-objectives", "examMap3", "c2-caso", "c2-inconsistencia", "c2-componentes", "c2-criterios", "c2-briefing", "c2-comandos", "c2-ejemplo", "c2-claves", "l3-activity", "quizCard3", "examCard3"], "4": ["l4-reflect", "l4-objectives", "cc3-caso", "cc3-que-es", "cc3-instalar", "cc3-tools", "cc3-flujo", "cc3-entrevista", "cc3-riesgos", "cc3-claves", "l4-activity", "quizCard4"], "5": ["l5-reflect", "l5-objectives", "cc4-caso", "cc4-jerarquia", "cc4-escribir", "cc4-modular", "cc4-automemory", "cc4-limite", "cc4-claves", "l5-activity", "quizCard5"], "6": ["l6-reflect", "l6-objectives", "cc5-caso", "cc5-nativos", "cc5-skills", "cc5-dod", "cc5-plugins", "cc5-riesgos", "cc5-claves", "l6-activity", "quizCard6"], "7": ["l7-reflect", "l7-objectives", "cc6-caso", "cc6-eventos", "cc6-contrato", "cc6-tutor", "cc6-riesgos", "cc6-claves", "l7-activity", "quizCard7"], "8": ["l8-reflect", "l8-objectives", "cc7-caso", "cc7-anatomia", "cc7-frontmatter", "cc7-tres", "cc7-cuando-no", "cc7-claves", "l8-activity", "quizCard8"], "9": ["l9-reflect", "l9-objectives", "cc8-caso", "cc8-harness", "cc8-contexto", "cc8-compactacion", "cc8-checkpoints", "cc8-validar", "cc8-claves", "l9-activity", "quizCard9"], "10": ["l10-reflect", "l10-objectives", "cc9-caso", "cc9-elegir", "cc9-orquestador", "cc9-sdk", "cc9-riesgos", "cc9-claves", "l10-activity", "quizCard10"], "11": ["l11-reflect", "l11-objectives", "cc10-caso", "cc10-que-es", "cc10-servidor", "cc10-gobierno", "cc10-riesgos", "cc10-claves", "l11-activity", "quizCard11"], "12": ["l12-reflect", "l12-objectives", "cc11-caso", "cc11-extraer", "cc11-trocear", "cc11-buscar", "cc11-recuperar", "cc11-verificar", "cc11-claves", "l12-activity", "quizCard12"], "13": ["l13-reflect", "l13-objectives", "cc12-caso", "cc12-permisos", "cc12-modos", "cc12-seguridad", "cc12-dod", "cc12-automatizar", "cc12-claves", "l13-activity", "quizCard13"], "14": ["l14-reflect", "l14-objectives", "cc13-caso", "cc13-estandar", "cc13-plan", "cc13-objeciones", "cc13-medir", "cc13-proyecto", "cc13-claves", "l14-activity", "quizCard14"]};
 const CORRECTAS = {"1": {"1": 1, "2": 1, "3": 2}, "2": {"1": 1, "2": 1, "3": 1}, "3": {"1": 1, "2": 2, "3": 1}, "4": {"1": 1, "2": 1, "3": 1}, "5": {"1": 1, "2": 1, "3": 1}, "6": {"1": 1, "2": 1, "3": 1}, "7": {"1": 1, "2": 1, "3": 1}, "8": {"1": 1, "2": 1, "3": 1}, "9": {"1": 1, "2": 1, "3": 1}, "10": {"1": 1, "2": 1, "3": 1}, "11": {"1": 1, "2": 1, "3": 1}, "12": {"1": 1, "2": 1, "3": 1}, "13": {"1": 1, "2": 1, "3": 1}, "14": {"1": 1, "2": 1, "3": 1}};
 const MINIMOS = {"1": 2, "2": 2, "3": 2, "4": 2, "5": 2, "6": 2, "7": 2, "8": 2, "9": 2, "10": 2, "11": 2, "12": 2, "13": 2, "14": 2};
 const MENSAJE_FINAL = "Completaste Claude Code para Equipos. El agente ejecuta; el equipo es responsable. Siguiente paso: el proyecto final sobre tu repositorio.";
