@@ -1,0 +1,23 @@
+tutor-whatsapp/
+├── CLAUDE.md                     cap. 5 · hechos, comandos, prohibiciones (<200 líneas)
+├── .claude/
+│   ├── rules/
+│   │   ├── python.md             cap. 5 · paths: tutor/**/*.py
+│   │   └── sql.md                cap. 5 · paths: migrations/**/*.sql
+│   ├── settings.json             cap. 7 y 13 · permisos y hooks DEL EQUIPO (en git)
+│   ├── settings.local.json       personal, fuera de git
+│   ├── hooks/
+│   │   ├── bloquear_rutas.py     cap. 7 · PreToolUse
+│   │   ├── bloquear_comandos.py  cap. 7 · PreToolUse
+│   │   └── formatear_y_probar.py cap. 7 · PostToolUse
+│   ├── skills/
+│   │   ├── spec/SKILL.md         cap. 6 · /spec
+│   │   └── dod/SKILL.md          cap. 6 · /dod, context: fork
+│   └── agents/
+│       ├── explorador-rag.md     cap. 8
+│       ├── revisor.md            cap. 8
+│       └── auditor.md            cap. 8
+├── .mcp.json                     cap. 11 · documentos, postgres-lectura, github
+├── specs/                        cap. 3 · una spec por feature
+├── dod/DoD.md                    cap. 13 · siete ítems con su comando
+└── .github/workflows/dod.yml     cap. 13 · la DoD en cada PR

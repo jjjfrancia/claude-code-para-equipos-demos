@@ -1,0 +1,5 @@
+/context                       # qué ocupa cada cosa, con sugerencias
+/compact céntrate en el bug del umbral y en los tests que faltan
+/autocompact 500k              # compactar antes, no al filo del límite
+/rewind → «Summarize from here» o «Summarize up to here»   # comprimir solo un tramo
+/clear                         # cambio de tarea: contexto nuevo, memoria del proyecto intacta

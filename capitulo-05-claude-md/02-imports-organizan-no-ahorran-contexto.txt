@@ -1,0 +1,5 @@
+See @README for project overview and @package.json for available npm commands.
+
+# Additional Instructions
+- git workflow @docs/git-instructions.md
+- preferencias personales @~/.claude/mis-notas-tutor.md

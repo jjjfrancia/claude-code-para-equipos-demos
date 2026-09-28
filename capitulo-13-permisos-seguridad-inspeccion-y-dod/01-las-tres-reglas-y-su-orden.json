@@ -1,0 +1,22 @@
+{
+  "permissions": {
+    "defaultMode": "default",
+    "allow": [
+      "Bash(pytest *)", "Bash(ruff *)", "Bash(git status *)", "Bash(git diff *)",
+      "Bash(git add *)", "Bash(git commit *)", "Bash(uvicorn tutor.app:app *)",
+      "mcp__documentos__leer_documento"
+    ],
+    "ask": [
+      "Bash(git push *)", "Bash(alembic upgrade *)", "mcp__github__create_pull_request"
+    ],
+    "deny": [
+      "Edit(tutor/verificar.py)", "Write(tutor/verificar.py)",
+      "Read(./.env)", "Read(./secrets/**)",
+      "Bash(git push --force *)", "Bash(rm -rf *)",
+      "mcp__postgres-produccion__*",
+      "WebFetch"
+    ],
+    "additionalDirectories": ["../libreria-comun"]
+  },
+  "hooks": { "PreToolUse": [ "…los del capítulo 7…" ] }
+}

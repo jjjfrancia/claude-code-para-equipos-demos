@@ -1,0 +1,1 @@
+/goal los tests de tests/test_documento_propio.py pasan y ruff check no reporta nada

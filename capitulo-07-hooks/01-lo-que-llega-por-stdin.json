@@ -1,0 +1,10 @@
+{
+  "session_id": "abc123",
+  "transcript_path": "/home/ana/.claude/projects/.../transcript.jsonl",
+  "cwd": "/home/ana/proyectos/tutor",
+  "permission_mode": "default",
+  "hook_event_name": "PreToolUse",
+  "tool_name": "Bash",
+  "tool_input": { "command": "pytest -q", "description": "Correr la suite" },
+  "tool_use_id": "toolu_01ABC..."
+}

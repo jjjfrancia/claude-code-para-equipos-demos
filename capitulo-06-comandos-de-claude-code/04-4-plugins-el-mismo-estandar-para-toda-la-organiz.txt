@@ -1,0 +1,11 @@
+tutor-tooling/
+├── .claude-plugin/
+│   └── plugin.json          {"name": "tutor-tooling", "version": "1.2.0", …}
+├── skills/
+│   ├── spec/SKILL.md        → /tutor-tooling:spec
+│   └── dod/SKILL.md         → /tutor-tooling:dod
+├── agents/
+│   └── revisor.md           el subagente revisor del capítulo 8
+├── hooks/
+│   └── hooks.json           los hooks del capítulo 7
+└── .mcp.json                el servidor de documentos del capítulo 11

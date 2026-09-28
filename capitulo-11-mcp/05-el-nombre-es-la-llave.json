@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": ["mcp__documentos__leer_documento", "mcp__postgres-lectura__query"],
+    "ask":   ["mcp__github__create_pull_request"],
+    "deny":  ["mcp__github__delete_repository", "mcp__postgres-produccion__*"]
+  },
+  "hooks": {
+    "PreToolUse": [
+      { "matcher": "mcp__postgres.*",
+        "hooks": [{ "type": "command", "command": ".claude/hooks/solo_select.py" }] }
+    ]
+  }
+}

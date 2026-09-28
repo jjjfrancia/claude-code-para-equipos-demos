@@ -1,0 +1,5 @@
+~/.claude/projects/<repo>/memory/
+├── MEMORY.md            # índice, una línea por memoria; se carga en cada sesión
+├── user_role.md         # una memoria
+├── feedback_testing.md  # otra
+└── ...                  # los archivos de tema se leen bajo demanda

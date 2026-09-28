@@ -1,0 +1,36 @@
+{
+  "permissions": {
+    "deny": ["Edit(tutor/verificar.py)", "Write(tutor/verificar.py)", "Read(./.env)"],
+    "allow": ["Bash(pytest *)", "Bash(ruff *)", "Bash(git diff *)", "Bash(git status *)"]
+  },
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [{ "type": "command",
+                    "command": "python \"$CLAUDE_PROJECT_DIR\"/.claude/hooks/bloquear_rutas.py",
+                    "timeout": 10 }]
+      },
+      {
+        "matcher": "Bash",
+        "hooks": [{ "type": "command",
+                    "command": "python \"$CLAUDE_PROJECT_DIR\"/.claude/hooks/bloquear_comandos.py" }]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [{ "type": "command",
+                    "command": "python \"$CLAUDE_PROJECT_DIR\"/.claude/hooks/formatear_y_probar.py",
+                    "timeout": 300 }]
+      }
+    ],
+    "SessionStart": [
+      {
+        "matcher": "compact",
+        "hooks": [{ "type": "command",
+                    "command": "echo 'Recordatorio: pytest -q antes de reportar. No tocar tutor/verificar.py. Sprint actual: cita de pagina.'" }]
+      }
+    ]
+  }
+}

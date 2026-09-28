@@ -1,0 +1,13 @@
+{
+  "hooks": {
+    "Stop": [
+      {
+        "hooks": [{
+          "type": "prompt",
+          "prompt": "Mira la ultima respuesta del asistente. Si afirma haber creado, modificado o borrado un archivo, comprueba en la lista de cambios si ese archivo existe de verdad. Responde {\"decision\": \"block\", \"reason\": \"...\"} solo si alguna afirmacion no tiene respaldo. En cualquier otro caso responde {}.",
+          "timeout": 30
+        }]
+      }
+    ]
+  }
+}

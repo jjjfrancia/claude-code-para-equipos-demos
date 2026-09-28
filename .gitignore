@@ -4,4 +4,4 @@ __pycache__/
 .venv/
 venv/
 # caché generada por tutor_corpus.py a partir del PDF
-teoria/datos/guia_fragmentos.json
+capitulo-02-teoria-de-agentes/teoria/datos/guia_fragmentos.json

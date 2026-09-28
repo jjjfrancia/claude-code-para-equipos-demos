@@ -1,0 +1,2 @@
+El flujo de checkout falla para usuarios con tarjeta vencida.
+El código relevante está en src/payments/. ¿Puedes investigar y arreglarlo?

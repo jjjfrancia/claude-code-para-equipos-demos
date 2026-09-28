@@ -1,0 +1,9 @@
+# estado/troceo_pmbok.json — el checkpoint que no vive en la conversación
+{
+  "tarea": "trocear los PDF del corpus",
+  "hechos":     ["docs/pmbok7.pdf", "docs/scrum-guide-2020.pdf"],
+  "pendientes": ["docs/prince2.pdf", "docs/iso21500.pdf"],
+  "session_id": "3f9c2a10-...",
+  "ultimo_error": null,
+  "actualizado": "2026-03-04T11:20:31Z"
+}

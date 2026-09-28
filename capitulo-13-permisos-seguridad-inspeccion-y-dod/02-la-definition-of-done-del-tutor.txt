@@ -1,0 +1,7 @@
+1. Los tests pasan               → salida de `pytest -q` en la transcripción
+2. Un test por criterio          → nombre del test junto a cada AC de la spec
+3. Lint y formato limpios        → salida de `ruff check .`
+4. Sin dependencias nuevas       → `git diff requirements.txt` vacío, o justificado
+5. Sin datos personales en logs  → grep sobre las líneas añadidas
+6. Nada fuera de alcance         → `git diff --stat` contrastado con la spec
+7. Revisado por una persona      → quien firma es quien lo va a mantener

@@ -1,0 +1,7 @@
+# Flujo conceptual de CI
+1. Instalar dependencias desde lockfile.
+2. Ejecutar lint, tipos, tests y pruebas de seguridad.
+3. Ejecutar Claude Code headless con salida JSON estructurada.
+4. Guardar reporte y diff como artefactos.
+5. Ejecutar una revisión independiente.
+6. Bloquear merge si falla un control obligatorio.

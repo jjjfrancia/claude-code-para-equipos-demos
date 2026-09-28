@@ -1,0 +1,20 @@
+{
+  "mcpServers": {
+    "documentos": {
+      "type": "stdio",
+      "command": "python",
+      "args": ["${CLAUDE_PROJECT_DIR:-.}/mcp/servidor_documentos.py"],
+      "env": { "CORPUS_DIR": "docs/" }
+    },
+    "postgres-lectura": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["-y", "@bytebase/dbhub", "--dsn", "${TUTOR_DSN_LECTURA}"]
+    },
+    "github": {
+      "type": "http",
+      "url": "https://api.githubcopilot.com/mcp/",
+      "headers": { "Authorization": "Bearer ${GITHUB_PAT}" }
+    }
+  }
+}
