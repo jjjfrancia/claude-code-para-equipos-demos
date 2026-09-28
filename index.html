@@ -919,7 +919,7 @@ body{font-family:'Inter',system-ui,sans-serif;font-size:15px;background:var(--na
         <span class="breadcrumb-lesson">Vibe Coding — la tesis</span>
       </div>
       <h1 class="lesson-hero-title">Vibe Coding — la tesis: por qué el código deja de ser el centro y la intención pasa a serlo</h1>
-      <p class="lesson-hero-desc">Claude Code no es un chatbot que responde y espera: lee tus archivos, corre comandos, hace cambios y trabaja solo mientras tú miras, corriges o te vas. Eso cambia el trabajo del equipo. Este capítulo explica cómo, con el material de Anthropic y con el caso que atraviesa todo el curso: el Tutor de proyectos por WhatsApp.</p>
+      <p class="lesson-hero-desc">Claude Code no es un chatbot que responde y espera: lee tus archivos, corre comandos, hace cambios y trabaja solo mientras tú miras, corriges o te vas. Eso cambia el trabajo del equipo. Este capítulo explica cómo, con el material de Anthropic y con el caso que atraviesa todo el curso: el Marketplace de Créditos del banco y sus dos asistentes.</p>
       <div class="lesson-hero-meta">
         <div class="meta-chip"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="8" cy="8" r="6"/><path d="M8 5v3l2 2"/></svg>45 min</div>
         <div class="meta-chip"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M8 3l5 5-5 5"/></svg>Vibe Coding — la tesis</div>
@@ -987,16 +987,20 @@ body{font-family:'Inter',system-ui,sans-serif;font-size:15px;background:var(--na
       <div class="card" id="c1-caso">
         <div class="card-header">
           <div class="card-header-icon" style="background:#ede9fe">📍</div>
-          <span class="card-header-title">El Tutor de proyectos por WhatsApp — Sprint 0, viernes 4:50 pm</span>
+          <span class="card-header-title">El caso: el Marketplace de Créditos del banco</span>
           <span class="card-header-badge blue">caso transversal</span>
         </div>
         <div class="card-body theory-content">
 
-<p>Todo el curso trabaja sobre un mismo sistema real: un <strong>agente tutor</strong> que responde por WhatsApp preguntas sobre el PMBOK 7 y la Guía Scrum 2020. No responde de memoria: busca los párrafos en el documento, redacta solo con ellos y cita la página. Hoy existe como demo. El reto del equipo de tres personas que lo mantiene (una tech lead, dos developers) es llevarlo a producción para 400 alumnos.</p>
-<div class="callout case"><span class="callout-icon">🏢</span><div class="callout-text"><strong>Cómo responde hoy, paso a paso.</strong> 1) El alumno escribe por WhatsApp «¿qué es el acta de constitución del proyecto?». 2) La central de WhatsApp «toca el timbre»: un <em>webhook</em> avisa que llegó un mensaje. 3) El webhook identifica de qué bot se trata y le pasa la pregunta al agente. 4) El agente <strong>busca</strong> en el documento con la tool <code>leer_documento(pregunta)</code> y recibe cuatro párrafos con su número de página. 5) El agente le entrega esos párrafos a la IA con una regla: «redacta <strong>solo</strong> con esto». 6) Arma la respuesta con la cita «PMBOK 7, p. 45». 7) El alumno la recibe en segundos, con la página para verificarla.</div></div>
-<p>El viernes a las 4:50 pm, la tech lead abre Claude Code en el repositorio y escribe una sola línea: <em>«haz que el bot soporte que el alumno suba su propio PDF y pregunte sobre él»</em>. Se va a una reunión. A las 5:40 vuelve: hay 14 archivos modificados, un endpoint nuevo, una migración de base de datos, tests nuevos, y el mensaje «Listo. Implementé la carga de PDF con troceo, embeddings y búsqueda. Todos los tests pasan».</p>
-<div class="callout warning"><span class="callout-icon">⚠</span><div class="callout-text"><strong>Lo que no se ve en ese mensaje.</strong> El agente eligió una librería de PDF que el equipo no usa, guardó los archivos subidos en una carpeta sin límite de tamaño, y el test «pasa» porque el propio agente escribió un test que compara la salida consigo misma. Nadie decidió nada de eso. Nadie lo revisó. La velocidad fue real: cincuenta minutos para lo que al equipo le habría tomado una semana. La deuda también.</div></div>
-<p>Ese es el problema que resuelve el curso, y el que este capítulo enmarca: <strong>el agente escribe; el equipo tiene que aprender a dirigir y a verificar</strong>. No es un problema de la herramienta. Es el cambio de trabajo que la herramienta trae.</p>
+<p>Todo el curso trabaja sobre un mismo producto: el <strong>Marketplace de Créditos</strong> del banco. En la app, personas y pequeñas empresas piden un préstamo, el banco lo evalúa y aprueba, e inversionistas lo financian. Un equipo de tres personas (una tech lead y dos developers) construye con Claude dos asistentes:</p>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;margin:12px 0">
+<div style="border:1.5px solid #bfdbfe;border-radius:12px;padding:14px;background:#eff6ff"><strong>1 · Respuesta a clientes</strong><p style="margin:6px 0 0;font-size:14px">Responde a solicitantes e inversionistas <b>solo</b> con el Reglamento y el Tarifario, y cita la página: «Tarifario, p. 4». Si no sabe, lo dice y deriva a un ejecutivo.</p></div>
+<div style="border:1.5px solid #a7f3d0;border-radius:12px;padding:14px;background:#ecfdf5"><strong>2 · Aprobación de créditos</strong><p style="margin:6px 0 0;font-size:14px">Tres agentes (uno flexible, uno estricto y un juez) revisan cada solicitud contra la Política de Créditos y recomiendan aprobar, rechazar o revisar. <b>La decisión final es del analista.</b></p></div>
+</div>
+<div class="callout case"><span class="callout-icon">🏢</span><div class="callout-text"><strong>Un ejemplo, paso a paso.</strong> Solicitud S-1042: ingreso neto S/ 3,500, deudas S/ 400 al mes, 2 años en su empleo, pide S/ 15,000 a 36 meses. 1) El asistente calcula la cuota: S/ 513. 2) La carga total queda en S/ 913, el 26 % del ingreso. 3) La Política de Créditos permite hasta 30 % (p. 7). 4) El flexible y el estricto coinciden, el juez cierra: <b>recomienda aprobar</b>. 5) El analista revisa y decide.</div></div>
+<p>Un martes, la tech lead abre Claude Code en el repositorio y escribe una sola línea: <em>«haz que el asistente de créditos apruebe solo las solicitudes que cumplan la política»</em>. Se va a una reunión. Al volver hay 14 archivos modificados y el mensaje «Listo. Todos los tests pasan».</p>
+<div class="callout warning"><span class="callout-icon">⚠</span><div class="callout-text"><strong>Lo que no se ve en ese mensaje.</strong> El asistente ahora <b>aprueba directamente</b>, sin pasar por el analista; guarda el DNI y los ingresos de los clientes en los logs; y el test «pasa» porque compara la salida consigo misma. Nadie decidió nada de eso. Nadie lo revisó. En un banco, eso no es deuda técnica: es un hallazgo de auditoría.</div></div>
+<p>Ese es el problema que resuelve el curso: <strong>el agente escribe; el equipo tiene que aprender a dirigir y a verificar</strong>.</p>
 
         </div>
       </div>
