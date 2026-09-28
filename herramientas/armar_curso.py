@@ -270,10 +270,9 @@ def main() -> None:
         datos = json.load(open(f, encoding='utf-8'))
         n_preg += len(datos)
         json.dump(datos, open(os.path.join(destino, os.path.basename(f)), 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
-    img = os.path.join(RAIZ, 'material-de-clase', 'debate-juez.webp')
-    if os.path.exists(img) and os.path.normpath(salida) != os.path.normpath(os.path.join(RAIZ, 'material-de-clase')):
-        import shutil
-        shutil.copyfile(img, os.path.join(salida, 'debate-juez.webp'))
+    import shutil
+    for img in glob.glob(os.path.join(RAIZ, 'material-de-clase', '*.webp')) + glob.glob(os.path.join(RAIZ, 'material-de-clase', '*.png')):
+        shutil.copyfile(img, os.path.join(salida, os.path.basename(img)))
     subprocess.run([sys.executable, os.path.join(RAIZ, 'herramientas', 'armar_simulador.py'), clave], check=True)
     print(f'{clave}: {total} capítulos · {len(html) // 1024} KB · {n_preg} preguntas → {os.path.relpath(salida, RAIZ)}/')
 
