@@ -554,12 +554,40 @@ body{font-family:'Inter',system-ui,sans-serif;font-size:15px;background:var(--na
 @media (max-width:1500px){[class*="extra-links"] a:not(.cc-exam-link){display:none!important}}
 #li-0{color:#e2e8f0;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:10px;padding:9px 12px;cursor:pointer}
 #li-0.active{background:#2563eb;border-color:#2563eb;color:#fff}
-.portada{max-width:1080px;margin:0 auto;padding:36px 32px 60px}
-.portada-hero{display:grid;grid-template-columns:auto minmax(0,1fr);gap:28px;align-items:center;background:#fff;border:1px solid var(--border);border-radius:18px;padding:32px;box-shadow:var(--shadow-md)}
-.portada-eyebrow{font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--blue2)}
-.portada-hero h1{font-size:34px;line-height:1.15;margin:6px 0 10px;color:var(--navy);text-wrap:balance}
-.portada-hero p{font-size:16px;color:var(--text2);line-height:1.6;margin:0 0 16px;max-width:62ch}
+.portada{max-width:1340px;margin:0 auto;padding:36px 32px 60px}
+.pt-eyebrow{font-size:12px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:#2563eb}
+.pt-cab{display:grid;grid-template-columns:78px minmax(0,1fr) minmax(200px,340px);gap:22px;align-items:center;background:#fff;border:1px solid var(--border);border-radius:18px;padding:16px 26px 16px 22px;box-shadow:0 6px 24px rgba(30,58,138,.06)}
+.pt-cab-logo{width:78px;height:78px;display:block}
+.pt-cab h1{font-size:30px;line-height:1.15;margin:6px 0 0;color:#0f172a;letter-spacing:-.02em}
+.pt-cab-prog{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 14px;align-items:center;font-size:13px;color:var(--text2)}
+.pt-cab-prog span{grid-column:1/-1}
+.pt-cab-barra{height:8px;border-radius:9px;background:#e2e8f0;overflow:hidden}
+.pt-cab-barra i{display:block;height:100%;border-radius:9px;background:linear-gradient(90deg,#2563eb,#06b6d4);transition:width .3s}
+.pt-cab-prog b{color:#2563eb;font-size:17px;font-variant-numeric:tabular-nums}
+.pt-obj-hero{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:20px;align-items:center;margin:34px 0 26px}
+.pt-obj-hero h2{font-size:clamp(34px,4.4vw,66px);white-space:nowrap;line-height:1.04;letter-spacing:-.035em;font-weight:900;margin:12px 0 14px;color:#0f172a}
+.pt-obj-hero h2 span{background:linear-gradient(90deg,#2f5ff0,#1a8fe6 55%,#07c3d9);-webkit-background-clip:text;background-clip:text;color:transparent}
+.pt-obj-hero p{font-size:18px;color:#475569;line-height:1.55;margin:0 0 20px;max-width:60ch}
+.pt-obj-ilus{width:100%;height:auto;display:block}
+.pt-objs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.pt-obj{display:grid;grid-template-columns:54px minmax(0,1fr) 36px;gap:16px;align-items:start;background:#fff;border:1px solid var(--border);border-radius:16px;padding:20px;text-decoration:none;color:inherit;cursor:pointer;transition:border-color .15s,box-shadow .15s}
+.pt-obj:hover{border-color:#93c5fd;box-shadow:0 8px 24px rgba(37,99,235,.10)}
+.pt-ic{width:54px;height:54px;border-radius:14px;background:#eef4fe;display:grid;place-items:center}
+.pt-ic svg{width:28px;height:28px;fill:#2563eb;stroke:#2563eb}
+.pt-ic svg[fill="none"]{fill:none}
+.pt-obj-t{font-size:14.5px;line-height:1.5;color:#64748b}
+.pt-obj-t b{display:block;font-size:16.5px;line-height:1.3;color:#0f172a;margin:2px 0 8px}
+.pt-flecha{width:36px;height:36px;border-radius:50%;background:#f1f5fb;color:#2563eb;display:grid;place-items:center;font-size:22px;line-height:1;margin-top:4px}
+.pt-final{display:grid;grid-template-columns:minmax(0,1.35fr) repeat(3,minmax(0,1fr));gap:0;margin-top:18px;background:#f1f6fd;border:1px solid #dbe7f7;border-radius:16px;padding:22px 10px}
+.pt-final-cab{display:grid;grid-template-columns:44px minmax(0,1fr);gap:14px;align-items:start;padding:0 20px}
+.pt-final-cab svg{width:40px;height:44px}
+.pt-final h3{font-size:24px;margin:2px 0 8px;color:#0f172a}
+.pt-final p{font-size:13.5px;color:#475569;margin:0;line-height:1.5}
+.pt-paso{display:grid;grid-template-columns:36px minmax(0,1fr);gap:14px;padding:0 20px;border-left:1px solid #cddcf0;font-size:13.5px;color:#475569;line-height:1.5}
+.pt-paso b{display:block;color:#0f172a;font-size:14.5px;margin-bottom:4px}
+.pt-paso em{font-style:normal;width:36px;height:36px;border-radius:50%;background:#2563eb;color:#fff;font-weight:800;display:grid;place-items:center}
 .portada-cta{display:flex;flex-wrap:wrap;gap:10px}
+.portada-cta a{text-decoration:none}
 .portada-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px;margin-top:18px}
 .portada-card{background:#fff;border:1px solid var(--border);border-radius:14px;padding:20px}
 .portada-card h2{font-size:15px;margin:0 0 12px;color:var(--navy);text-transform:uppercase;letter-spacing:.06em}
@@ -573,7 +601,8 @@ body{font-family:'Inter',system-ui,sans-serif;font-size:15px;background:var(--na
 .portada-caps a{display:grid;grid-template-columns:34px minmax(0,1fr);gap:10px;align-items:center;padding:8px 10px;border-radius:10px;border:1px solid var(--border);text-decoration:none;color:var(--text);font-size:14px;cursor:pointer}
 .portada-caps a:hover{background:var(--blue-light);border-color:var(--blue-border)}
 .portada-caps em{font-style:normal;display:grid;place-items:center;width:30px;height:30px;border-radius:8px;background:var(--navy);color:#fff;font-weight:800;font-size:13px}
-@media (max-width:720px){.portada{padding:18px 16px 40px}.portada-hero{grid-template-columns:1fr;padding:22px}.portada-hero h1{font-size:26px}}
+@media (max-width:1100px){.pt-objs{grid-template-columns:repeat(2,minmax(0,1fr))}.pt-final{grid-template-columns:1fr 1fr;gap:18px 0}.pt-final-cab{grid-column:1/-1}.pt-paso:nth-of-type(2){border-left:0}}
+@media (max-width:860px){.portada{padding:18px 16px 40px}.pt-cab{grid-template-columns:60px minmax(0,1fr);padding:14px}.pt-cab-logo{width:60px;height:60px}.pt-cab h1{font-size:22px}.pt-cab-prog{grid-column:1/-1}.pt-obj-hero{grid-template-columns:1fr}.pt-obj-hero h2{white-space:normal}.pt-obj-ilus{max-width:420px;margin:0 auto;grid-row:1}.pt-objs{grid-template-columns:1fr}.pt-final{grid-template-columns:1fr;gap:16px}.pt-paso{border-left:0}}
 .cc-exam-link{background:#2563eb!important;color:#fff!important;border-color:#2563eb!important}
 .cc-exam-link:hover{background:#1d4ed8!important}
 </style>
@@ -863,17 +892,108 @@ body{font-family:'Inter',system-ui,sans-serif;font-size:15px;background:var(--na
   <!-- ═══════════════ PORTADA ═══════════════ -->
   <div id="lp-0">
     <div class="portada">
-      <section class="portada-hero">
-        <svg class="portada-logo" width="132" height="132" viewBox="0 0 120 120" role="img" aria-label="Logo Claude Code para Equipos" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="lg-ADM" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2563eb"/><stop offset="1" stop-color="#06b6d4"/></linearGradient></defs><rect x="4" y="4" width="112" height="112" rx="28" fill="url(#lg-ADM)"/><g transform="translate(36 16)" fill="none" stroke="#fff" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"><path d="M10 16l8 8-8 8" /><path d="M22 34h16" /></g><text x="60" y="97" text-anchor="middle" fill="#fff" font-family="Inter,system-ui,sans-serif" font-size="22" font-weight="900" letter-spacing="1">ADM</text></svg>
-        <div>
-          <div class="portada-eyebrow">Cortex Governor™ Academy · Discovery Fast</div>
+      <section class="pt-cab">
+        <svg class="pt-cab-logo" viewBox="0 0 120 120" role="img" aria-label="Logo ADM" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="pt-lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2f62ef"/><stop offset="1" stop-color="#06b6d4"/></linearGradient></defs><rect x="2" y="2" width="116" height="116" rx="26" fill="url(#pt-lg)"/><path d="M32 34 L 46 46 L 32 58" fill="none" stroke="#fff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/><rect x="50" y="54" width="22" height="6" rx="3" fill="#fff"/><text x="60" y="96" text-anchor="middle" font-family="Inter,system-ui,sans-serif" font-size="30" font-weight="800" fill="#fff">ADM</text></svg>
+        <div class="pt-cab-txt">
+          <div class="pt-eyebrow">Cortex Governor™ Academy · Discovery Fast</div>
           <h1>Claude Code para Equipos</h1>
-          <p>Dirigir y verificar a un agente que escribe código: de la primera instrucción a un equipo que trabaja con el mismo estándar.</p>
+        </div>
+        <div class="pt-cab-prog">
+          <span>Progreso del curso</span>
+          <div class="pt-cab-barra"><i id="portadaFill" style="width:0%"></i></div>
+          <b id="portadaPct">0%</b>
+        </div>
+      </section>
+
+      <section class="pt-obj-hero">
+        <div class="pt-obj-txt">
+          <div class="pt-eyebrow">Antes de empezar</div>
+          <h2>Objetivos <span>del curso</span></h2>
+          <p>En este curso aprenderás a dirigir y verificar a Claude Code en un entorno de equipo, aplicando un estándar de trabajo reproducible, seguro y escalable.</p>
           <div class="portada-cta">
             <button class="btn btn-primary" onclick="goToLesson(1)">Empezar: capítulo 1 →</button>
             <a class="btn btn-outline" href="simulador-examen.html" target="_blank" rel="noopener">🎓 Simulador de examen · 400 preguntas</a>
           </div>
         </div>
+        <svg class="pt-obj-ilus" viewBox="0 0 470 250" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="pt-tile" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2f62ef"/><stop offset=".6" stop-color="#1596e6"/><stop offset="1" stop-color="#00c2dc"/></linearGradient>
+            <linearGradient id="pt-ic" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2563eb"/><stop offset="1" stop-color="#06b6d4"/></linearGradient>
+            <filter id="pt-sb" x="-40%" y="-40%" width="180%" height="190%"><feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#1e3a8a" flood-opacity=".12"/></filter>
+            <pattern id="pt-pts" width="16" height="16" patternUnits="userSpaceOnUse"><circle cx="3" cy="3" r="1.8" fill="#dbe4f0"/></pattern>
+          </defs>
+          <path d="M110 250 L 300 20 Q 330 -5 380 10 L 470 40 L 470 250 Z" fill="#eef5fd"/>
+          <rect x="0" y="40" width="112" height="80" fill="url(#pt-pts)"/>
+          <g fill="none" stroke="#3b82f6" stroke-width="2.4">
+            <path d="M178 58 H 228 Q 240 58 240 70 V 86"/>
+            <path d="M142 90 V 120 Q 142 130 152 130 H 196"/>
+            <path d="M320 110 H 360 Q 372 110 372 98 V 82"/>
+            <path d="M268 190 V 202 Q 268 212 278 212 H 338"/>
+          </g>
+          <circle cx="196" cy="130" r="7" fill="#2f62ef"/><circle cx="360" cy="110" r="7" fill="#2f62ef"/><circle cx="268" cy="192" r="7" fill="#2f62ef"/>
+          <g filter="url(#pt-sb)">
+            <rect x="104" y="18" width="84" height="80" rx="18" fill="#fff"/>
+            <rect x="334" y="10" width="86" height="80" rx="18" fill="#fff"/>
+            <rect x="330" y="150" width="130" height="80" rx="16" fill="#fff"/>
+            <rect x="200" y="62" width="134" height="130" rx="28" fill="url(#pt-tile)"/>
+          </g>
+          <g fill="none" stroke="url(#pt-ic)" stroke-width="5" stroke-linecap="round"><circle cx="146" cy="60" r="20"/><circle cx="146" cy="60" r="11"/></g>
+          <circle cx="146" cy="60" r="4" fill="#2563eb"/>
+          <path d="M150 56 L 166 40 M 160 38 H 168 V 46" fill="none" stroke="#2563eb" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <g fill="url(#pt-ic)">
+            <circle cx="377" cy="40" r="9"/><path d="M360 72 Q 360 52 377 52 Q 394 52 394 72 Z"/>
+            <circle cx="358" cy="46" r="7"/><path d="M345 70 Q 345 57 358 57 Q 364 57 367 60 Q 361 64 360 70 Z"/>
+            <circle cx="396" cy="46" r="7"/><path d="M409 70 Q 409 57 396 57 Q 390 57 387 60 Q 393 64 394 70 Z"/>
+          </g>
+          <path d="M240 110 L 262 128 L 240 146" fill="none" stroke="#fff" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+          <rect x="266" y="140" width="34" height="8" rx="4" fill="#fff"/>
+          <g fill="#2563eb"><rect x="346" y="168" width="16" height="16" rx="4"/><rect x="346" y="196" width="16" height="16" rx="4"/></g>
+          <g fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M350 176 L 353 179 L 358 172"/><path d="M350 204 L 353 207 L 358 200"/></g>
+          <g fill="#dbe6f4"><rect x="372" y="172" width="70" height="6" rx="3"/><rect x="372" y="200" width="52" height="6" rx="3"/></g>
+        </svg>
+      </section>
+
+      <div class="pt-objs">
+        <a class="pt-obj" onclick="goToLesson(8)">
+          <span class="pt-ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.2"/><path d="M6.5 19c0-3.3 2.4-5.5 5.5-5.5s5.5 2.2 5.5 5.5z"/><circle cx="5.5" cy="10" r="2.4"/><path d="M1.5 18c0-2.6 1.7-4.2 4-4.2 1 0 1.8.3 2.4.8-1 1-1.6 2.2-1.7 3.4z"/><circle cx="18.5" cy="10" r="2.4"/><path d="M22.5 18c0-2.6-1.7-4.2-4-4.2-1 0-1.8.3-2.4.8 1 1 1.6 2.2 1.7 3.4z"/></svg></span>
+          <span class="pt-obj-t"><b>Dirigir agentes con criterio</b>Aprenderás a definir roles, contexto y límites para que Claude Code actúe con intención y seguridad.</span>
+          <span class="pt-flecha" aria-hidden="true">›</span>
+        </a>
+        <a class="pt-obj" onclick="goToLesson(3)">
+          <span class="pt-ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></svg></span>
+          <span class="pt-obj-t"><b>Convertir intención en especificaciones</b>Sabrás transformar una idea en especificaciones claras y ejecutables usando un flujo estructurado.</span>
+          <span class="pt-flecha" aria-hidden="true">›</span>
+        </a>
+        <a class="pt-obj" onclick="goToLesson(5)">
+          <span class="pt-ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.9"><ellipse cx="12" cy="5.5" rx="7" ry="2.7"/><path d="M5 5.5v13c0 1.5 3.1 2.7 7 2.7s7-1.2 7-2.7v-13M5 12c0 1.5 3.1 2.7 7 2.7s7-1.2 7-2.7"/></svg></span>
+          <span class="pt-obj-t"><b>Usar CLAUDE.md como memoria de proyecto</b>Aprenderás a diseñar y mantener la memoria de proyecto con reglas, contexto y convenciones que no cambian entre tareas.</span>
+          <span class="pt-flecha" aria-hidden="true">›</span>
+        </a>
+        <a class="pt-obj" onclick="goToLesson(6)">
+          <span class="pt-ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.9" stroke-linecap="round"><circle cx="7" cy="5" r="2.2"/><circle cx="7" cy="19" r="2.2"/><circle cx="17" cy="9" r="2.2"/><path d="M7 7.2v9.6M17 11.2c0 3-3 4-8 5.2"/></svg></span>
+          <span class="pt-obj-t"><b>Diseñar comandos y hooks</b>Crearás comandos reutilizables y hooks que automatizan el flujo de trabajo del equipo.</span>
+          <span class="pt-flecha" aria-hidden="true">›</span>
+        </a>
+        <a class="pt-obj" onclick="goToLesson(13)">
+          <span class="pt-ic"><svg viewBox="0 0 24 24"><path d="M12 2.5 4.5 5.5v6c0 4.6 3.1 8.4 7.5 10 4.4-1.6 7.5-5.4 7.5-10v-6z"/><path d="M8.5 12.2l2.4 2.4 4.8-4.9" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <span class="pt-obj-t"><b>Evaluar y verificar resultados</b>Aprenderás a definir criterios de calidad, revisar salidas y validar que el agente cumpla con lo esperado.</span>
+          <span class="pt-flecha" aria-hidden="true">›</span>
+        </a>
+        <a class="pt-obj" onclick="goToLesson(14)">
+          <span class="pt-ic"><svg viewBox="0 0 24 24"><rect x="4" y="13" width="4" height="7" rx="1.2"/><rect x="10" y="8" width="4" height="12" rx="1.2"/><rect x="16" y="3.5" width="4" height="16.5" rx="1.2"/></svg></span>
+          <span class="pt-obj-t"><b>Escalar de uso individual a equipos</b>Conocerás patrones, buenas prácticas y herramientas para coordinar múltiples agentes en un entorno de equipo.</span>
+          <span class="pt-flecha" aria-hidden="true">›</span>
+        </a>
+      </div>
+
+      <section class="pt-final">
+        <div class="pt-final-cab">
+          <svg viewBox="0 0 40 44" aria-hidden="true"><defs><linearGradient id="pt-med" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2563eb"/><stop offset="1" stop-color="#06b6d4"/></linearGradient></defs><path d="M11 26 6 42l7-3 4 5 3-14M29 26l5 16-7-3-4 5-3-14" fill="#2563eb"/><circle cx="20" cy="17" r="15" fill="url(#pt-med)"/><path d="M13.5 17.5l4.3 4.3 8.7-8.8" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <div><h3>Al finalizar podrás</h3><p>Aplicar todo lo aprendido para trabajar con Claude Code de forma profesional y en equipo.</p></div>
+        </div>
+        <div class="pt-paso"><em>1</em><div><b>Llevar una idea a ejecución</b>Convertir un objetivo en un flujo completo de especificación, ejecución y verificación.</div></div>
+        <div class="pt-paso"><em>2</em><div><b>Mantener un estándar de trabajo en el equipo</b>Usar plantillas, CLAUDE.md, comandos y hooks de forma consistente.</div></div>
+        <div class="pt-paso"><em>3</em><div><b>Obtener resultados confiables y escalables</b>Evaluar la calidad, iterar con criterio y coordinar múltiples agentes de forma eficiente.</div></div>
       </section>
       <div class="portada-grid">
         <section class="portada-card">
@@ -887,139 +1007,6 @@ body{font-family:'Inter',system-ui,sans-serif;font-size:15px;background:var(--na
           <ol class="portada-caps"><li><a onclick="goToLesson(1)"><em>1</em><span>Vibe Coding — la tesis: por qué el código deja de ser el centro y la intención pasa a serlo</span></a></li><li><a onclick="goToLesson(2)"><em>2</em><span>Teoría de agentes — según Anthropic: qué es un agente, cómo funciona el bucle y qué lo rodea</span></a></li><li><a onclick="goToLesson(3)"><em>3</em><span>Spec Driven Development — la spec convierte output inconsistente en resultado predecible</span></a></li><li><a onclick="goToLesson(4)"><em>4</em><span>Fundamentos de Claude Code — cómo planifica, ejecuta y muestra su trabajo</span></a></li><li><a onclick="goToLesson(5)"><em>5</em><span>CLAUDE.md — la memoria de proyecto: las reglas que no cambian entre tareas</span></a></li><li><a onclick="goToLesson(6)"><em>6</em><span>Comandos de Claude Code — el workflow que el equipo repite, convertido en un comando</span></a></li><li><a onclick="goToLesson(7)"><em>7</em><span>Hooks — lo que ejecuta el harness, no el modelo</span></a></li><li><a onclick="goToLesson(8)"><em>8</em><span>Creación de agentes — subagentes con rol, herramientas y límites</span></a></li><li><a onclick="goToLesson(9)"><em>9</em><span>Agent Harness — lo que sostiene al agente entre tareas</span></a></li><li><a onclick="goToLesson(10)"><em>10</em><span>Multi-agentes y Orquestador — coordinador que dirige, especialistas que ejecutan</span></a></li><li><a onclick="goToLesson(11)"><em>11</em><span>MCP — darle acceso a lo que necesita, con límites explícitos</span></a></li><li><a onclick="goToLesson(12)"><em>12</em><span>RAG — recuperación para agentes: extracción, troceo, búsqueda y verificación</span></a></li><li><a onclick="goToLesson(13)"><em>13</em><span>Permisos, Seguridad, Inspección y DoD — y el trabajo que corre sin nadie mirando</span></a></li><li><a onclick="goToLesson(14)"><em>14</em><span>Adopción en el equipo y Proyecto Final — que todos trabajen con el mismo estándar</span></a></li></ol>
         </section>
       </div>
-      <style>.ib{
-  --bg:#f3f5fa;--panel:#ffffff;--ink:#0f172a;--ink2:#475569;--ink3:#64748b;--line:#e2e8f0;
-  --blue:#2563eb;--blue-soft:#eff6ff;--cyan:#0891b2;--cyan-soft:#ecfeff;--green:#059669;--green-soft:#ecfdf5;
-  --red:#dc2626;--red-soft:#fef2f2;--amber:#d97706;--amber-soft:#fffbeb;--navy:#0f172a;
-  --code-bg:#f8fafc;--code-line:#cbd5e1;
-}.ib *{box-sizing:border-box}.ib{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 'Inter',system-ui,-apple-system,'Segoe UI',sans-serif}.ib .wrap{max-width:1080px;margin:0 auto;padding-inline:16px;padding-block:28px 64px}.ib .eyebrow{font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--blue)}.ib h1{font-size:clamp(28px,4.2vw,44px);line-height:1.1;margin:8px 0 10px;font-weight:900;text-wrap:balance}.ib h2{font-size:clamp(22px,3vw,30px);line-height:1.15;margin:0 0 6px;font-weight:900;text-wrap:balance}.ib h3{font-size:18px;margin:0 0 8px}.ib .lead{font-size:18px;color:var(--ink2);max-width:65ch;margin:0}.ib .poster{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:clamp(18px,3vw,32px);margin-top:26px}.ib .poster-head{display:flex;flex-wrap:wrap;gap:10px;align-items:baseline;justify-content:space-between;margin-bottom:18px}.ib .tag{font:600 12px 'JetBrains Mono',ui-monospace,monospace;color:var(--ink3);letter-spacing:.04em}.ib .pillars{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:16px}.ib .pillar{border-radius:14px;padding:20px;border:1.5px solid;display:grid;grid-template-rows:auto auto 1fr auto;gap:12px}.ib .pillar.p1{background:var(--blue-soft);border-color:#93c5fd}.ib .pillar.p2{background:var(--amber-soft);border-color:#fcd34d}.ib .pillar.p3{background:var(--green-soft);border-color:#6ee7b7}.ib .pillar-top{display:flex;gap:12px;align-items:center}.ib .pillar-top svg{flex-shrink:0}.ib .pillar-num{font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3)}.ib .pillar-name{font-size:19px;font-weight:900;line-height:1.2}.ib .pillar-role{font-size:13px;font-weight:700;color:var(--ink2)}.ib .pillar p{margin:0;font-size:14.5px;color:var(--ink2)}.ib .steps{list-style:none;margin:0;padding:0;display:grid;gap:8px}.ib .steps li{display:grid;grid-template-columns:26px minmax(0,1fr);gap:10px;font-size:14px;align-items:start}.ib .steps b.n{display:grid;place-items:center;width:24px;height:24px;border-radius:50%;background:var(--navy);color:#fff;font-size:12px}.ib .metric{border-top:1px dashed var(--line);padding-top:12px;display:flex;gap:12px;align-items:baseline;flex-wrap:wrap}.ib .metric strong{font-size:30px;font-weight:900;font-variant-numeric:tabular-nums;line-height:1}.ib .metric span{font-size:13px;color:var(--ink2)}.ib .p1 .metric strong{color:var(--blue)}.ib .p2 .metric strong{color:var(--amber)}.ib .p3 .metric strong{color:var(--green)}.ib .watch{margin-top:18px;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}.ib .watch div{border-left:4px solid var(--red);background:var(--red-soft);border-radius:0 10px 10px 0;padding:10px 14px;font-size:14px}.ib .diagram{background:#fff;border-radius:14px;border:1px solid #e2e8f0;overflow-x:auto}.ib .diagram svg{display:block;width:100%;min-width:640px;height:auto}.ib .roles{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin-top:18px}.ib .role{border-radius:12px;padding:16px;border:1px solid var(--line);background:var(--panel)}.ib .role .q{font-style:italic;color:var(--ink2);font-size:14px;margin:4px 0 8px}.ib .role p{margin:0;font-size:14.5px}.ib .role.r1{border-top:5px solid var(--green)}.ib .role.r2{border-top:5px solid var(--red)}.ib .role.r3{border-top:5px solid var(--amber)}.ib .tabs{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0}.ib .tabs button{font:600 14px 'Inter',system-ui,sans-serif;padding:8px 14px;border-radius:999px;border:1px solid var(--line);background:var(--panel);color:var(--ink);cursor:pointer}.ib .tabs button[aria-selected="true"]{background:var(--blue);border-color:var(--blue);color:#fff}.ib .tabs button:focus-visible,.ib .copy:focus-visible{outline:3px solid #93c5fd;outline-offset:2px}.ib .codebox{position:relative}.ib pre{margin:0;background:var(--code-bg);border:1px solid var(--code-line);border-left:4px solid var(--blue);border-radius:10px;padding:16px;overflow-x:auto;font:13.5px/1.6 'JetBrains Mono',ui-monospace,Consolas,monospace;color:var(--ink);white-space:pre-wrap}.ib .copy{position:absolute;top:10px;right:10px;font:600 12px 'Inter',sans-serif;padding:5px 10px;border-radius:7px;border:1px solid var(--code-line);background:var(--panel);color:var(--ink);cursor:pointer}.ib .case{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:14px 0}.ib .case div{background:var(--code-bg);border:1px solid var(--line);border-radius:10px;padding:10px 12px}.ib .case small{display:block;font-size:12px;color:var(--ink3);text-transform:uppercase;letter-spacing:.05em}.ib .case b{font-size:17px;font-variant-numeric:tabular-nums}.ib .debate{display:grid;gap:12px;margin-top:10px}.ib .turn{display:grid;grid-template-columns:44px minmax(0,1fr);gap:12px;align-items:start}.ib .av{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;font-weight:900;color:#fff;font-size:15px}.ib .av.g{background:var(--green)}.ib .av.r{background:var(--red)}.ib .av.a{background:var(--amber)}.ib .av.x{background:var(--cyan)}.ib .bubble{border:1px solid var(--line);border-radius:12px;padding:12px 14px;background:var(--panel)}.ib .bubble .who{font-size:13px;font-weight:800;color:var(--ink2);margin-bottom:4px}.ib .bubble p{margin:0 0 6px;font-size:14.5px}.ib .bubble p:last-child{margin:0}.ib .round{font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);margin-top:8px}.ib .verdict{border:2px solid var(--amber);background:var(--amber-soft);border-radius:14px;padding:16px;margin-top:14px}.ib .lesson{margin-top:14px;padding:14px 16px;border-radius:12px;background:var(--blue-soft);border:1px solid #93c5fd;font-size:15px}.ib .note{font-size:13px;color:var(--ink3);margin-top:12px}.ib [hidden]{display:none!important}.ib .ib-wrap{padding:0}.ib h1{display:none}.ib .poster h2{text-transform:none;letter-spacing:-.01em;font-size:clamp(22px,3vw,30px);margin:0 0 6px}</style><section class="portada-card ib" style="margin-top:16px"><h2 style="font-size:15px;margin:0 0 12px;color:var(--navy);text-transform:uppercase;letter-spacing:.06em">Introducción · Agentes de IA en la banca</h2><div class="ib-wrap">
-  <div class="eyebrow">Material de clase · Cortex Governor™ Academy</div>
-  <h1>Agentes de IA en la banca</h1>
-  <p class="lead">De la automatización rígida a la inteligencia autónoma: tres agentes que atienden operaciones críticas del banco, y la arquitectura de debate con juez que decide los créditos.</p>
-
-  <!-- ═════════ INFOGRAFÍA 1 ═════════ -->
-  <section class="poster" aria-labelledby="ib-i1">
-    <div class="poster-head">
-      <h2 id="ib-i1">Del bot rígido al agente autónomo</h2>
-      <span class="tag">INFOGRAFÍA 1 · INTRODUCCIÓN · OPERACIONES 360°</span>
-    </div>
-    <div class="pillars">
-      <article class="pillar p1">
-        <div class="pillar-top">
-          <svg width="52" height="52" viewBox="0 0 52 52" aria-hidden="true"><rect width="52" height="52" rx="14" fill="#2563eb"/><circle cx="26" cy="21" r="8" fill="none" stroke="#fff" stroke-width="3"/><path d="M13 40c2-7 7-10 13-10s11 3 13 10" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"/><path d="M15 22v-2a11 11 0 0 1 22 0v2" fill="none" stroke="#fff" stroke-width="3"/><rect x="12" y="20" width="5" height="8" rx="2" fill="#fff"/><rect x="35" y="20" width="5" height="8" rx="2" fill="#fff"/></svg>
-          <div><div class="pillar-num">Pilar 1</div><div class="pillar-name">Atención y consultas</div><div class="pillar-role">El agente front-office</div></div>
-        </div>
-        <p>Soporte en lenguaje natural conectado al core bancario.</p>
-        <ol class="steps">
-          <li><b class="n">1</b><span>El cliente pregunta: <b>«¿Por qué se rechazó mi transferencia de ayer?»</b></span></li>
-          <li><b class="n">2</b><span>El agente <b>valida su identidad</b> y consulta en tiempo real el registro de errores de la operación (solo lectura).</span></li>
-          <li><b class="n">3</b><span><b>Explica la causa</b> de forma amigable: «Fondos insuficientes en la cuenta de origen».</span></li>
-        </ol>
-        <div class="metric"><strong>+40 %</strong><span>de resolución en el primer contacto (FCR)</span></div>
-      </article>
-
-      <article class="pillar p2">
-        <div class="pillar-top">
-          <svg width="52" height="52" viewBox="0 0 52 52" aria-hidden="true"><rect width="52" height="52" rx="14" fill="#d97706"/><path d="M26 9l14 5v10c0 9-6 15-14 19-8-4-14-10-14-19V14z" fill="none" stroke="#fff" stroke-width="3" stroke-linejoin="round"/><path d="M26 18v10" stroke="#fff" stroke-width="3.5" stroke-linecap="round"/><circle cx="26" cy="34" r="2.2" fill="#fff"/></svg>
-          <div><div class="pillar-num">Pilar 2</div><div class="pillar-name">Gestión de reclamos</div><div class="pillar-role">El agente de operaciones (back-office)</div></div>
-        </div>
-        <p>Triaje, análisis preliminar de fraude y compensaciones pequeñas.</p>
-        <ol class="steps">
-          <li><b class="n">1</b><span>El cliente reclama un <b>cargo duplicado</b> en un comercio.</span></li>
-          <li><b class="n">2</b><span>El agente lee el reclamo, <b>busca la transacción</b> y la compara con el patrón histórico de fraude.</span></li>
-          <li><b class="n">3</b><span>Si el monto es bajo (menos de S/ 50) y la política lo permite, <b>reembolsa</b>; si es complejo, pre-redacta el caso y lo <b>escala</b> a un analista.</span></li>
-        </ol>
-        <div class="metric"><strong>3 días → 5 min</strong><span>tiempo de respuesta (TAT)</span></div>
-      </article>
-
-      <article class="pillar p3">
-        <div class="pillar-top">
-          <svg width="52" height="52" viewBox="0 0 52 52" aria-hidden="true"><rect width="52" height="52" rx="14" fill="#059669"/><rect x="12" y="28" width="6" height="12" rx="1.5" fill="#fff"/><rect x="22" y="21" width="6" height="19" rx="1.5" fill="#fff"/><rect x="32" y="14" width="6" height="26" rx="1.5" fill="#fff"/><path d="M11 20l9-7 7 5 12-9" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          <div><div class="pillar-num">Pilar 3</div><div class="pillar-name">Evaluación de crédito</div><div class="pillar-role">El agente de riesgo</div></div>
-        </div>
-        <p>Análisis cualitativo veloz de datos no estructurados.</p>
-        <ol class="steps">
-          <li><b class="n">1</b><span><b>Procesa</b> estados de cuenta, declaraciones de impuestos y comportamiento transaccional.</span></li>
-          <li><b class="n">2</b><span>Pasa el perfil por el <b>debate</b>: agente relajado contra agente estricto.</span></li>
-          <li><b class="n">3</b><span>Emite una <b>recomendación justificada</b> al juez o al validador humano.</span></li>
-        </ol>
-        <div class="metric"><strong>−15 %</strong><span>de morosidad (NPL)</span></div>
-      </article>
-    </div>
-
-    <h3 style="margin-top:22px">Lo que un arquitecto corrige de este diseño</h3>
-    <div class="watch">
-      <div><b>Reembolso automático bajo S/ 50.</b> Una regla de dinero no se confía al prompt: la hace cumplir un hook que bloquea montos mayores y deriva a un humano.</div>
-      <div><b>Escalar por enojo o urgencia.</b> El sentimiento no mide la complejidad. Se escala cuando el cliente pide un humano, la política no cubre el caso o no hay avance.</div>
-      <div><b>«Recuerda al cliente».</b> Guarda los hechos del caso (montos, fechas, número de operación), nunca datos sensibles completos.</div>
-    </div>
-  </section>
-
-  <!-- ═════════ INFOGRAFÍA 2 ═════════ -->
-  <section class="poster" aria-labelledby="ib-i2">
-    <div class="poster-head">
-      <h2 id="ib-i2">El triángulo de decisión: debate con juez</h2>
-      <span class="tag">INFOGRAFÍA 2 · APROBACIÓN DE CRÉDITO</span>
-    </div>
-    <figure style="margin:0 0 18px"><img src="debate-juez.webp" alt="Arquitectura de debate con juez para la decisión de crédito: el agente relajado argumenta aprobar, el estricto argumenta rechazar y el juez emite el veredicto final con la política de riesgo" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line);display:block"><figcaption class="note">El juez decide solo los casos de bajo riesgo; los de alto riesgo o complejos pasan a revisión manual (human-in-the-loop). Veredicto posible: aprobación con condiciones.</figcaption></figure>
-<p class="lead" style="font-size:16px;margin-bottom:16px">Dos agentes con metas opuestas argumentan sobre el mismo perfil. Un juez los pesa contra las reglas del banco y decide, o escala el caso a una persona.</p>
-    <div class="diagram">
-      <svg viewBox="0 0 920 620" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Flujo: solicitud, extractor, agente relajado y agente estricto, juez con el contrato de política, decisión autónoma o escalación humana" style="font-family:'Inter',system-ui,sans-serif">
-        <defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0L10 5L0 10z" fill="#64748b"/></marker></defs>
-        <rect x="310" y="16" width="300" height="54" rx="12" fill="#0f172a"/>
-        <text x="460" y="49" text-anchor="middle" fill="#fff" font-size="16" font-weight="800">Solicitud de crédito del cliente</text>
-        <path d="M460 70v30" stroke="#64748b" stroke-width="2.5" marker-end="url(#ar)"/>
-        <rect x="290" y="104" width="340" height="62" rx="12" fill="#ecfeff" stroke="#0891b2" stroke-width="2"/>
-        <text x="460" y="131" text-anchor="middle" fill="#155e75" font-size="16" font-weight="800">Extractor de datos</text>
-        <text x="460" y="152" text-anchor="middle" fill="#334155" font-size="13.5">envía el mismo perfil a los dos agentes</text>
-        <path d="M400 166L230 214" stroke="#64748b" stroke-width="2.5" marker-end="url(#ar)"/>
-        <path d="M520 166L690 214" stroke="#64748b" stroke-width="2.5" marker-end="url(#ar)"/>
-        <rect x="60" y="218" width="320" height="150" rx="14" fill="#ecfdf5" stroke="#059669" stroke-width="2"/>
-        <text x="220" y="248" text-anchor="middle" fill="#065f46" font-size="17" font-weight="900">Agente relajado</text>
-        <text x="220" y="268" text-anchor="middle" fill="#065f46" font-size="13.5" font-weight="700">(comercial) · busca el cómo SÍ</text>
-        <text x="84" y="302" fill="#0f172a" font-size="14">✓ «Ingresos crecientes»</text>
-        <text x="84" y="326" fill="#0f172a" font-size="14">✓ «Industria estable»</text>
-        <text x="84" y="350" fill="#0f172a" font-size="14">✓ Propone un plazo que cumpla</text>
-        <rect x="540" y="218" width="320" height="150" rx="14" fill="#fef2f2" stroke="#dc2626" stroke-width="2"/>
-        <text x="700" y="248" text-anchor="middle" fill="#991b1b" font-size="17" font-weight="900">Agente estricto</text>
-        <text x="700" y="268" text-anchor="middle" fill="#991b1b" font-size="13.5" font-weight="700">(riesgo) · busca el cómo NO</text>
-        <text x="564" y="302" fill="#0f172a" font-size="14">✗ «Historial muy corto»</text>
-        <text x="564" y="326" fill="#0f172a" font-size="14">✗ «Deuda externa alta»</text>
-        <text x="564" y="350" fill="#0f172a" font-size="14">✗ Estrés: ¿y el peor mes?</text>
-        <path d="M230 368L400 414" stroke="#059669" stroke-width="2.5" marker-end="url(#ar)"/>
-        <path d="M690 368L520 414" stroke="#dc2626" stroke-width="2.5" marker-end="url(#ar)"/>
-        <text x="120" y="400" fill="#065f46" font-size="12.5" font-weight="700">argumentos a favor</text>
-        <text x="672" y="400" fill="#991b1b" font-size="12.5" font-weight="700">argumentos en contra</text>
-        <rect x="330" y="418" width="260" height="70" rx="14" fill="#fffbeb" stroke="#d97706" stroke-width="2.5"/>
-        <text x="460" y="448" text-anchor="middle" fill="#92400e" font-size="17" font-weight="900">Agente juez</text>
-        <text x="460" y="470" text-anchor="middle" fill="#334155" font-size="13.5">(moderador) pesa y dicta sentencia</text>
-        <rect x="640" y="424" width="250" height="58" rx="10" fill="#f8fafc" stroke="#64748b" stroke-dasharray="5 4" stroke-width="1.8"/>
-        <text x="765" y="448" text-anchor="middle" fill="#0f172a" font-size="14" font-weight="800">Contrato de política</text>
-        <text x="765" y="468" text-anchor="middle" fill="#475569" font-size="12.5">reglas inquebrantables del banco</text>
-        <path d="M640 453h-46" stroke="#64748b" stroke-width="2.5" marker-end="url(#ar)"/>
-        <path d="M400 488L250 530" stroke="#64748b" stroke-width="2.5" marker-end="url(#ar)"/>
-        <path d="M520 488L670 530" stroke="#64748b" stroke-width="2.5" marker-end="url(#ar)"/>
-        <rect x="80" y="534" width="340" height="74" rx="12" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
-        <text x="250" y="560" text-anchor="middle" fill="#1e3a8a" font-size="15.5" font-weight="900">Decisión autónoma</text>
-        <text x="250" y="580" text-anchor="middle" fill="#334155" font-size="13">aprobado, aprobado con condiciones o rechazado</text>
-        <text x="250" y="598" text-anchor="middle" fill="#334155" font-size="13">caso claro y dentro del límite + bitácora legal</text>
-        <rect x="500" y="534" width="340" height="74" rx="12" fill="#0f172a"/>
-        <text x="670" y="560" text-anchor="middle" fill="#fff" font-size="15.5" font-weight="900">Escalación humana</text>
-        <text x="670" y="580" text-anchor="middle" fill="#cbd5e1" font-size="13">caso gris o ambiguo</text>
-        <text x="670" y="598" text-anchor="middle" fill="#cbd5e1" font-size="13">el analista lee el debate y decide rápido</text>
-      </svg>
-    </div>
-
-    <div class="roles">
-      <div class="role r1"><h3>Agente relajado</h3><div class="q">«El optimista contratado»</div><p>Busca el cómo sí. Su meta es hacer crecer la cartera: valora el potencial futuro y las justificaciones del cliente.</p></div>
-      <div class="role r2"><h3>Agente estricto</h3><div class="q">«El guardián del capital»</div><p>Busca el cómo no. Su meta es evitar el impago: no perdona inconsistencias ni falta de garantías.</p></div>
-      <div class="role r3"><h3>Agente juez</h3><div class="q">«El árbitro pragmático»</div><p>Pesa la solidez de ambos argumentos frente a la política real del banco y dicta sentencia, o escala si el caso es gris.</p></div>
-    </div>
-    <div class="lesson"><b>Por qué debate y no voto por mayoría.</b> Un voto cuenta respuestas sin mirar los argumentos: puede fallar aunque un agente tenga razón. En el debate cada agente tiene que justificar con la política, el juez ve el desacuerdo y corta cuando las posiciones ya no cambian.</div>
-  </section>
-
-  <!-- ═════════ PROMPTS ═════════ -->
-  </div></section>
     </div>
   </div><!-- /lp-0 -->
 
@@ -7221,6 +7208,8 @@ function completeLesson(n){
   const pct = Math.round(completadas.size / TOTAL_LESSONS * 100);
   document.getElementById('progressFill').style.width = pct + '%';
   document.getElementById('progressPct').textContent = pct + '%';
+  const pf=document.getElementById('portadaFill'); if(pf) pf.style.width = pct + '%';
+  const pp=document.getElementById('portadaPct'); if(pp) pp.textContent = pct + '%';
   try { localStorage.setItem('curso:ADM:done', JSON.stringify([...completadas])); } catch(e) {}
 }
 function goNext(n){
